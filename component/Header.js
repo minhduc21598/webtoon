@@ -11,21 +11,10 @@ class Header extends Component {
     }
     render() {
         var {onPressBtnRight, _navigationHeader} =this.props;
-        return (
-                        
-<View>
-                <Button nameIcon="md-camera" title="Quét" onPress={() => _navigationHeader.navigate("New")} />
-
-                <View style={styles.txtInput}>
-                    <Ionicons name="ios-search" size={20} color="gray"/>
-                    <TextInput
-                        style={{ flex: 1, marginLeft: 5, }}
-                        placeholder="Nhập tìm kiếm"
-                    />
-                </View>
-
-                <Button nameIcon="ios-wallet" title="Ví" onPress={onPressBtnRight} />
-                </View>
+        return (        
+            <View>
+                
+            </View>
         );
     }
 }
