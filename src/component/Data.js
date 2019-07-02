@@ -31,35 +31,145 @@ export const newHere = [
 
 export const topNewHere = [
     {
-        order: "1",
-        image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-        name: "True Beauty",
-        type: "Drama"
+        title: "Top Series",
+        list: [
+            {
+                order: "1",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "True Beauty",
+                type: "Drama"
+            },
+            {
+                order: "2",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "unOrdinary",
+                type: "Fantasy"
+            },
+            {
+                order: "3",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "Lore Olympus",
+                type: "Romance"
+            },
+            {
+                order: "4",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "Age Matters",
+                type: "Romance"
+            },
+            {
+                order: "5",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "LUFF",
+                type: "Romance"
+            },
+        ]
     },
     {
-        order: "2",
-        image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-        name: "unOrdinary",
-        type: "Fantasy"
+        title: "Top Drama",
+        list: [
+            {
+                order: "1",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "True Beauty",
+                type: "Drama"
+            },
+            {
+                order: "2",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "unOrdinary",
+                type: "Fantasy"
+            },
+            {
+                order: "3",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "Lore Olympus",
+                type: "Romance"
+            },
+            {
+                order: "4",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "Age Matters",
+                type: "Romance"
+            },
+            {
+                order: "5",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "LUFF",
+                type: "Romance"
+            },
+        ]
     },
     {
-        order: "3",
-        image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-        name: "Lore Olympus",
-        type: "Romance"
+        title: "Top Fantasy",
+        list: [
+            {
+                order: "1",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "True Beauty",
+                type: "Drama"
+            },
+            {
+                order: "2",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "unOrdinary",
+                type: "Fantasy"
+            },
+            {
+                order: "3",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "Lore Olympus",
+                type: "Romance"
+            },
+            {
+                order: "4",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "Age Matters",
+                type: "Romance"
+            },
+            {
+                order: "5",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "LUFF",
+                type: "Romance"
+            },
+        ]
     },
     {
-        order: "4",
-        image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-        name: "Age Matters",
-        type: "Romance"
-    },
-    {
-        order: "5",
-        image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-        name: "LUFF",
-        type: "Romance"
-    },
+        title: "Top Comedy",
+        list: [
+            {
+                order: "1",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "True Beauty",
+                type: "Drama"
+            },
+            {
+                order: "2",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "unOrdinary",
+                type: "Fantasy"
+            },
+            {
+                order: "3",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "Lore Olympus",
+                type: "Romance"
+            },
+            {
+                order: "4",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "Age Matters",
+                type: "Romance"
+            },
+            {
+                order: "5",
+                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
+                name: "LUFF",
+                type: "Romance"
+            },
+        ]
+    }
 ];
 
 export const imgSwiper = [
@@ -103,28 +213,28 @@ export const type = [
         name: 'Romance'
     },
     {
-        icon: 'ios-heart-empty',
+        icon: 'logo-snapchat',
         name: 'Drama'
     },
     {
-        icon: 'ios-heart-empty',
-        name: 'Romance'
+        icon: 'ios-color-wand',
+        name: 'Fantasy'
     },
     {
-        icon: 'ios-heart-empty',
-        name: 'Romance'
+        icon: 'ios-happy',
+        name: 'Comedy'
     },
     {
-        icon: 'ios-heart-empty',
-        name: 'Romance'
+        icon: 'md-color-filter',
+        name: 'Thriller'
     },
     {
-        icon: 'ios-heart-empty',
-        name: 'Romance'
+        icon: 'md-locate',
+        name: 'Action'
     },
     {
-        icon: 'ios-heart-empty',
-        name: 'Romance'
+        icon: 'logo-freebsd-devil',
+        name: 'Horror'
     },
     {
         icon: 'ios-sunny',
@@ -143,7 +253,7 @@ export const type = [
         name: 'Sports'
     },
     {
-        icon: 'ios-heart-empty',
+        icon: 'ios-jet',
         name: 'Sci-fi'
     },
     {
@@ -151,7 +261,7 @@ export const type = [
         name: 'Informative'
     },
     {
-        icon: 'ios-heart-empty',
+        icon: 'ios-home',
         name: 'Historical'
     }]
 export const recentDataScreenMy = [
