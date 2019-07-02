@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, Dimensions, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-swiper';
-import {newHere, topNewHere, imgSwiper, imgScroll} from '../component/Data';
+import {newHere, topNewHere, imgSwiper, imgScroll, type} from '../component/Data';
 import Carousel from 'react-native-snap-carousel';
 
 class ForYou extends Component {
@@ -26,6 +26,60 @@ class ForYou extends Component {
           }}
         />
       </View>
+    )
+  }
+
+  _renderItem1({item}){
+    return(
+      item.list.map(
+        (item1, index1) => {
+          return(
+            <TouchableOpacity
+              style = {{
+                flexDirection: 'row',
+                width: 160,
+                height: 50,
+              }}
+              key = {index1}
+              activeOpacity = {1}
+              onPress = {() => alert(`${item1.name}`)}
+            >
+              <Text
+                style = {{
+                  color: 'black',
+                  fontWeight: '500',
+                  fontSize: 15,
+                  marginTop: 8
+                }}
+              >{item1.order}</Text>
+              <Image
+                source = {{uri: item1.image}}
+                style = {{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 5,
+                  marginLeft: 10
+                }}
+              />
+              <View>
+                <Text
+                  style = {{
+                    marginLeft: 10,
+                    fontSize: 14,
+                    color: 'black'
+                  }}
+                >{item1.name}</Text>
+                <Text
+                  style = {{
+                    marginLeft: 10,
+                    fontSize: 11,
+                  }}
+                >{item1.type}</Text>
+              </View>
+            </TouchableOpacity>
+          )
+        }
+      )
     )
   }
 
@@ -104,16 +158,6 @@ class ForYou extends Component {
               inactiveSlideOpacity = {1}
               renderItem={this._renderItem}
               inactiveSlideScale = {0.85}
-              ref = {ref => this.Carousel = ref}
-              onSnapToItem= {
-                () => {
-                  this.setState({
-                    index: this.Carousel.currentIndex
-                  })
-                  this.getItem = newHere[this.state.index];
-                  console.log("item", this.getItem)
-                }
-              }
             />
           </View>
         </View>
@@ -187,90 +231,40 @@ class ForYou extends Component {
             height: 300,
           }}
         >
-          <TouchableOpacity
+          <View
             style = {{
               width: '100%',
               height: 40,
-              justifyContent: 'space-between',
               alignItems: 'center',
+              justifyContent: 'space-between',
               flexDirection: 'row'
             }}
-            onPress = {() => alert("Another screen")}
-            activeOpacity = {1}
           >
             <Text
               style = {{
                 color: 'black',
-                fontSize: 15,
                 fontWeight: '500',
-                marginLeft: 20
+                fontSize: 15,
+                marginLeft: 20 
               }}
-            >Top Series
-            </Text>
+            >Top Series</Text>
             <Text
               style = {{
                 color: 'black',
-                fontSize: 15,
                 fontWeight: '500',
-                marginRight: 15
+                fontSize: 15,
+                marginRight: 15  
               }}
-            >>
-            </Text>
-          </TouchableOpacity>
-          <View
-            style = {{
-              width: 300,
-              height: 250,
-            }}
-          >
-            {
-              topNewHere.map(
-                (item, index) => {
-                  return(
-                    <View
-                      style = {{
-                        width: 200,
-                        height: 50,
-                        flexDirection: 'row',
-                        marginLeft: 20
-                      }}
-                      key = {index}
-                    >
-                      <Text
-                        style = {{
-                          marginTop: 9
-                        }}
-                      >{item.order}</Text>
-                      <Image
-                        source = {{uri: item.image}}
-                        style = {{
-                          width: 40,
-                          height: 40,
-                          resizeMode: 'center',
-                          marginLeft: 8
-                        }}
-                      />
-                      <View style = {{width: 100, height: 40}}>
-                        <Text
-                          style = {{
-                            color: 'black',
-                            fontSize: 15,
-                            marginLeft: 5
-                          }}
-                        >{item.name}</Text>
-                        <Text
-                          style = {{
-                            fontSize: 12,
-                            marginLeft: 5
-                          }}
-                        >{item.type}</Text>
-                      </View>
-                    </View>
-                  )
-                }
-              )
-            }
+            >></Text>
           </View>
+          <Carousel
+            data = {topNewHere}
+            sliderWidth={Dimensions.get('window').width}
+            itemWidth={280}
+            inactiveSlideOpacity = {1}
+            renderItem={this._renderItem1}
+            inactiveSlideScale = {1}
+          />
         </View>
         <View
           style = {{
@@ -849,7 +843,6 @@ class ForYou extends Component {
           style = {{
             width: '100%',
             height: 140,
-            backgroundColor: 'red'
           }}
         >
           <TouchableOpacity
@@ -883,12 +876,63 @@ class ForYou extends Component {
             style = {{
               width: '100%',
               height: 110,
-              backgroundColor: 'green',
               flexDirection: 'row'
             }}
           >
-
+            <ScrollView
+              horizontal = {true}
+              showsHorizontalScrollIndicator = {false}
+            >
+              {
+                type.map(
+                  (item, index) => {
+                    return(
+                      <TouchableOpacity
+                        style = {{
+                          width: 80,
+                          height: 100,
+                          marginLeft: 15,
+                          alignItems: 'center'
+                        }}
+                        activeOpacity = {1}
+                        onPress = {() => this.props.navigation.navigate("ORIGINALS")}
+                      >
+                        <View
+                          style = {{
+                            width: 70,
+                            height: 70,
+                            backgroundColor: '#e3e3e3',
+                            borderRadius: 40,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            marginTop: 5
+                          }}
+                          key = {index}
+                        >
+                          <Icon name = {item.icon} size = {30} color = {'black'}/>
+                        </View>
+                        <Text
+                          style = {{
+                            color: 'black',
+                            fontSize: 12
+                          }}
+                        >{item.name}</Text>
+                      </TouchableOpacity>
+                    )
+                  }
+                )
+              }
+            </ScrollView>
           </View>
+        </View>
+        <View
+          style = {{
+            width: '100%',
+            height: 240,
+            backgroundColor: 'red'
+          }}
+        >
+          
         </View>
       </ScrollView>
     );
