@@ -9,7 +9,7 @@ import More from '../screen/More';
 
 const Footer = createBottomTabNavigator(
     {
-        ForYou:{
+        FORYOU:{
             screen: ForYou,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
@@ -17,7 +17,7 @@ const Footer = createBottomTabNavigator(
                 )
             }
         },
-        Originals:{
+        ORIGINALS:{
             screen: Originals,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
@@ -25,7 +25,7 @@ const Footer = createBottomTabNavigator(
                 )
             }
         },
-        Canvas:{
+        CANVAS:{
             screen: Canvas,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
@@ -33,7 +33,7 @@ const Footer = createBottomTabNavigator(
                 )
             }
         },
-        My:{
+        MY:{
             screen: My,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
@@ -41,7 +41,7 @@ const Footer = createBottomTabNavigator(
                 )
             }
         },
-        More:{
+        MORE:{
             screen: More,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
