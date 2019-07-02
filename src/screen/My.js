@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   txtRecent:{
     color: 'red',
     fontSize: 20,
+    margin: 4,
   },
   txtTabs:{
     color: 'red',
