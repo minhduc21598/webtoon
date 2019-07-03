@@ -899,45 +899,47 @@ class ForYou extends Component {
               horizontal = {true}
               showsHorizontalScrollIndicator = {false}
             >
-              {
-                type.map(
-                  (item, index) => {
-                    return(
-                      <TouchableOpacity
-                        style = {{
-                          width: 80,
-                          height: 100,
-                          marginLeft: 15,
-                          alignItems: 'center'
-                        }}
-                        activeOpacity = {1}
-                        onPress = {() => this.props.navigation.navigate("ORIGINALS")}
-                      >
-                        <View
+              <View style = {{marginLeft: 15, flexDirection: 'row'}}>
+                {
+                  type.map(
+                    (item, index) => {
+                      return(
+                        <TouchableOpacity
                           style = {{
-                            width: 70,
-                            height: 70,
-                            backgroundColor: '#e3e3e3',
-                            borderRadius: 40,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginTop: 5
+                            width: 80,
+                            height: 100,
+                            marginRight: 8,
+                            alignItems: 'center'
                           }}
-                          key = {index}
+                          activeOpacity = {1}
+                          onPress = {() => this.props.navigation.navigate("ORIGINALS")}
                         >
-                          <Icon name = {item.icon} size = {30} color = {'black'}/>
-                        </View>
-                        <Text
-                          style = {{
-                            color: 'black',
-                            fontSize: 12
-                          }}
-                        >{item.name}</Text>
-                      </TouchableOpacity>
-                    )
-                  }
-                )
-              }
+                          <View
+                            style = {{
+                              width: 70,
+                              height: 70,
+                              backgroundColor: '#e3e3e3',
+                              borderRadius: 40,
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              marginTop: 5
+                            }}
+                            key = {index}
+                          >
+                            <Icon name = {item.icon} size = {30} color = {'black'}/>
+                          </View>
+                          <Text
+                            style = {{
+                              color: 'black',
+                              fontSize: 12
+                            }}
+                          >{item.name}</Text>
+                        </TouchableOpacity>
+                      )
+                    }
+                  )
+                }
+              </View>
             </ScrollView>
           </View>
         </View>
