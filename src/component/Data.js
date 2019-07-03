@@ -547,3 +547,38 @@ export const dataOriginal =[
         likes: '800.000'
     }
 ];
+
+export const iconCanvas =[
+    {
+        icon: 'ios-happy',
+        name: 'Comedy'
+    },
+    {
+        icon: 'ios-color-wand',
+        name: 'Fantasy'
+    },
+    {
+        icon: 'ios-heart-empty',
+        name: 'Romance'
+    },
+    {
+        icon: 'ios-sunny',
+        name: 'Slice of life'
+    },
+    {
+        icon: 'ios-jet',
+        name: 'Sci-fi'
+    },
+    {
+        icon: 'logo-snapchat',
+        name: 'Drama'
+    },
+    {
+        icon: 'md-locate',
+        name: 'Action'
+    },
+    {
+        icon: 'ios-star',
+        name: 'Superhero'
+    },
+];
