@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity,ScrollView, Image, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, StatusBar, ActivityIndicator, RefreshControl } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import { FlatGrid } from 'react-native-super-grid';
 import { dataOriginal } from '../component/Data';
@@ -8,7 +8,40 @@ class Originals extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      refreshing: false,
+      isLoadmore: false,
+      isLoading: true,
     };
+  }
+
+  _onRefresh = () => { //bat su kien user muon reload lai data list
+    console.log("_onRefresh");
+    this.setState({ refreshing: true })
+  }
+
+  _onEndReached = () => { //bat su kien khi user keo list xuong cuoi
+    console.log("_onEndReached", this.state.isLoadmore);
+    if (this.state.isLoadmore) return;
+    this.setState({ isLoadmore: true });
+  }
+
+  _renderFooter = () => {//hien thi loading o cuoi list view
+    if (this.state.isLoadmore) {
+      return (
+        <View style={styles.loading}>
+          <ActivityIndicator color="#fff" size="large" />
+        </View>
+      )
+    }
+    return null;
+  }
+
+  _renderLoading = () => {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    )
   }
 
   render() {
@@ -22,9 +55,9 @@ class Originals extends Component {
           />
           <View style={[styles.headerContainer, { flexDirection: 'row' }]}>
             <TouchableOpacity
-              style={{alignItems: 'center'}}
+              style={{ alignItems: 'center' }}
               activeOpacity={1}
-              onPress={() => this.props.navigation.navigate("MY")}
+              onPress={() => this.props.navigation.navigate("ORIGINALS")}
             >
               <Text style={styles.txtHeader}>Daily</Text>
             </TouchableOpacity>
@@ -45,7 +78,7 @@ class Originals extends Component {
           initialPage={0}
           renderTabBar={() => <ScrollableTabBar />}
         >
-          <View tabLabel='MON' style={{flex:1}}>
+          <View tabLabel='MON' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
                 10 items
@@ -60,21 +93,33 @@ class Originals extends Component {
             </View>
 
             <ScrollView>
-              <FlatGrid
-                itemDimension={110}
-                items={dataOriginal}
-                spacing={7}
-                renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
-                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
-                  </View>
-                )}
-              />
+              {
+                (this.state.isLoading) ? this._renderLoading() :
+                  <FlatGrid
+                    itemDimension={110}
+                    items={dataOriginal}
+                    spacing={7}
+                    refreshControl={
+                      <RefreshControl
+                        refreshing={this.state.refreshing}
+                        onRefresh={this._onRefresh}
+                      />
+                    }
+                    renderItem={({ item, index }) => (
+                      <View style={styles.itemContainer}>
+                        <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                      </View>
+                    )}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this._onEndReached}
+                    ListFooterComponent={this._renderFooter}
+                  />
+              }
             </ScrollView>
-            
+
           </View>
 
           <View tabLabel='TUE'>
@@ -328,10 +373,16 @@ const styles = StyleSheet.create({
     color: 'black',
     marginLeft: 18
   },
-  txtCounter:{ 
-    flexDirection: 'row', 
-    justifyContent: 'space-between', 
-    margin: 12, 
-    height: 20 
-  }
+  txtCounter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 12,
+    height: 20
+  },
+  loading: {
+    width: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+},
 });
