@@ -12,16 +12,16 @@ class More extends Component {
   render() {
     return (
       <View>
-        <StatusBar
-          backgroundColor = 'transparent'
-          barStyle = 'dark-content'
-          translucent = {true}
-        />
+        <View>
+          <StatusBar
+            backgroundColor = 'transparent'
+            barStyle = 'dark-content'
+          />
+        </View>
         <View 
           style = {{
             width: '100%', 
             height: 60, 
-            marginTop: 30, 
             justifyContent: 'center',
           }}
         >
