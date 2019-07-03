@@ -208,16 +208,28 @@ class Canvas extends Component {
             </View>
           </View>
 
-          <View style={{height:170 ,backgroundColor: '#e5e4e4' }}>
-            <Text style={styles.txtTitle}>Genres</Text>
+          <View style={{height:250 }}>
+            <TouchableOpacity
+              style = {{flexDirection: 'row', justifyContent: 'space-between'}}
+              activeOpacity = {1}
+              onPress = {() => alert("tab Genres")}
+            >
+              <Text style={styles.txtTitle}>Genres</Text>
+              <Text style={[styles.txtTitle, {marginRight: 15}]}>></Text>
+            </TouchableOpacity>
             <FlatGrid
               itemDimension={70}
               items={iconCanvas}
-
-              spacing={7}
+              spacing={2}
+              style = {{marginLeft: 15, marginTop: 10}}
               renderItem={({ item, index }) => (
-                <View style={styles.itemContainer}>
-                  <Icon name={item.icon} color={'black'} size={35} />
+                <View style = {{width: 70, height: 90, alignItems: 'center'}}>
+                  <TouchableOpacity 
+                    style={styles.itemContainer}
+                    onPress = {() => alert(`${item.name}`)}
+                  >
+                    <Icon name={item.icon} color={'black'} size={35} />
+                  </TouchableOpacity>
                   <Text style={{ fontSize: 12, color: 'black' }}> {item.name} </Text>
                 </View>
               )}
@@ -270,7 +282,10 @@ const styles = StyleSheet.create({
   },
   txtTitle: {
     height: 30,
-    fontSize: 25,
+    fontSize: 18,
+    fontWeight: '500',
+    marginLeft: 17,
+    marginTop: 10,
     color: 'black'
   },
   picks: {
@@ -282,8 +297,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   itemContainer: {
-    borderRadius: 5,
-    alignItems: 'center'
+    width: 70,
+    height: 70,
+    borderRadius: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#e3e3e3'
   },
   txtHeader: {
     fontSize: 23,
