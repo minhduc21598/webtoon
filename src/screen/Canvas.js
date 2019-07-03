@@ -19,9 +19,10 @@ class Canvas extends Component {
           <StatusBar
             backgroundColor='transparent'
             barStyle='dark-content'
-            translucent={true}
           />
-          <View style={[styles.headerContainer, { flexDirection: 'row' }]}>
+        </View>
+        <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
+          <View style = {{flexDirection: 'row'}}>
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
@@ -29,7 +30,7 @@ class Canvas extends Component {
             >
               <Text style={styles.txtHeader}>Spotlight</Text>
             </TouchableOpacity>
-            <Text style={styles.txtHeader}>   |   </Text>
+            <Text style={styles.txtHeader}>|</Text>
             <TouchableOpacity
               style={{
                 alignItems: 'center'
@@ -40,6 +41,13 @@ class Canvas extends Component {
               <Text style={styles.txtHeader}>Genres</Text>
             </TouchableOpacity>
           </View>
+          <TouchableOpacity
+            onPress = {() => alert("btn Search")}
+            activeOpacity = {1}
+            style = {{marginRight: 15}}
+          >
+            <Icon name = 'ios-search' size = {30} color = {'black'}/>
+          </TouchableOpacity>
         </View>
 
         <ScrollView>
@@ -285,8 +293,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     width: '100%',
-    height: 40,
-    marginTop: 30,
-    
+    height: 60,
+    alignItems: 'center'
   },
 });

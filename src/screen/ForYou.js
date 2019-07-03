@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, Dimensions, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, Dimensions, ImageBackground, ActivityIndicator, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-swiper';
 import {newHere, topNewHere, imgSwiper, imgScroll, type} from '../component/Data';
 import Carousel from 'react-native-snap-carousel';
-import { RaisedButton, RaisedTextButton, TextButton } from 'react-native-material-buttons';
 
 class ForYou extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: 0
+      refreshing: false,
+      isLoadingMore: false,
+      isLoading: true
     };
-    this.getItem = newHere[0];
   }
 
   _renderItem({item}){
@@ -84,9 +84,24 @@ class ForYou extends Component {
     )
   }
 
+  _onRefresh = () => {
+    this.setState({
+      refreshing: true
+    })
+    setTimeout(() => {this.setState({ refreshing: false })}, 500)
+  }
+
   render() {
     return (
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator = {false}
+        refreshControl = {
+          <RefreshControl
+            refreshing = {this.state.refreshing}
+            onRefresh = {this._onRefresh}
+          />
+        }
+      >
         <View>
           <StatusBar
             barStyle = 'dark-content'
@@ -1201,7 +1216,7 @@ class ForYou extends Component {
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+      </ScrollView> 
     );
   }
 }
@@ -1213,5 +1228,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 400,
     backgroundColor: '#eeebeb'
-  }
+  },
+  loading: {
+    width: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
 });

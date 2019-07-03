@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity,ScrollView, Image, StatusBar } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { FlatGrid } from 'react-native-super-grid';
 import { dataOriginal } from '../component/Data';
 
@@ -18,9 +19,10 @@ class Originals extends Component {
           <StatusBar
             backgroundColor='transparent'
             barStyle='dark-content'
-            translucent={true}
           />
-          <View style={[styles.headerContainer, { flexDirection: 'row' }]}>
+        </View>    
+        <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
+          <View style = {{flexDirection: 'row'}}>
             <TouchableOpacity
               style={{alignItems: 'center'}}
               activeOpacity={1}
@@ -28,15 +30,31 @@ class Originals extends Component {
             >
               <Text style={styles.txtHeader}>Daily</Text>
             </TouchableOpacity>
-            <Text style={styles.txtHeader}>   |   </Text>
+            <Text style={styles.txtHeader}>|</Text>
             <TouchableOpacity
               style={{
                 alignItems: 'center'
               }}
               activeOpacity={1}
-              onPress={() => this.props.navigation.navigate("GENRES")}
+              onPress={() => this.props.navigation.navigate("Genres")}
             >
               <Text style={styles.txtHeader}>Genres</Text>
+            </TouchableOpacity>
+          </View>
+          <View style = {{flexDirection: 'row'}}>
+            <TouchableOpacity
+              onPress = {() => alert("btn Medal")}
+              activeOpacity = {1}
+              style = {{marginRight: 25}}
+            >
+              <Icon name = 'ios-medal' size = {30} color = {'black'}/>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress = {() => alert("btn Search")}
+              activeOpacity = {1}
+              style = {{marginRight: 15}}
+            >
+              <Icon name = 'ios-search' size = {30} color = {'black'}/>
             </TouchableOpacity>
           </View>
         </View>
@@ -304,9 +322,8 @@ export default Originals;
 const styles = StyleSheet.create({
   headerContainer: {
     width: '100%',
-    height: 30,
-    marginTop: 25,
-
+    height: 60,
+    alignItems: 'center'
   },
   gridView: {
     marginTop: 20,
