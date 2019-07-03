@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-swiper';
 import {newHere, topNewHere, imgSwiper, imgScroll, type} from '../component/Data';
 import Carousel from 'react-native-snap-carousel';
+import { RaisedButton, RaisedTextButton, TextButton } from 'react-native-material-buttons';
 
 class ForYou extends Component {
   constructor(props) {
@@ -928,11 +929,277 @@ class ForYou extends Component {
         <View
           style = {{
             width: '100%',
-            height: 240,
-            backgroundColor: 'red'
+            height: 280,
           }}
         >
-          
+          <TouchableOpacity
+            style = {{
+              width: '100%',
+              height: 48,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+            activeOpacity = {1}
+            onPress = {() => this.props.navigation.navigate("ORIGINALS")}
+          >
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginLeft: 20
+              }}
+            >Daily</Text>
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginRight: 15
+              }}
+            >></Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style = {{
+              width: '100%',
+              height: 48,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+            activeOpacity = {1}
+            onPress = {() => alert("Another screen")}
+          >
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginLeft: 20
+              }}
+            >Ranking</Text>
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginRight: 15
+              }}
+            >></Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style = {{
+              width: '100%',
+              height: 48,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+            activeOpacity = {1}
+            onPress = {() => this.props.navigation.navigate("ORIGINALS")}
+          >
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginLeft: 20
+              }}
+            >Genres</Text>
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginRight: 15
+              }}
+            >></Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style = {{
+              width: '100%',
+              height: 48,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+            activeOpacity = {1}
+            onPress = {() => alert("Another screen")}
+          >
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginLeft: 20
+              }}
+            >Fan Translation</Text>
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginRight: 15
+              }}
+            >></Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style = {{
+              width: '100%',
+              height: 48,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+            activeOpacity = {1}
+            onPress = {() => alert("Another screen")}
+          >
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginLeft: 20
+              }}
+            >Settings</Text>
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginRight: 15
+              }}
+            >></Text>
+          </TouchableOpacity>
+        </View>
+        <View
+          style = {{
+            width: '100%',
+            height: 290,
+            borderTopWidth: 0.5,
+            borderColor: 'gray'
+          }}
+        >
+          <TouchableOpacity
+            style = {{
+              width: '100%',
+              height: 80,
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexDirection: 'row'
+            }}
+            activeOpacity = {1}
+            onPress = {() => alert("Another screen")}
+          >
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginLeft: 20
+              }}
+            >Notice</Text>
+            <Text
+              style = {{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 18,
+                marginRight: 15
+              }}
+            >></Text>
+          </TouchableOpacity>
+          <View
+            style = {{
+              width: '100%',
+              height: 80,
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <TouchableOpacity
+              style = {{
+                width: 40,
+                height: 40,
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+              activeOpacity = {0.6}
+              onPress = {() => alert("Facebook")}
+            >
+              <Icon name = 'logo-facebook' size = {30} color = {'black'}/>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style = {{
+                width: 40,
+                height: 40,
+                marginLeft: 40,
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+              activeOpacity = {0.6}
+              onPress = {() => alert("Instagram")}
+            >
+              <Icon name = 'logo-instagram' size = {30} color = {'black'}/>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style = {{
+                width: 40,
+                height: 40,
+                marginLeft: 40,
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+              activeOpacity = {0.6}
+              onPress = {() => alert("Twitter")}
+            >
+              <Icon name = 'logo-twitter' size = {30} color = {'black'}/>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style = {{
+                width: 40,
+                height: 40,
+                marginLeft: 40,
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+              activeOpacity = {0.6}
+              onPress = {() => alert("Youtube")}
+            >
+              <Icon name = 'logo-youtube' size = {30} color = {'black'}/>
+            </TouchableOpacity>
+          </View>
+          <View
+            style = {{
+              width: '100%',
+              height: 110,
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <TouchableOpacity
+              style = {{
+                width: 140,
+                height: 48,
+                borderRadius: 5,
+                borderWidth: 1,
+                borderColor: 'black',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+              activeOpacity = {1}
+              onPress = {() => alert("Modal")}
+            >
+              <Text
+                style = {{
+                  color: 'black',
+                  fontSize: 14,
+                  fontWeight: '500'
+                }}
+              >Share WEBTOON</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     );
