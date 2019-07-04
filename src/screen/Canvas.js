@@ -39,9 +39,10 @@ class Canvas extends Component {
           <StatusBar
             backgroundColor='transparent'
             barStyle='dark-content'
-            translucent={true}
           />
-          <View style={[styles.headerContainer, { flexDirection: 'row' }]}>
+        </View>
+        <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
+          <View style = {{flexDirection: 'row'}}>
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
@@ -49,7 +50,7 @@ class Canvas extends Component {
             >
               <Text style={styles.txtHeader}>Spotlight</Text>
             </TouchableOpacity>
-            <Text style={styles.txtHeader}>   |   </Text>
+            <Text style={styles.txtHeader}>|</Text>
             <TouchableOpacity
               style={{
                 alignItems: 'center'
@@ -60,6 +61,13 @@ class Canvas extends Component {
               <Text style={styles.txtHeader}>Genres</Text>
             </TouchableOpacity>
           </View>
+          <TouchableOpacity
+            onPress = {() => alert("btn Search")}
+            activeOpacity = {1}
+            style = {{marginRight: 15}}
+          >
+            <Icon name = 'ios-search' size = {30} color = {'black'}/>
+          </TouchableOpacity>
         </View>
 
         <ScrollView>
@@ -221,22 +229,33 @@ class Canvas extends Component {
                 </View>
               </View>
 
-              <View style={{ height: 170, backgroundColor: '#e5e4e4' }}>
-                <Text style={styles.txtTitle}>Genres</Text>
-                <FlatGrid
-                  itemDimension={70}
-                  items={iconCanvas}
-
-                  spacing={7}
-                  renderItem={({ item, index }) => (
-                    <View style={styles.itemContainer}>
-                      <Icon name={item.icon} color={'black'} size={35} />
-                      <Text style={{ fontSize: 12, color: 'black' }}> {item.name} </Text>
-                    </View>
-                  )}
-                />
-              </View>
-        
+          <View style={{height:250 }}>
+            <TouchableOpacity
+              style = {{flexDirection: 'row', justifyContent: 'space-between'}}
+              activeOpacity = {1}
+              onPress = {() => alert("tab Genres")}
+            >
+              <Text style={styles.txtTitle}>Genres</Text>
+              <Text style={[styles.txtTitle, {marginRight: 15}]}>></Text>
+            </TouchableOpacity>
+            <FlatGrid
+              itemDimension={70}
+              items={iconCanvas}
+              spacing={2}
+              style = {{marginLeft: 15, marginTop: 10}}
+              renderItem={({ item, index }) => (
+                <View style = {{width: 70, height: 90, alignItems: 'center'}}>
+                  <TouchableOpacity 
+                    style={styles.itemContainer}
+                    onPress = {() => alert(`${item.name}`)}
+                  >
+                    <Icon name={item.icon} color={'black'} size={35} />
+                  </TouchableOpacity>
+                  <Text style={{ fontSize: 12, color: 'black' }}> {item.name} </Text>
+                </View>
+              )}
+            />
+          </View>
         </ScrollView>
                   
       </View>
@@ -285,7 +304,10 @@ const styles = StyleSheet.create({
   },
   txtTitle: {
     height: 30,
-    fontSize: 25,
+    fontSize: 18,
+    fontWeight: '500',
+    marginLeft: 17,
+    marginTop: 10,
     color: 'black'
   },
   picks: {
@@ -297,8 +319,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   itemContainer: {
-    borderRadius: 5,
-    alignItems: 'center'
+    width: 70,
+    height: 70,
+    borderRadius: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#e3e3e3'
   },
   txtHeader: {
     fontSize: 23,
@@ -308,8 +334,8 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     width: '100%',
-    height: 40,
-    marginTop: 30,
+    height: 60,
+    alignItems: 'center'
   },
   recommendContainer: {
     width: "100%",

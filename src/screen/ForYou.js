@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, Dimensions, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, Dimensions, ImageBackground, ActivityIndicator, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-swiper';
 import {newHere, topNewHere, imgSwiper, imgScroll, type} from '../component/Data';
 import Carousel from 'react-native-snap-carousel';
-import { RaisedButton, RaisedTextButton, TextButton } from 'react-native-material-buttons';
 
 class ForYou extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: 0
+      refreshing: false,
+      isLoadingMore: false,
+      isLoading: true
     };
-    this.getItem = newHere[0];
   }
 
   _renderItem({item}){
@@ -84,9 +84,24 @@ class ForYou extends Component {
     )
   }
 
+  _onRefresh = () => {
+    this.setState({
+      refreshing: true
+    })
+    setTimeout(() => {this.setState({ refreshing: false })}, 500)
+  }
+
   render() {
     return (
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator = {false}
+        refreshControl = {
+          <RefreshControl
+            refreshing = {this.state.refreshing}
+            onRefresh = {this._onRefresh}
+          />
+        }
+      >
         <View>
           <StatusBar
             barStyle = 'dark-content'
@@ -884,45 +899,47 @@ class ForYou extends Component {
               horizontal = {true}
               showsHorizontalScrollIndicator = {false}
             >
-              {
-                type.map(
-                  (item, index) => {
-                    return(
-                      <TouchableOpacity
-                        style = {{
-                          width: 80,
-                          height: 100,
-                          marginLeft: 15,
-                          alignItems: 'center'
-                        }}
-                        activeOpacity = {1}
-                        onPress = {() => this.props.navigation.navigate("ORIGINALS")}
-                      >
-                        <View
+              <View style = {{marginLeft: 15, flexDirection: 'row'}}>
+                {
+                  type.map(
+                    (item, index) => {
+                      return(
+                        <TouchableOpacity
                           style = {{
-                            width: 70,
-                            height: 70,
-                            backgroundColor: '#e3e3e3',
-                            borderRadius: 40,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginTop: 5
+                            width: 80,
+                            height: 100,
+                            marginRight: 8,
+                            alignItems: 'center'
                           }}
-                          key = {index}
+                          activeOpacity = {1}
+                          onPress = {() => this.props.navigation.navigate("ORIGINALS")}
                         >
-                          <Icon name = {item.icon} size = {30} color = {'black'}/>
-                        </View>
-                        <Text
-                          style = {{
-                            color: 'black',
-                            fontSize: 12
-                          }}
-                        >{item.name}</Text>
-                      </TouchableOpacity>
-                    )
-                  }
-                )
-              }
+                          <View
+                            style = {{
+                              width: 70,
+                              height: 70,
+                              backgroundColor: '#e3e3e3',
+                              borderRadius: 40,
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              marginTop: 5
+                            }}
+                            key = {index}
+                          >
+                            <Icon name = {item.icon} size = {30} color = {'black'}/>
+                          </View>
+                          <Text
+                            style = {{
+                              color: 'black',
+                              fontSize: 12
+                            }}
+                          >{item.name}</Text>
+                        </TouchableOpacity>
+                      )
+                    }
+                  )
+                }
+              </View>
             </ScrollView>
           </View>
         </View>
@@ -1201,7 +1218,7 @@ class ForYou extends Component {
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+      </ScrollView> 
     );
   }
 }
@@ -1213,5 +1230,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 400,
     backgroundColor: '#eeebeb'
-  }
+  },
+  loading: {
+    width: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
 });
