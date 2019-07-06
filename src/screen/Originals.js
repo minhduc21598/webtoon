@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity,ScrollView, Image, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity,ScrollView, Image, StatusBar, ActivityIndicator } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import { FlatGrid } from 'react-native-super-grid';
 import { dataOriginal } from '../component/Data';
 
@@ -9,7 +10,25 @@ class Originals extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoadingMore: false,
     };
+  }
+
+  _onScrollDown = () => { // bắt sự kiện người dùng kéo xuống
+    if (this.state.isLoadingmore) return;
+    this.setState({ isLoadingmore: true });
+    
+  }
+
+  _renderLoadingIconBelow = () => {
+    if (this.state.isLoadingmore) {
+      return (
+        <View style={styles.loading}>
+          <ActivityIndicator color='black' size='large' />
+        </View>
+      )
+    }
+    return null;
   }
 
   render() {
@@ -47,7 +66,7 @@ class Originals extends Component {
               activeOpacity = {1}
               style = {{marginRight: 25}}
             >
-              <Icon name = 'ios-medal' size = {30} color = {'black'}/>
+              <Icon1 name = 'medal' size = {23} color = {'black'}/>
             </TouchableOpacity>
             <TouchableOpacity
               onPress = {() => alert("btn Search")}
@@ -90,6 +109,9 @@ class Originals extends Component {
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
                   </View>
                 )}
+                onEndReachedThreshold={0.5}
+                onEndReached={this._onScrollDown}
+                ListFooterComponent={this._renderLoadingIconBelow}
               />
             </ScrollView>
             
@@ -350,5 +372,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', 
     margin: 12, 
     height: 20 
-  }
+  },
+  loading: {
+    width: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
 });

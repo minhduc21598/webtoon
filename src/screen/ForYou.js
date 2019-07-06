@@ -84,6 +84,22 @@ class ForYou extends Component {
     )
   }
 
+  _onScrollDown = () => { // bắt sự kiện người dùng kéo xuống
+    if (this.state.isLoadingmore) return;
+    this.setState({ isLoadingmore: true });
+  }
+
+  _renderLoadingIconBelow = () => {
+    if (this.state.isLoadingmore) {
+      return (
+        <View style={styles.loading}>
+          <ActivityIndicator color='black' size='large' />
+        </View>
+      )
+    }
+    return null;
+  }
+
   _onRefresh = () => {
     this.setState({
       refreshing: true
@@ -101,6 +117,9 @@ class ForYou extends Component {
             onRefresh = {this._onRefresh}
           />
         }
+        onEndReachedThreshold={0.5}
+        onEndReached={this._onScrollDown}
+        ListFooterComponent={this._renderLoadingIconBelow}
       >
         <View>
           <StatusBar
@@ -170,10 +189,13 @@ class ForYou extends Component {
             <Carousel
               data = {newHere}
               sliderWidth={Dimensions.get('window').width}
-              itemWidth={280}
+              itemWidth={300}
               inactiveSlideOpacity = {1}
               renderItem={this._renderItem}
               inactiveSlideScale = {0.85}
+              activeSlideAlignment = {'start'}
+              slideStyle = {{start: 20}}
+              firstItem = {0}
             />
           </View>
         </View>
@@ -280,6 +302,8 @@ class ForYou extends Component {
             inactiveSlideOpacity = {1}
             renderItem={this._renderItem1}
             inactiveSlideScale = {1}
+            activeSlideAlignment = {'start'}
+            slideStyle = {{start: 20}}
           />
         </View>
         <View
@@ -1151,7 +1175,7 @@ class ForYou extends Component {
               style = {{
                 width: 40,
                 height: 40,
-                marginLeft: 40,
+                marginLeft: 30,
                 justifyContent: 'center',
                 alignItems: 'center'
               }}
@@ -1164,7 +1188,7 @@ class ForYou extends Component {
               style = {{
                 width: 40,
                 height: 40,
-                marginLeft: 40,
+                marginLeft: 30,
                 justifyContent: 'center',
                 alignItems: 'center'
               }}
@@ -1177,7 +1201,7 @@ class ForYou extends Component {
               style = {{
                 width: 40,
                 height: 40,
-                marginLeft: 40,
+                marginLeft: 30,
                 justifyContent: 'center',
                 alignItems: 'center'
               }}
@@ -1236,5 +1260,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 10,
+  },
+  loading: {
+    width: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    // paddingVertical: 10,
   },
 });
