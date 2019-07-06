@@ -266,6 +266,585 @@ export const type = [
     }
 ];
 
+export const dataGenresOri = [
+    {
+        title: 'ROMANCE',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'DRAMA',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'FANTASY',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'COMEDY',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'THRILLER',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'ACTION',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'HORROR',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'SLIDE OF LIFE',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'HEART-WARMING',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'SUPERHERO',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'SPORTS',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'SCI-FI',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'INFORMATIVE',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+    {
+        title: 'HISTORICAL',
+        quantity: '5',
+        listObject: [
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Wind Breaker',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Plum',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Just for kicks',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Ecstacy Hearts',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+            {
+                image: 'https://lh3.googleusercontent.com/N0IoatmNSedA1OwGmjZauoziClJnAR3gatt5G78PDAHmZU8ytvyVj7wp2SfDFM15N0w',
+                name: 'Haxor',
+                icon: 'ios-heart',
+                sub: '2.6 M',
+                sum: 'Jay is the Student Body President of Sunny High. Not only is he a smart student, but he is also an extreme biker with extraordinary technique. Trail his bike to encounter his friends, loves, and adventures.'
+            },
+        ]
+    },
+];
+
+export const sortBy = ['Sort by Popularity', 'Sort by Interests', 'Sort by Likes', 'Sort by Date']
+
 export const recommendationDataScreenMy=[
     {
         uri:'https://images-na.ssl-images-amazon.com/images/P/4757559208.jpg',
