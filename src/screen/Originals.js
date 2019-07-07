@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, StatusBar, ActivityIndicator, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity,ScrollView, Image, StatusBar, ActivityIndicator } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import { FlatGrid } from 'react-native-super-grid';
 import { dataOriginal } from '../component/Data';
 
@@ -9,30 +10,21 @@ class Originals extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      refreshing: false,
-      isLoadmore: false,
-      isLoading: true,
+      isLoadingMore: false,
     };
   }
 
-  _onRefresh = () => { //bat su kien user muon reload lai data list
-    console.log("_onRefresh");
-    this.setState({ refreshing: true })
-    setTimeout(() => { this.setState({ refreshing: false }) }, 500)
+  _onScrollDown = () => { // bắt sự kiện người dùng kéo xuống
+    if (this.state.isLoadingmore) return;
+    this.setState({ isLoadingmore: true });
+    
   }
 
-  _onEndReached = () => { //bat su kien khi user keo list xuong cuoi
-    console.log("_onEndReached", this.state.isLoadmore);
-    if (this.state.isLoadmore) return;
-    this.setState({ isLoadmore: true });
-    setTimeout(() => { this.setState({ isLoadmore: false }) }, 500)
-  }
-
-  _renderFooter = () => {//hien thi loading o cuoi list view
-    if (this.state.isLoadmore) {
+  _renderLoadingIconBelow = () => {
+    if (this.state.isLoadingmore) {
       return (
         <View style={styles.loading}>
-          <ActivityIndicator color="#fff" size="large" />
+          <ActivityIndicator color='black' size='large' />
         </View>
       )
     }
@@ -74,7 +66,7 @@ class Originals extends Component {
               activeOpacity={1}
               style={{ marginRight: 25 }}
             >
-              <Icon name='ios-medal' size={30} color={'black'} />
+              <Icon1 name = 'medal' size = {23} color = {'black'}/>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => alert("btn Search")}
@@ -104,33 +96,23 @@ class Originals extends Component {
               </TouchableOpacity>
             </View>
 
-            <ScrollView
-               showsVerticalScrollIndicator={false}
-               refreshControl={
-                 <RefreshControl
-                   refreshing={this.state.refreshing}
-                   onRefresh={this._onRefresh}
-                 />
-               }
-            >
-             
-                  <FlatGrid
-                    itemDimension={110}
-                    items={dataOriginal}
-                    spacing={7}
-                    renderItem={({ item, index }) => (
-                      <View style={styles.itemContainer}>
-                        <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
-                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
-                      </View>
-                    )}
-                    onEndReachedThreshold={0.5}
-                    onEndReached={this._onEndReached}
-                    ListFooterComponent={this._renderFooter}
-                  />
-          
+            <ScrollView>
+              <FlatGrid
+                itemDimension={110}
+                items={dataOriginal}
+                spacing={7}
+                renderItem={({ item, index }) => (
+                  <View style={styles.itemContainer}>
+                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                  </View>
+                )}
+                onEndReachedThreshold={0.5}
+                onEndReached={this._onScrollDown}
+                ListFooterComponent={this._renderLoadingIconBelow}
+              />
             </ScrollView>
 
           </View>
@@ -476,11 +458,11 @@ const styles = StyleSheet.create({
     color: 'black',
     marginLeft: 18
   },
-  txtCounter: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    margin: 12,
-    height: 20
+  txtCounter:{ 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    margin: 12, 
+    height: 20 
   },
   loading: {
     width: "100%",
