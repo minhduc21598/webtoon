@@ -18,12 +18,14 @@ class Originals extends Component {
   _onRefresh = () => { //bat su kien user muon reload lai data list
     console.log("_onRefresh");
     this.setState({ refreshing: true })
+    setTimeout(() => { this.setState({ refreshing: false }) }, 500)
   }
 
   _onEndReached = () => { //bat su kien khi user keo list xuong cuoi
     console.log("_onEndReached", this.state.isLoadmore);
     if (this.state.isLoadmore) return;
     this.setState({ isLoadmore: true });
+    setTimeout(() => { this.setState({ isLoadmore: false }) }, 500)
   }
 
   _renderFooter = () => {//hien thi loading o cuoi list view
@@ -37,14 +39,6 @@ class Originals extends Component {
     return null;
   }
 
-  _renderLoading = () => {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#fff" />
-      </View>
-    )
-  }
-
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -53,9 +47,9 @@ class Originals extends Component {
             backgroundColor='transparent'
             barStyle='dark-content'
           />
-        </View>    
+        </View>
         <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
-          <View style = {{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
@@ -74,20 +68,20 @@ class Originals extends Component {
               <Text style={styles.txtHeader}>Genres</Text>
             </TouchableOpacity>
           </View>
-          <View style = {{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-              onPress = {() => alert("btn Medal")}
-              activeOpacity = {1}
-              style = {{marginRight: 25}}
+              onPress={() => alert("btn Medal")}
+              activeOpacity={1}
+              style={{ marginRight: 25 }}
             >
-              <Icon name = 'ios-medal' size = {30} color = {'black'}/>
+              <Icon name='ios-medal' size={30} color={'black'} />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress = {() => alert("btn Search")}
-              activeOpacity = {1}
-              style = {{marginRight: 15}}
+              onPress={() => alert("btn Search")}
+              activeOpacity={1}
+              style={{ marginRight: 15 }}
             >
-              <Icon name = 'ios-search' size = {30} color = {'black'}/>
+              <Icon name='ios-search' size={30} color={'black'} />
             </TouchableOpacity>
           </View>
         </View>
@@ -110,19 +104,20 @@ class Originals extends Component {
               </TouchableOpacity>
             </View>
 
-            <ScrollView>
-              {
-                (this.state.isLoading) ? this._renderLoading() :
+            <ScrollView
+               showsVerticalScrollIndicator={false}
+               refreshControl={
+                 <RefreshControl
+                   refreshing={this.state.refreshing}
+                   onRefresh={this._onRefresh}
+                 />
+               }
+            >
+             
                   <FlatGrid
                     itemDimension={110}
                     items={dataOriginal}
                     spacing={7}
-                    refreshControl={
-                      <RefreshControl
-                        refreshing={this.state.refreshing}
-                        onRefresh={this._onRefresh}
-                      />
-                    }
                     renderItem={({ item, index }) => (
                       <View style={styles.itemContainer}>
                         <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
@@ -135,15 +130,15 @@ class Originals extends Component {
                     onEndReached={this._onEndReached}
                     ListFooterComponent={this._renderFooter}
                   />
-              }
+          
             </ScrollView>
 
           </View>
 
           <View tabLabel='TUE'>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+          <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
-                4 items
+                10 items
               </Text>
               <TouchableOpacity
                 activeOpacity={1}
@@ -154,27 +149,40 @@ class Originals extends Component {
               </TouchableOpacity>
             </View>
 
-            <View>
-              <FlatGrid
-                itemDimension={110}
-                items={dataOriginal}
-                spacing={7}
-                renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
-                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
-                  </View>
-                )}
-              />
-            </View>
+            <ScrollView
+               showsVerticalScrollIndicator={false}
+               refreshControl={
+                 <RefreshControl
+                   refreshing={this.state.refreshing}
+                   onRefresh={this._onRefresh}
+                 />
+               }
+            >
+             
+                  <FlatGrid
+                    itemDimension={110}
+                    items={dataOriginal}
+                    spacing={7}
+                    renderItem={({ item, index }) => (
+                      <View style={styles.itemContainer}>
+                        <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                      </View>
+                    )}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this._onEndReached}
+                    ListFooterComponent={this._renderFooter}
+                  />
+          
+            </ScrollView>
           </View>
 
           <View tabLabel='WED'>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+          <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
-                4 items
+                10 items
               </Text>
               <TouchableOpacity
                 activeOpacity={1}
@@ -185,27 +193,40 @@ class Originals extends Component {
               </TouchableOpacity>
             </View>
 
-            <View>
-              <FlatGrid
-                itemDimension={110}
-                items={dataOriginal}
-                spacing={7}
-                renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
-                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
-                  </View>
-                )}
-              />
-            </View>
+            <ScrollView
+               showsVerticalScrollIndicator={false}
+               refreshControl={
+                 <RefreshControl
+                   refreshing={this.state.refreshing}
+                   onRefresh={this._onRefresh}
+                 />
+               }
+            >
+             
+                  <FlatGrid
+                    itemDimension={110}
+                    items={dataOriginal}
+                    spacing={7}
+                    renderItem={({ item, index }) => (
+                      <View style={styles.itemContainer}>
+                        <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                      </View>
+                    )}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this._onEndReached}
+                    ListFooterComponent={this._renderFooter}
+                  />
+          
+            </ScrollView>
           </View>
 
           <View tabLabel='THU'>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+          <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
-                4 items
+                10 items
               </Text>
               <TouchableOpacity
                 activeOpacity={1}
@@ -216,27 +237,40 @@ class Originals extends Component {
               </TouchableOpacity>
             </View>
 
-            <View>
-              <FlatGrid
-                itemDimension={110}
-                items={dataOriginal}
-                spacing={7}
-                renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
-                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
-                  </View>
-                )}
-              />
-            </View>
+            <ScrollView
+               showsVerticalScrollIndicator={false}
+               refreshControl={
+                 <RefreshControl
+                   refreshing={this.state.refreshing}
+                   onRefresh={this._onRefresh}
+                 />
+               }
+            >
+             
+                  <FlatGrid
+                    itemDimension={110}
+                    items={dataOriginal}
+                    spacing={7}
+                    renderItem={({ item, index }) => (
+                      <View style={styles.itemContainer}>
+                        <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                      </View>
+                    )}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this._onEndReached}
+                    ListFooterComponent={this._renderFooter}
+                  />
+          
+            </ScrollView>
           </View>
 
           <View tabLabel='FRI'>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+          <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
-                4 items
+                10 items
               </Text>
               <TouchableOpacity
                 activeOpacity={1}
@@ -247,27 +281,40 @@ class Originals extends Component {
               </TouchableOpacity>
             </View>
 
-            <View>
-              <FlatGrid
-                itemDimension={110}
-                items={dataOriginal}
-                spacing={7}
-                renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
-                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
-                  </View>
-                )}
-              />
-            </View>
+            <ScrollView
+               showsVerticalScrollIndicator={false}
+               refreshControl={
+                 <RefreshControl
+                   refreshing={this.state.refreshing}
+                   onRefresh={this._onRefresh}
+                 />
+               }
+            >
+             
+                  <FlatGrid
+                    itemDimension={110}
+                    items={dataOriginal}
+                    spacing={7}
+                    renderItem={({ item, index }) => (
+                      <View style={styles.itemContainer}>
+                        <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                      </View>
+                    )}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this._onEndReached}
+                    ListFooterComponent={this._renderFooter}
+                  />
+          
+            </ScrollView>
           </View>
 
           <View tabLabel='SAT'>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+          <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
-                4 items
+                10 items
               </Text>
               <TouchableOpacity
                 activeOpacity={1}
@@ -278,27 +325,40 @@ class Originals extends Component {
               </TouchableOpacity>
             </View>
 
-            <View>
-              <FlatGrid
-                itemDimension={110}
-                items={dataOriginal}
-                spacing={7}
-                renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
-                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
-                  </View>
-                )}
-              />
-            </View>
+            <ScrollView
+               showsVerticalScrollIndicator={false}
+               refreshControl={
+                 <RefreshControl
+                   refreshing={this.state.refreshing}
+                   onRefresh={this._onRefresh}
+                 />
+               }
+            >
+             
+                  <FlatGrid
+                    itemDimension={110}
+                    items={dataOriginal}
+                    spacing={7}
+                    renderItem={({ item, index }) => (
+                      <View style={styles.itemContainer}>
+                        <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                      </View>
+                    )}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this._onEndReached}
+                    ListFooterComponent={this._renderFooter}
+                  />
+          
+            </ScrollView>
           </View>
 
           <View tabLabel='SUN'>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+          <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
-                4 items
+                10 items
               </Text>
               <TouchableOpacity
                 activeOpacity={1}
@@ -309,27 +369,40 @@ class Originals extends Component {
               </TouchableOpacity>
             </View>
 
-            <View>
-              <FlatGrid
-                itemDimension={110}
-                items={dataOriginal}
-                spacing={7}
-                renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
-                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
-                  </View>
-                )}
-              />
-            </View>
+            <ScrollView
+               showsVerticalScrollIndicator={false}
+               refreshControl={
+                 <RefreshControl
+                   refreshing={this.state.refreshing}
+                   onRefresh={this._onRefresh}
+                 />
+               }
+            >
+             
+                  <FlatGrid
+                    itemDimension={110}
+                    items={dataOriginal}
+                    spacing={7}
+                    renderItem={({ item, index }) => (
+                      <View style={styles.itemContainer}>
+                        <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                      </View>
+                    )}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this._onEndReached}
+                    ListFooterComponent={this._renderFooter}
+                  />
+          
+            </ScrollView>
           </View>
 
           <View tabLabel='COMPLETED'>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+          <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
-                4 items
+                10 items
               </Text>
               <TouchableOpacity
                 activeOpacity={1}
@@ -340,21 +413,34 @@ class Originals extends Component {
               </TouchableOpacity>
             </View>
 
-            <View>
-              <FlatGrid
-                itemDimension={110}
-                items={dataOriginal}
-                spacing={7}
-                renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
-                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
-                  </View>
-                )}
-              />
-            </View>
+            <ScrollView
+               showsVerticalScrollIndicator={false}
+               refreshControl={
+                 <RefreshControl
+                   refreshing={this.state.refreshing}
+                   onRefresh={this._onRefresh}
+                 />
+               }
+            >
+             
+                  <FlatGrid
+                    itemDimension={110}
+                    items={dataOriginal}
+                    spacing={7}
+                    renderItem={({ item, index }) => (
+                      <View style={styles.itemContainer}>
+                        <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                        <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                      </View>
+                    )}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this._onEndReached}
+                    ListFooterComponent={this._renderFooter}
+                  />
+          
+            </ScrollView>
           </View>
         </ScrollableTabView>
       </View>
@@ -401,5 +487,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 10,
-},
+  },
 });
