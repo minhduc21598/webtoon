@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity, ScrollView, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
-import ScrollableTabView, { ScrollableTabBar} from 'react-native-scrollable-tab-view';
-import {dataGenresOri} from '../component/Data';
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
+import { dataGenresOri } from '../component/Data';
 
 class GenresOri extends Component {
   constructor(props) {
@@ -14,99 +14,55 @@ class GenresOri extends Component {
 
   render() {
     return (
-      <View style = {{flex: 1}}>
-        <View>
-          <StatusBar
-            backgroundColor='transparent'
-            barStyle='dark-content'
-          />
-        </View>
-        <View
-          style={styles.headerContent}
-        >
-          <View
-            style = {{marginLeft: 20, flexDirection: 'row'}}
-          >
-            <TouchableOpacity
-              activeOpacity = {1}
-              onPress = {() => alert("Daily")}
-            >
-              <Text style = {{color: 'black', fontSize: 22, fontWeight: '500'}}>Daily</Text>
-            </TouchableOpacity>
-            <Text style = {{color: 'black', fontSize: 22, fontWeight: '500'}}>  |  </Text>
-            <TouchableOpacity
-              activeOpacity = {1}
-              onPress = {() => alert("Genres")}
-            >
-              <Text style = {{color: 'black', fontSize: 22, fontWeight: '500'}}>Genres</Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style = {{alignItems: 'center', marginRight: 15, flexDirection: 'row'}}
-          >
-            <TouchableOpacity
-              onPress = {() => alert("btn Medal")}
-              activeOpacity = {1}
-              style = {{marginRight: 25}}
-            >
-              <Icon1 name = 'medal' size = {23} color = {'black'}/>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress = {() => alert("btn Search")}
-              activeOpacity = {1}
-            >
-              <Icon name = 'ios-search' size = {30} color = {'black'}/>
-            </TouchableOpacity>
-          </View>
-        </View>
+      <View style={{ flex: 1 }}>
         <ScrollableTabView
-          initialPage = {0}
-          renderTabBar = {() => <ScrollableTabBar style = {{width: 310, borderTopWidth: 0.5, borderBottomWidth: 0.5, borderTopColor: '#d0cdcd'}}/> }
-          tabBarInactiveTextColor = {'gray'}
-          tabBarActiveTextColor = {'black'}
-          tabBarUnderlineStyle = {{height: 2}}
+          initialPage={0}
+          renderTabBar={() => <ScrollableTabBar style={{ width: 310, borderTopWidth: 0.5, borderBottomWidth: 0.5, borderTopColor: '#d0cdcd' }} />}
+          tabBarInactiveTextColor={'gray'}
+          tabBarActiveTextColor={'black'}
+          tabBarUnderlineStyle={{ height: 2 }}
         >
           {
             dataGenresOri.map(
               (item, index) => {
-                return(
-                  <View tabLabel = {item.title} key = {index}>
+                return (
+                  <View tabLabel={item.title} key={index}>
                     <ScrollView
-                      showsVerticalScrollIndicator = {false}
+                      showsVerticalScrollIndicator={false}
                     >
-                      <View style = {styles.headerTab}>
-                        <View style = {{flexDirection: 'row', marginLeft: 18}}>
-                          <Text style = {{marginRight: 2}}>{item.quantity}</Text>
+                      <View style={styles.headerTab}>
+                        <View style={{ flexDirection: 'row', marginLeft: 18 }}>
+                          <Text style={{ marginRight: 2 }}>{item.quantity}</Text>
                           <Text>items</Text>
                         </View>
-                        <TouchableOpacity 
-                          style = {{flexDirection: 'row', marginRight: 20}}
-                          activeOpacity = {1}
-                          onPress = {() => alert("Modal")}
+                        <TouchableOpacity
+                          style={{ flexDirection: 'row', marginRight: 20 }}
+                          activeOpacity={1}
+                          onPress={() => alert("Modal")}
                         >
-                          <Text style = {{marginRight: 5, fontSize: 13}}>Sort by Popularity</Text>
-                          <Icon name = 'md-arrow-dropdown' size = {20}/>
+                          <Text style={{ marginRight: 5, fontSize: 13 }}>Sort by Popularity</Text>
+                          <Icon name='md-arrow-dropdown' size={20} />
                         </TouchableOpacity>
                       </View>
                       {
                         item.listObject.map(
                           (subitem, subindex) => {
-                            return(
+                            return (
                               <View
-                                style = {styles.subItemView}
-                                key = {subindex}
+                                style={styles.subItemView}
+                                key={subindex}
                               >
                                 <Image
-                                  source = {{uri: subitem.image}}
-                                  style = {{width: 120, height: 120, borderRadius: 5}}
+                                  source={{ uri: subitem.image }}
+                                  style={{ width: 120, height: 120, borderRadius: 5 }}
                                 />
-                                <View style = {{marginLeft: 20, width: 180}}>
-                                  <Text style = {{color: 'black', fontSize: 16}}>{subitem.name}</Text>
-                                  <View style = {{flexDirection: 'row', alignItems: 'center'}}>
-                                    <Icon name = 'ios-heart' size = {14} color = {'#17ee51'}/>
-                                    <Text style = {{color: '#17ee51', marginLeft: 5, fontSize: 13}}>{subitem.sub}</Text>
+                                <View style={{ marginLeft: 20, width: 180 }}>
+                                  <Text style={{ color: 'black', fontSize: 16 }}>{subitem.name}</Text>
+                                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <Icon name='ios-heart' size={14} color={'#17ee51'} />
+                                    <Text style={{ color: '#17ee51', marginLeft: 5, fontSize: 13 }}>{subitem.sub}</Text>
                                   </View>
-                                  <Text style = {{fontSize: 11}}>{subitem.sum}</Text>
+                                  <Text style={{ fontSize: 11 }}>{subitem.sum}</Text>
                                 </View>
                               </View>
                             )
@@ -121,9 +77,9 @@ class GenresOri extends Component {
           }
         </ScrollableTabView>
         <View
-          style = {styles.modalBoxStyle}
+          style={styles.modalBoxStyle}
         >
-          <Icon name = 'ios-arrow-down' size = {20} color = {'gray'}/>
+          <Icon name='ios-arrow-down' size={20} color={'gray'} />
         </View>
       </View>
     );
@@ -141,10 +97,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalBoxStyle: {
-    width: 50, 
-    height: 50, 
-    position: 'absolute', 
-    marginTop: 60, 
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    marginTop: 60,
     marginLeft: 310,
     borderWidth: 0.5,
     borderColor: '#d0cdcd',
@@ -152,10 +108,10 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   headerTab: {
-    width: '100%', 
-    height: 40, 
+    width: '100%',
+    height: 40,
     justifyContent: 'space-between',
-    alignItems: 'center', 
+    alignItems: 'center',
     flexDirection: 'row',
   },
   subItemView: {
