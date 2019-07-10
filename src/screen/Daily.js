@@ -32,7 +32,7 @@ class Daily extends Component {
         return (
             <ScrollableTabView
                 initialPage={0}
-                renderTabBar={() => <ScrollableTabBar style = {{ borderTopWidth: 0.5, borderTopColor: 'gray'}}/>}
+                renderTabBar={() => <ScrollableTabBar style = {{ borderTopWidth: 0.5, borderTopColor: '#d0cdcd'}}/>}
                 tabBarInactiveTextColor={'gray'}
                 tabBarActiveTextColor={'black'}
                 tabBarUnderlineStyle={{ height: 2 }}

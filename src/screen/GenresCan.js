@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, ActivityIndicator, RefreshControl } from 'react-native';
+import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
+import { FlatGrid } from 'react-native-super-grid';
+import { dataOriginal } from '../component/Data';
 class GenreCan extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,7 @@ class GenreCan extends Component {
     this.setState({
       refreshing: true
     })
-    setTimeout(() => {this.setState({ refreshing: false })}, 500)
+    setTimeout(() => { this.setState({ refreshing: false }) }, 500)
   }
 
   _onScrollDown = () => { // bắt sự kiện người dùng kéo xuống
@@ -35,56 +37,13 @@ class GenreCan extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View>
-          <StatusBar
-            backgroundColor='transparent'
-            barStyle='dark-content'
-          />
-        </View>
-        <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity
-              style={{ alignItems: 'center' }}
-              activeOpacity={1}
-              onPress={() => this.props.navigation.navigate("ORIGINALS")}
-            >
-              <Text style={styles.txtHeader}>Daily</Text>
-            </TouchableOpacity>
-            <Text style={styles.txtHeader}>|</Text>
-            <TouchableOpacity
-              style={{
-                alignItems: 'center'
-              }}
-              activeOpacity={1}
-              onPress={() => this.props.navigation.navigate("Genres")}
-            >
-              <Text style={styles.txtHeader}>Genres</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity
-              onPress={() => alert("btn Medal")}
-              activeOpacity={1}
-              style={{ marginRight: 25 }}
-            >
-              <Icon1 name='medal' size={23} color={'black'} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => alert("btn Search")}
-              activeOpacity={1}
-              style={{ marginRight: 15 }}
-            >
-              <Icon name='ios-search' size={30} color={'black'} />
-            </TouchableOpacity>
-          </View>
-        </View>
 
         <ScrollableTabView
           initialPage={0}
-          renderTabBar = {() => <ScrollableTabBar style = {{width: 310, borderTopWidth: 0.5, borderBottomWidth: 0.5, borderTopColor: '#d0cdcd'}}/> }
-          tabBarInactiveTextColor = {'gray'}
-          tabBarActiveTextColor = {'black'}
-          tabBarUnderlineStyle = {{height: 2}}
+          renderTabBar={() => <ScrollableTabBar style = {{ borderTopWidth: 0.5, borderTopColor: '#d0cdcd'}}/>}
+          tabBarInactiveTextColor={'gray'}
+          tabBarActiveTextColor={'black'}
+          tabBarUnderlineStyle={{ height: 2 }}
         >
           <View tabLabel='Romance' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
@@ -101,10 +60,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -142,10 +101,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -183,10 +142,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -224,10 +183,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -265,10 +224,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -306,10 +265,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -347,10 +306,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -388,10 +347,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -429,10 +388,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -470,10 +429,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -511,10 +470,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -552,10 +511,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -593,10 +552,10 @@ class GenreCan extends Component {
             </View>
 
             <ScrollView
-              refreshControl = {
+              refreshControl={
                 <RefreshControl
-                  refreshing = {this.state.refreshing}
-                  onRefresh = {this._onRefresh}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
                 />
               }
             >
@@ -626,5 +585,36 @@ class GenreCan extends Component {
 
 export default GenreCan;
 const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  gridView: {
+    marginTop: 20,
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  itemContainer: {
+    borderRadius: 5,
+    width: 100,
+    height: 160,
+  },
 
+  txtCounter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 12,
+    height: 20
+  },
+  loading: {
+    width: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
 });
