@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, StatusBar, ActivityIndicator, RefreshControl } from 'react-native';
-import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
-import Icon from 'react-native-vector-icons/Ionicons';
-import Icon1 from 'react-native-vector-icons/FontAwesome5';
-import { FlatGrid } from 'react-native-super-grid';
-import { dataOriginal } from '../component/Data';
+import { View, Text } from 'react-native';
 
-class Originals extends Component {
+class GenreCan extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoadingMore: false,
     };
   }
 
@@ -87,12 +81,12 @@ class Originals extends Component {
 
         <ScrollableTabView
           initialPage={0}
-          renderTabBar={() => <ScrollableTabBar style={{ width: 310, borderTopWidth: 0.5, borderBottomWidth: 0.5, borderTopColor: '#d0cdcd' }} />}
-          tabBarInactiveTextColor={'gray'}
-          tabBarActiveTextColor={'black'}
-          tabBarUnderlineStyle={{ height: 2 }}
+          renderTabBar = {() => <ScrollableTabBar style = {{width: 310, borderTopWidth: 0.5, borderBottomWidth: 0.5, borderTopColor: '#d0cdcd'}}/> }
+          tabBarInactiveTextColor = {'gray'}
+          tabBarActiveTextColor = {'black'}
+          tabBarUnderlineStyle = {{height: 2}}
         >
-          <View tabLabel='MON' style={{ flex: 1 }}>
+          <View tabLabel='Romance' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
                 10 items
@@ -101,7 +95,7 @@ class Originals extends Component {
                 activeOpacity={1}
               >
                 <Text style={{ color: 'gray', fontSize: 15 }}>
-                  Sort by interest
+                  Sort by Date
                 </Text>
               </TouchableOpacity>
             </View>
@@ -133,7 +127,7 @@ class Originals extends Component {
             </ScrollView>
           </View>
 
-          <View tabLabel='TUE' style={{flex:1}}>
+          <View tabLabel='Drama' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
                 10 items
@@ -142,7 +136,7 @@ class Originals extends Component {
                 activeOpacity={1}
               >
                 <Text style={{ color: 'gray', fontSize: 15 }}>
-                  Sort by interest
+                  Sort by Date
                 </Text>
               </TouchableOpacity>
             </View>
@@ -174,7 +168,7 @@ class Originals extends Component {
             </ScrollView>
           </View>
 
-          <View tabLabel='WED' style={{flex:1}}>
+          <View tabLabel='Fantasy' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
                 10 items
@@ -183,7 +177,7 @@ class Originals extends Component {
                 activeOpacity={1}
               >
                 <Text style={{ color: 'gray', fontSize: 15 }}>
-                  Sort by interest
+                  Sort by Date
                 </Text>
               </TouchableOpacity>
             </View>
@@ -215,7 +209,7 @@ class Originals extends Component {
             </ScrollView>
           </View>
 
-          <View tabLabel='THU' style={{flex:1}}>
+          <View tabLabel='Comedy' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
                 10 items
@@ -224,7 +218,7 @@ class Originals extends Component {
                 activeOpacity={1}
               >
                 <Text style={{ color: 'gray', fontSize: 15 }}>
-                  Sort by interest
+                  Sort by Date
                 </Text>
               </TouchableOpacity>
             </View>
@@ -256,7 +250,7 @@ class Originals extends Component {
             </ScrollView>
           </View>
 
-          <View tabLabel='FRI' style={{flex:1}}>
+          <View tabLabel='Action' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
                 10 items
@@ -265,7 +259,7 @@ class Originals extends Component {
                 activeOpacity={1}
               >
                 <Text style={{ color: 'gray', fontSize: 15 }}>
-                  Sort by interest
+                  Sort by Date
                 </Text>
               </TouchableOpacity>
             </View>
@@ -297,7 +291,7 @@ class Originals extends Component {
             </ScrollView>
           </View>
 
-          <View tabLabel='SAT' style={{flex:1}}>
+          <View tabLabel='Horror' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
                 10 items
@@ -306,7 +300,7 @@ class Originals extends Component {
                 activeOpacity={1}
               >
                 <Text style={{ color: 'gray', fontSize: 15 }}>
-                  Sort by interest
+                  Sort by Date
                 </Text>
               </TouchableOpacity>
             </View>
@@ -338,7 +332,7 @@ class Originals extends Component {
             </ScrollView>
           </View>
 
-          <View tabLabel='SUN' style={{flex:1}}>
+          <View tabLabel='Slice of Life' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
                 10 items
@@ -347,7 +341,7 @@ class Originals extends Component {
                 activeOpacity={1}
               >
                 <Text style={{ color: 'gray', fontSize: 15 }}>
-                  Sort by interest
+                  Sort by Date
                 </Text>
               </TouchableOpacity>
             </View>
@@ -379,7 +373,7 @@ class Originals extends Component {
             </ScrollView>
           </View>
 
-          <View tabLabel='COMPLETED' style={{flex:1}}>
+          <View tabLabel='Heart-warming' style={{ flex: 1 }}>
             <View style={styles.txtCounter}>
               <Text style={{ color: 'gray', fontSize: 15 }}>
                 10 items
@@ -388,7 +382,212 @@ class Originals extends Component {
                 activeOpacity={1}
               >
                 <Text style={{ color: 'gray', fontSize: 15 }}>
-                  Sort by interest
+                  Sort by Date
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <ScrollView
+              refreshControl = {
+                <RefreshControl
+                  refreshing = {this.state.refreshing}
+                  onRefresh = {this._onRefresh}
+                />
+              }
+            >
+              <FlatGrid
+                itemDimension={110}
+                items={dataOriginal}
+                spacing={7}
+                renderItem={({ item, index }) => (
+                  <View style={styles.itemContainer}>
+                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                  </View>
+                )}
+                onEndReachedThreshold={0.5}
+                onEndReached={this._onScrollDown}
+                ListFooterComponent={this._renderLoadingIconBelow}
+              />
+            </ScrollView>
+          </View>
+
+          <View tabLabel='Superheroes' style={{ flex: 1 }}>
+            <View style={styles.txtCounter}>
+              <Text style={{ color: 'gray', fontSize: 15 }}>
+                10 items
+              </Text>
+              <TouchableOpacity
+                activeOpacity={1}
+              >
+                <Text style={{ color: 'gray', fontSize: 15 }}>
+                  Sort by Date
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <ScrollView
+              refreshControl = {
+                <RefreshControl
+                  refreshing = {this.state.refreshing}
+                  onRefresh = {this._onRefresh}
+                />
+              }
+            >
+              <FlatGrid
+                itemDimension={110}
+                items={dataOriginal}
+                spacing={7}
+                renderItem={({ item, index }) => (
+                  <View style={styles.itemContainer}>
+                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                  </View>
+                )}
+                onEndReachedThreshold={0.5}
+                onEndReached={this._onScrollDown}
+                ListFooterComponent={this._renderLoadingIconBelow}
+              />
+            </ScrollView>
+          </View>
+
+          <View tabLabel='Sports' style={{ flex: 1 }}>
+            <View style={styles.txtCounter}>
+              <Text style={{ color: 'gray', fontSize: 15 }}>
+                10 items
+              </Text>
+              <TouchableOpacity
+                activeOpacity={1}
+              >
+                <Text style={{ color: 'gray', fontSize: 15 }}>
+                  Sort by Date
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <ScrollView
+              refreshControl = {
+                <RefreshControl
+                  refreshing = {this.state.refreshing}
+                  onRefresh = {this._onRefresh}
+                />
+              }
+            >
+              <FlatGrid
+                itemDimension={110}
+                items={dataOriginal}
+                spacing={7}
+                renderItem={({ item, index }) => (
+                  <View style={styles.itemContainer}>
+                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                  </View>
+                )}
+                onEndReachedThreshold={0.5}
+                onEndReached={this._onScrollDown}
+                ListFooterComponent={this._renderLoadingIconBelow}
+              />
+            </ScrollView>
+          </View>
+
+          <View tabLabel='Scifi' style={{ flex: 1 }}>
+            <View style={styles.txtCounter}>
+              <Text style={{ color: 'gray', fontSize: 15 }}>
+                10 items
+              </Text>
+              <TouchableOpacity
+                activeOpacity={1}
+              >
+                <Text style={{ color: 'gray', fontSize: 15 }}>
+                  Sort by Date
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <ScrollView
+              refreshControl = {
+                <RefreshControl
+                  refreshing = {this.state.refreshing}
+                  onRefresh = {this._onRefresh}
+                />
+              }
+            >
+              <FlatGrid
+                itemDimension={110}
+                items={dataOriginal}
+                spacing={7}
+                renderItem={({ item, index }) => (
+                  <View style={styles.itemContainer}>
+                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                  </View>
+                )}
+                onEndReachedThreshold={0.5}
+                onEndReached={this._onScrollDown}
+                ListFooterComponent={this._renderLoadingIconBelow}
+              />
+            </ScrollView>
+          </View>
+
+          <View tabLabel='Informatives' style={{ flex: 1 }}>
+            <View style={styles.txtCounter}>
+              <Text style={{ color: 'gray', fontSize: 15 }}>
+                10 items
+              </Text>
+              <TouchableOpacity
+                activeOpacity={1}
+              >
+                <Text style={{ color: 'gray', fontSize: 15 }}>
+                  Sort by Date
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <ScrollView
+              refreshControl = {
+                <RefreshControl
+                  refreshing = {this.state.refreshing}
+                  onRefresh = {this._onRefresh}
+                />
+              }
+            >
+              <FlatGrid
+                itemDimension={110}
+                items={dataOriginal}
+                spacing={7}
+                renderItem={({ item, index }) => (
+                  <View style={styles.itemContainer}>
+                    <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+                    <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                  </View>
+                )}
+                onEndReachedThreshold={0.5}
+                onEndReached={this._onScrollDown}
+                ListFooterComponent={this._renderLoadingIconBelow}
+              />
+            </ScrollView>
+          </View>
+
+          <View tabLabel='Historical' style={{ flex: 1 }}>
+            <View style={styles.txtCounter}>
+              <Text style={{ color: 'gray', fontSize: 15 }}>
+                10 items
+              </Text>
+              <TouchableOpacity
+                activeOpacity={1}
+              >
+                <Text style={{ color: 'gray', fontSize: 15 }}>
+                  Sort by Date
                 </Text>
               </TouchableOpacity>
             </View>
@@ -425,44 +624,7 @@ class Originals extends Component {
   }
 }
 
-export default Originals;
-
+export default GenreCan;
 const styles = StyleSheet.create({
-  headerContainer: {
-    width: '100%',
-    height: 60,
-    alignItems: 'center'
-  },
-  gridView: {
-    marginTop: 20,
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  itemContainer: {
-    borderRadius: 5,
-    width: 100,
-    height: 160,
-  },
-  txtHeader: {
-    fontSize: 23,
-    fontWeight: '500',
-    color: 'black',
-    marginLeft: 18
-  },
-  txtCounter: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    margin: 12,
-    height: 20
-  },
-  loading: {
-    width: "100%",
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 10,
-  },
+
 });

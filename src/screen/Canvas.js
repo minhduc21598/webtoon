@@ -46,9 +46,6 @@ class Canvas extends Component {
         (item1, index) => {
           return (
             <View style={styles.detailFirstView} key={index} >
-              <View style={{ backgroundColor: 'red' }}>
-                <Text style={styles.txtTitle}> {item1.titles} </Text>
-              </View>
               <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <Text style={{ color: 'purple', fontSize: 10 }}> {item1.rank} </Text>
               </View>
@@ -138,8 +135,10 @@ class Canvas extends Component {
                 )}
             </ScrollView>
           </View>
-
-          <View style={styles.firstView}>
+          <View style={[styles.firstView]}>
+            <Text style={{fontSize:30, marginLeft: 17, marginTop: 10, color:'black'}}>
+                  Weekly
+            </Text>
             <Carousel
               data={carouselData}
               sliderWidth={Dimensions.get('window').width}
