@@ -10,6 +10,8 @@ class Canvas extends Component {
     this.state = {
       spotlight: true,
       isLoadmore: false,
+      colorSpotlight: "black",
+      colorGenres: "gray",
     };
   }
 
@@ -27,9 +29,9 @@ class Canvas extends Component {
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
-              onPress={() => this.props.navigation.navigate("CANVAS")}
+              onPress={() => this.setState({spotlight: true, colorSpotlight: "black", colorGenres: "gray"})}
             >
-              <Text style={styles.txtHeader}>Spotlight</Text>
+              <Text style={[styles.txtHeader, {color: this.state.colorSpotlight}]}>Spotlight</Text>
             </TouchableOpacity>
             <Text style={styles.txtHeader}>|</Text>
             <TouchableOpacity
@@ -37,9 +39,9 @@ class Canvas extends Component {
                 alignItems: 'center'
               }}
               activeOpacity={1}
-              onPress={() => this.setState({spotlight: false})}
+              onPress={() => this.setState({spotlight: false, colorSpotlight: "gray", colorGenres: "black"})}
             >
-              <Text style={styles.txtHeader}>Genres</Text>
+              <Text style={[styles.txtHeader, {color: this.state.colorGenres}]}>Genres</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity
