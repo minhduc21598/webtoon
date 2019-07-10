@@ -27,7 +27,7 @@ class Canvas extends Component {
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
-              onPress={() => this.props.navigation.navigate("CANVAS")}
+              onPress={() => this.setState({spotlight: true})}
             >
               <Text style={styles.txtHeader}>Spotlight</Text>
             </TouchableOpacity>
