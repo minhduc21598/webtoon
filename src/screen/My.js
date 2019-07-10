@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, StatusBar, TouchableHighlight} from 'react-native';
+import { View, Text, StyleSheet, Image, StatusBar, TouchableHighlight, ScrollView} from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -59,10 +59,13 @@ class My extends Component {
         </View>
         <ScrollableTabView
           initialPage={0}
-          renderTabBar={() => <ScrollableTabBar />}
+          renderTabBar = {() => <ScrollableTabBar /> }
+          tabBarInactiveTextColor = {'gray'}
+          tabBarActiveTextColor = {'black'}
+          tabBarUnderlineStyle = {{height: 2}}
           style={{flex:1}}
         >
-          <View tabLabel='Recent'>
+          <ScrollView tabLabel='Recent'>
             {
               recentDataScreenMy.map(
                 (item, index) => {
@@ -78,7 +81,7 @@ class My extends Component {
                 }
               )
             }
-          </View>
+          </ScrollView>
           <View tabLabel='Subcribed' style={styles.tabs}>
             <Text style={styles.txtTabs}>
               No subcribed

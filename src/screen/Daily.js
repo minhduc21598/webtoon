@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, ActivityIndicator, RefreshControl } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import { FlatGrid } from 'react-native-super-grid';
 import { dataOriginal } from '../component/Data';
@@ -14,9 +14,9 @@ class Daily extends Component {
     _onScrollDown = () => { // bắt sự kiện người dùng kéo xuống
         if (this.state.isLoadingmore) return;
         this.setState({ isLoadingmore: true });
-        
+
     }
-    
+
     _renderLoadingIconBelow = () => {
         if (this.state.isLoadingmore) {
             return (
@@ -26,14 +26,16 @@ class Daily extends Component {
             )
         }
         return null;
-      }
+    }
 
     render() {
         return (
             <ScrollableTabView
                 initialPage={0}
-                renderTabBar={() => <ScrollableTabBar />}
-                style = {{flex: 1}}
+                renderTabBar={() => <ScrollableTabBar/>}
+                tabBarInactiveTextColor={'gray'}
+                tabBarActiveTextColor={'black'}
+                tabBarUnderlineStyle={{ height: 2 }}
             >
                 <View tabLabel='MON' style={{ flex: 1 }}>
                     <View style={styles.txtCounter}>
@@ -49,7 +51,14 @@ class Daily extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <ScrollView>
+                    <ScrollView
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.refreshing}
+                                onRefresh={this._onRefresh}
+                            />
+                        }
+                    >
                         <FlatGrid
                             itemDimension={110}
                             items={dataOriginal}
@@ -67,13 +76,12 @@ class Daily extends Component {
                             ListFooterComponent={this._renderLoadingIconBelow}
                         />
                     </ScrollView>
-
                 </View>
 
                 <View tabLabel='TUE' style={{ flex: 1 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+                    <View style={styles.txtCounter}>
                         <Text style={{ color: 'gray', fontSize: 15 }}>
-                            4 items
+                            10 items
                         </Text>
                         <TouchableOpacity
                             activeOpacity={1}
@@ -84,7 +92,14 @@ class Daily extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View>
+                    <ScrollView
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.refreshing}
+                                onRefresh={this._onRefresh}
+                            />
+                        }
+                    >
                         <FlatGrid
                             itemDimension={110}
                             items={dataOriginal}
@@ -97,14 +112,17 @@ class Daily extends Component {
                                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
                                 </View>
                             )}
+                            onEndReachedThreshold={0.5}
+                            onEndReached={this._onScrollDown}
+                            ListFooterComponent={this._renderLoadingIconBelow}
                         />
-                    </View>
+                    </ScrollView>
                 </View>
 
                 <View tabLabel='WED' style={{ flex: 1 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+                    <View style={styles.txtCounter}>
                         <Text style={{ color: 'gray', fontSize: 15 }}>
-                            4 items
+                            10 items
                         </Text>
                         <TouchableOpacity
                             activeOpacity={1}
@@ -115,7 +133,14 @@ class Daily extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View>
+                    <ScrollView
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.refreshing}
+                                onRefresh={this._onRefresh}
+                            />
+                        }
+                    >
                         <FlatGrid
                             itemDimension={110}
                             items={dataOriginal}
@@ -128,14 +153,17 @@ class Daily extends Component {
                                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
                                 </View>
                             )}
+                            onEndReachedThreshold={0.5}
+                            onEndReached={this._onScrollDown}
+                            ListFooterComponent={this._renderLoadingIconBelow}
                         />
-                    </View>
+                    </ScrollView>
                 </View>
 
                 <View tabLabel='THU' style={{ flex: 1 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+                    <View style={styles.txtCounter}>
                         <Text style={{ color: 'gray', fontSize: 15 }}>
-                            4 items
+                            10 items
                         </Text>
                         <TouchableOpacity
                             activeOpacity={1}
@@ -146,7 +174,14 @@ class Daily extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View>
+                    <ScrollView
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.refreshing}
+                                onRefresh={this._onRefresh}
+                            />
+                        }
+                    >
                         <FlatGrid
                             itemDimension={110}
                             items={dataOriginal}
@@ -159,25 +194,35 @@ class Daily extends Component {
                                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
                                 </View>
                             )}
+                            onEndReachedThreshold={0.5}
+                            onEndReached={this._onScrollDown}
+                            ListFooterComponent={this._renderLoadingIconBelow}
                         />
-                    </View>
+                    </ScrollView>
                 </View>
 
                 <View tabLabel='FRI' style={{ flex: 1 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+                    <View style={styles.txtCounter}>
                         <Text style={{ color: 'gray', fontSize: 15 }}>
-                            4 items
+                            10 items
                         </Text>
                         <TouchableOpacity
                             activeOpacity={1}
                         >
                             <Text style={{ color: 'gray', fontSize: 15 }}>
                                 Sort by interest
-                            </Text>
+                        </Text>
                         </TouchableOpacity>
                     </View>
 
-                    <View>
+                    <ScrollView
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.refreshing}
+                                onRefresh={this._onRefresh}
+                            />
+                        }
+                    >
                         <FlatGrid
                             itemDimension={110}
                             items={dataOriginal}
@@ -190,14 +235,17 @@ class Daily extends Component {
                                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
                                 </View>
                             )}
+                            onEndReachedThreshold={0.5}
+                            onEndReached={this._onScrollDown}
+                            ListFooterComponent={this._renderLoadingIconBelow}
                         />
-                    </View>
+                    </ScrollView>
                 </View>
 
                 <View tabLabel='SAT' style={{ flex: 1 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+                    <View style={styles.txtCounter}>
                         <Text style={{ color: 'gray', fontSize: 15 }}>
-                            4 items
+                            10 items
                         </Text>
                         <TouchableOpacity
                             activeOpacity={1}
@@ -208,7 +256,14 @@ class Daily extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View>
+                    <ScrollView
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.refreshing}
+                                onRefresh={this._onRefresh}
+                            />
+                        }
+                    >
                         <FlatGrid
                             itemDimension={110}
                             items={dataOriginal}
@@ -221,14 +276,17 @@ class Daily extends Component {
                                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
                                 </View>
                             )}
+                            onEndReachedThreshold={0.5}
+                            onEndReached={this._onScrollDown}
+                            ListFooterComponent={this._renderLoadingIconBelow}
                         />
-                    </View>
+                    </ScrollView>
                 </View>
 
                 <View tabLabel='SUN' style={{ flex: 1 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+                    <View style={styles.txtCounter}>
                         <Text style={{ color: 'gray', fontSize: 15 }}>
-                            4 items
+                            10 items
                         </Text>
                         <TouchableOpacity
                             activeOpacity={1}
@@ -239,7 +297,14 @@ class Daily extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View>
+                    <ScrollView
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.refreshing}
+                                onRefresh={this._onRefresh}
+                            />
+                        }
+                    >
                         <FlatGrid
                             itemDimension={110}
                             items={dataOriginal}
@@ -252,14 +317,17 @@ class Daily extends Component {
                                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
                                 </View>
                             )}
+                            onEndReachedThreshold={0.5}
+                            onEndReached={this._onScrollDown}
+                            ListFooterComponent={this._renderLoadingIconBelow}
                         />
-                    </View>
+                    </ScrollView>
                 </View>
 
                 <View tabLabel='COMPLETED' style={{ flex: 1 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15, height: 20 }}>
+                    <View style={styles.txtCounter}>
                         <Text style={{ color: 'gray', fontSize: 15 }}>
-                            4 items
+                            10 items
                         </Text>
                         <TouchableOpacity
                             activeOpacity={1}
@@ -270,7 +338,14 @@ class Daily extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View>
+                    <ScrollView
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.refreshing}
+                                onRefresh={this._onRefresh}
+                            />
+                        }
+                    >
                         <FlatGrid
                             itemDimension={110}
                             items={dataOriginal}
@@ -283,8 +358,11 @@ class Daily extends Component {
                                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
                                 </View>
                             )}
+                            onEndReachedThreshold={0.5}
+                            onEndReached={this._onScrollDown}
+                            ListFooterComponent={this._renderLoadingIconBelow}
                         />
-                    </View>
+                    </ScrollView>
                 </View>
             </ScrollableTabView>
         );
@@ -298,5 +376,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
-    }
+    },
+    gridView: {
+        marginTop: 20,
+        flex: 1,
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    itemContainer: {
+        borderRadius: 5,
+        width: 100,
+        height: 160,
+    },
+      
+    txtCounter: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        margin: 12,
+        height: 20
+    },
+    loading: {
+        width: "100%",
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 10,
+    },
 });

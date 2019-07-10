@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import GenresOri from './GenresOri';
@@ -22,11 +22,11 @@ class Originals extends Component {
             backgroundColor='transparent'
             barStyle='dark-content'
           />
-        </View>    
+        </View>
         <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
-          <View style = {{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-              style={{alignItems: 'center'}}
+              style={{ alignItems: 'center' }}
               activeOpacity={1}
               onPress={() => this.setState({daily: true})}
             >
@@ -43,20 +43,20 @@ class Originals extends Component {
               <Text style={styles.txtHeader}>Genres</Text>
             </TouchableOpacity>
           </View>
-          <View style = {{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
-              onPress = {() => alert("btn Medal")}
-              activeOpacity = {1}
-              style = {{marginRight: 25}}
+              onPress={() => alert("btn Medal")}
+              activeOpacity={1}
+              style={{ marginRight: 25 }}
             >
-              <Icon1 name = 'medal' size = {23} color = {'black'}/>
+              <Icon1 name='medal' size={23} color={'black'} />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress = {() => alert("btn Search")}
-              activeOpacity = {1}
-              style = {{marginRight: 15}}
+              onPress={() => alert("btn Search")}
+              activeOpacity={1}
+              style={{ marginRight: 15 }}
             >
-              <Icon name = 'ios-search' size = {30} color = {'black'}/>
+              <Icon name='ios-search' size={30} color={'black'} />
             </TouchableOpacity>
           </View>
         </View>
@@ -78,36 +78,10 @@ const styles = StyleSheet.create({
     height: 60,
     alignItems: 'center'
   },
-  gridView: {
-    marginTop: 20,
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  itemContainer: {
-    borderRadius: 5,
-    width: 100,
-    height: 160,
-  },
   txtHeader: {
     fontSize: 23,
     fontWeight: '500',
     color: 'black',
     marginLeft: 18
-  },
-  txtCounter:{ 
-    flexDirection: 'row', 
-    justifyContent: 'space-between', 
-    margin: 12, 
-    height: 20 
-  },
-  loading: {
-    width: "100%",
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 10,
   },
 });
