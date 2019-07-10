@@ -10,7 +10,9 @@ class Originals extends Component {
     super(props);
     this.state = {
       isLoadingMore: false,
-      daily: true
+      daily: true,
+      colorDaily: "black",
+      colorGenres: "gray",
     };
   }
 
@@ -28,9 +30,9 @@ class Originals extends Component {
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
-              onPress={() => this.setState({daily: true})}
+              onPress={() => this.setState({daily: true, colorDaily: "black", colorGenres: "gray"})}
             >
-              <Text style={styles.txtHeader}>Daily</Text>
+              <Text style={[styles.txtHeader, {color: this.state.colorDaily}]}>Daily</Text>
             </TouchableOpacity>
             <Text style={styles.txtHeader}>|</Text>
             <TouchableOpacity
@@ -38,9 +40,9 @@ class Originals extends Component {
                 alignItems: 'center'
               }}
               activeOpacity={1}
-              onPress={() => this.setState({daily: false})}
+              onPress={() => this.setState({daily: false, colorDaily: "gray", colorGenres: "black"})}
             >
-              <Text style={styles.txtHeader}>Genres</Text>
+              <Text style={[styles.txtHeader, {color: this.state.colorGenres}]}>Genres</Text>
             </TouchableOpacity>
           </View>
           <View style={{ flexDirection: 'row' }}>
