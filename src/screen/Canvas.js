@@ -29,11 +29,7 @@ class Canvas extends Component {
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
-<<<<<<< HEAD
-              onPress={() => this.setState({spotlight: true})}
-=======
               onPress={() => this.setState({spotlight: true, colorSpotlight: "black", colorGenres: "gray"})}
->>>>>>> 9980facbdf4499d7b12fcb11b0c71f49bcafd89b
             >
               <Text style={[styles.txtHeader, {color: this.state.colorSpotlight}]}>Spotlight</Text>
             </TouchableOpacity>
