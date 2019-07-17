@@ -99,8 +99,7 @@ const styles = StyleSheet.create({
   modalBoxStyle: {
     width: 50, 
     height: 50, 
-    position: 'absolute', 
-    marginTop: 60, 
+    position: 'absolute',
     marginLeft: 310,
     borderWidth: 0.5,
     borderColor: '#d0cdcd',
