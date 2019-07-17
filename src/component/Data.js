@@ -843,7 +843,41 @@ export const dataGenresOri = [
     },
 ];
 
-export const sortBy = ['Sort by Popularity', 'Sort by Interests', 'Sort by Likes', 'Sort by Date']
+export const modalComponent1 = [
+    {
+        title: 'LINE',
+        icon: 'line',
+        backgroundColor: '#49b214',
+        color: 'white',
+    },
+    {
+        title: 'Facebook',
+        icon: 'facebook',
+        backgroundColor: '#2340d4',
+        color: 'white',
+    },
+    {
+        title: 'Twitter',
+        icon: 'twitter',
+        backgroundColor: '#32b3f2',
+        color: 'white',
+    },
+];
+
+export const modalComponent2 = [
+    {
+        title: 'Copy',
+        icon: 'copy',
+        backgroundColor: 'black',
+        color: 'white',
+    },
+    {
+        title: 'more',
+        icon: 'more-v-a',
+        backgroundColor: '#969696',
+        color: 'white',
+    },
+];
 
 export const recommendationDataScreenMy=[
     {
