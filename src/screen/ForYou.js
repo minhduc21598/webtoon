@@ -1131,7 +1131,7 @@ class ForYou extends Component {
               flexDirection: 'row'
             }}
             activeOpacity = {1}
-            onPress = {() => alert("Another screen")}
+            onPress = {() => this.props.navigation.navigate("Policy")}
           >
             <Text
               style = {{

@@ -179,7 +179,7 @@ class More extends Component {
               Notice{"   "}></Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress = {() => alert("Notice")}
+            onPress = {() =>this.props.navigation.navigate("Policy")}
           >
             <Text
               style = {{
