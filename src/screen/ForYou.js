@@ -890,11 +890,8 @@ class ForYou extends Component {
               width: '100%',
               height: 140,
             }}
-<<<<<<< HEAD
-=======
             activeOpacity = {1}
             onPress = {() => this.props.navigation.navigate("Policy")}
->>>>>>> bbd368e071cae2924636c14162997eafba418265
           >
             <TouchableOpacity
               style={{
