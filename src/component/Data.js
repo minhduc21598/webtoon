@@ -879,6 +879,27 @@ export const modalComponent2 = [
     },
 ];
 
+export const btnMore = [
+    {
+        name: 'ios-search',
+        title: 'Search'
+    },
+    {
+        name: 'ios-options',
+        title: 'Settings'
+    },
+    {
+        name: 'ios-swap',
+        title: 'Fan Translation'
+    }
+];
+
+export const typeGenres = ["Staff Picks", "Specials", "Today's Hot Series", "Rising Stars", "LoL", "Brand New World", "Binge-worthy Series", "Spotlight", "Romance", "Drama"];
+
+export const menuOption = ['Daily', 'Ranking', 'Genres', 'Fan Translation', 'Settings'];
+
+export const menuShare = ['facebook', 'instagram', 'twitter', 'youtube']
+
 export const recommendationDataScreenMy=[
     {
         uri: 'https://images-na.ssl-images-amazon.com/images/P/4757559208.jpg',

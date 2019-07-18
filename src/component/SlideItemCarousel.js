@@ -12,7 +12,7 @@ class SlideItemCarousel extends Component {
   render() {
     const {data, renderItem, onSnapToItem} = this.props;
     return (
-        <Carousel
+      <Carousel
         data={data}
         sliderWidth={Dimensions.get('window').width}
         itemWidth={280}

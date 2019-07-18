@@ -38,7 +38,6 @@ class ModalForU extends Component {
 
     render() {
         return (
-
             <Modal
                 visible={!this.state.hide}
                 transparent

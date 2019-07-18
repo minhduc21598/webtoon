@@ -58,7 +58,6 @@ const Footer = createBottomTabNavigator(
             activeTintColor: '#00a73e',
             inactiveColor: 'white',
         },
-        tabBarPosition:'bottom'
     }
 )
 
