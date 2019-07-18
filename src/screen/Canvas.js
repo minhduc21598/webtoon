@@ -18,20 +18,18 @@ class Canvas extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View>
-          <StatusBar
-            backgroundColor='transparent'
-            barStyle='dark-content'
-          />
-        </View>
+        <StatusBar
+          backgroundColor='transparent'
+          barStyle='dark-content'
+        />
         <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
-              onPress={() => this.setState({spotlight: true, colorSpotlight: "black", colorGenres: "gray"})}
+              onPress={() => this.setState({ spotlight: true, colorSpotlight: "black", colorGenres: "gray" })}
             >
-              <Text style={[styles.txtHeader, {color: this.state.colorSpotlight}]}>Spotlight</Text>
+              <Text style={[styles.txtHeader, { color: this.state.colorSpotlight }]}>Spotlight</Text>
             </TouchableOpacity>
             <Text style={styles.txtHeader}>|</Text>
             <TouchableOpacity
@@ -39,9 +37,9 @@ class Canvas extends Component {
                 alignItems: 'center'
               }}
               activeOpacity={1}
-              onPress={() => this.setState({spotlight: false, colorSpotlight: "gray", colorGenres: "black"})}
+              onPress={() => this.setState({ spotlight: false, colorSpotlight: "gray", colorGenres: "black" })}
             >
-              <Text style={[styles.txtHeader, {color: this.state.colorGenres}]}>Genres</Text>
+              <Text style={[styles.txtHeader, { color: this.state.colorGenres }]}>Genres</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity
