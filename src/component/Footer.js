@@ -11,7 +11,7 @@ import Canvas from '../screen/Canvas';
 import My from '../screen/My';
 import More from '../screen/More';
 
-const Footer = createMaterialTopTabNavigator(
+const Footer = createBottomTabNavigator(
     {
         FORYOU:{
             screen: ForYou,
@@ -59,7 +59,6 @@ const Footer = createMaterialTopTabNavigator(
             activeTintColor: '#00a73e',
             inactiveColor: 'white',
         },
-        tabBarPosition:'bottom'
     }
 )
 

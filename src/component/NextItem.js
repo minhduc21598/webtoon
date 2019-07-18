@@ -1,16 +1,13 @@
-//import liraries
 import React, { Component } from 'react';
 import {
-    View,
     Text,
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
 
-// create a component
 class NextItem extends Component {
     render() {
-        const { onPress, title, disabled, style, styleText } = this.props;
+        const { onPress, title, disabled } = this.props;
         return (
             <TouchableOpacity
                 style={{
@@ -19,7 +16,6 @@ class NextItem extends Component {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    ...style
                 }}
                 activeOpacity={1}
                 // onPress={() => this.props.navigation.navigate("ORIGINALS")}
@@ -32,7 +28,6 @@ class NextItem extends Component {
                         fontWeight: '500',
                         fontSize: 18,
                         marginLeft: 20,
-                        ...styleText
                     }}
                 >{title}</Text>
                 <Text
@@ -48,7 +43,6 @@ class NextItem extends Component {
     }
 }
 
-// define your styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,
