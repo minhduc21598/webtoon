@@ -72,7 +72,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -113,7 +113,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -154,7 +154,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -195,7 +195,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -236,7 +236,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -277,7 +277,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -318,7 +318,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -359,7 +359,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -400,7 +400,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -441,7 +441,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -482,7 +482,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -523,7 +523,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
@@ -564,7 +564,7 @@ class GenreCan extends Component {
                 items={dataOriginal}
                 spacing={7}
                 renderItem={({ item, index }) => (
-                  <View style={styles.itemContainer}>
+                  <View style={styles.itemContainer} key = {index}>
                     <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
                     <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>

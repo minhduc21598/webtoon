@@ -1,5 +1,9 @@
 import React from 'react';
-import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
+import {
+    createBottomTabNavigator, 
+    createAppContainer,
+    createMaterialTopTabNavigator
+} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ForYou from '../screen/ForYou';
 import Originals from '../screen/Originals';
@@ -7,7 +11,7 @@ import Canvas from '../screen/Canvas';
 import My from '../screen/My';
 import More from '../screen/More';
 
-const Footer = createBottomTabNavigator(
+const Footer = createMaterialTopTabNavigator(
     {
         FORYOU:{
             screen: ForYou,
@@ -54,7 +58,8 @@ const Footer = createBottomTabNavigator(
         tabBarOptions:{
             activeTintColor: '#00a73e',
             inactiveColor: 'white',
-        }
+        },
+        tabBarPosition:'bottom'
     }
 )
 

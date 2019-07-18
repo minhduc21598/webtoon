@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    TouchableOpacity,
+    Modal
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import { modalComponent1, modalComponent2 } from './Data';
 const { width, height } = Dimensions.get('window');
@@ -13,13 +20,13 @@ class ModalForU extends Component {
     }
 
     hideModal = () => {
-        this.setState({hide: true})
+        this.setState({ hide: true })
     }
 
     notRender = () => {
-        return(
+        return (
             <View
-                style = {{
+                style={{
                     width: width,
                     height: height,
                     marginBottom: -height,
@@ -28,11 +35,14 @@ class ModalForU extends Component {
             />
         )
     }
-    
+
     render() {
         return (
-            (this.state.hide)
-                ? <View></View> :
+
+            <Modal
+                visible={!this.state.hide}
+                transparent
+            >
                 <View style={styles.container}>
                     <View style={styles.content}>
                         <View style={[styles.row, { marginTop: 20 }]}>
@@ -76,17 +86,18 @@ class ModalForU extends Component {
                         <TouchableOpacity
                             style={styles.btnCancel}
                             activeOpacity={1}
-                            onPress = {this.hideModal}
+                            onPress={this.hideModal}
                         >
                             <Text style={styles.textCancel}>CANCEL</Text>
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity
-                        style = {styles.hide}
-                        onPress = {this.hideModal}
+                        style={styles.hide}
+                        onPress={this.hideModal}
                     />
                 </View>
-        );
+            </Modal>
+        )
     }
 }
 
@@ -138,7 +149,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 7
     },
-    hide:{
+    hide: {
         position: 'absolute',
         width: width,
         height: height,
