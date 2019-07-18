@@ -10,9 +10,9 @@ class SlideItemCarousel extends Component {
   }
 
   render() {
-    const {data, renderItem} = this.props;
+    const { data, renderItem } = this.props;
     return (
-        <Carousel
+      <Carousel
         data={data}
         sliderWidth={Dimensions.get('window').width}
         itemWidth={280}
@@ -21,7 +21,7 @@ class SlideItemCarousel extends Component {
         inactiveSlideScale={0.85}
         slideStyle={{ marginLeft: 5 }}
         activeSlideAlignment={'start'}
-    />
+      />
     );
   }
 }
