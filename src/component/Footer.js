@@ -2,7 +2,6 @@ import React from 'react';
 import {
     createBottomTabNavigator, 
     createAppContainer,
-    createMaterialTopTabNavigator
 } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ForYou from '../screen/ForYou';
@@ -11,7 +10,7 @@ import Canvas from '../screen/Canvas';
 import My from '../screen/My';
 import More from '../screen/More';
 
-const Footer = createMaterialTopTabNavigator(
+const Footer = createBottomTabNavigator(
     {
         FORYOU:{
             screen: ForYou,

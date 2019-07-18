@@ -1,7 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
 import {
-    View,
     Text,
     StyleSheet,
     TouchableOpacity
@@ -22,7 +21,6 @@ class NextItem extends Component {
                     ...style
                 }}
                 activeOpacity={1}
-                // onPress={() => this.props.navigation.navigate("ORIGINALS")}
                 onPress={onPress}
                 disabled={disabled}
             >
