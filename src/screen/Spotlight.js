@@ -4,6 +4,7 @@ import { FlatGrid } from 'react-native-super-grid';
 import { recommendationDataScreenMy, canvasDataPick1, canvasDataPick2, iconCanvas, carouselData } from '../component/Data';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Carousel from '../component/SlideItemCarousel';
+import TitleChanges from '../component/TitleChanges';
 
 class Spotlight extends Component {
     constructor(props) {
@@ -13,6 +14,11 @@ class Spotlight extends Component {
             isLoading: true
         };
     }
+
+    onSnapToItem = (index) => {
+        return index;
+    }
+
     _onRefresh = () => { //bat su kien user muon reload lai data list
         console.log("_onRefresh");
         this.setState({ refreshing: true })
@@ -46,7 +52,7 @@ class Spotlight extends Component {
                         <View style={styles.detailFirstView} key={index} >
                             <Text style={{ color: 'purple', fontSize: 15, marginRight: 10 }}> {item1.rank} </Text>
                             <Image source={{ uri: item1.uri }} style={{ height: 60, width: 60, borderRadius: 10 }} />
-                            <View style={{ justifyContent: 'center' }}>
+                            <View style={{ flexDirection: 'column' }}>
                                 <Text style={styles.txtWeekly}>{item1.title}</Text>
                                 <Text style={styles.txtWeekly}>{item1.likes}</Text>
                             </View>
@@ -90,15 +96,19 @@ class Spotlight extends Component {
                             }
                         )}
                 </ScrollView>
-                <Text style={{ fontSize: 30, marginLeft: 17, marginTop: 10, color: 'black' }}>
-                    Weekly
-                </Text>
+                <TitleChanges 
+                    index ={this.onSnapToItem}
+                    data = {carouselData}
+                    element='titles'
+                    style={styles.titleCarouselTxt}
+                />
                 <Carousel
                     data={carouselData}
                     renderItem={this.renderItem}
+                    onSnapToItem={this.onSnapToItem}
                 />
                 <Text style={styles.txtTitle}> Fresh Picks </Text>
-                <View style={{marginTop: 5, height: 130, flexDirection: 'row', width: "100%" }}>
+                <View style={{ marginTop: 5, height: 130, flexDirection: 'row', width: "100%" }}>
                     {
                         canvasDataPick1.map(
                             (item, index) => {
@@ -222,4 +232,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#e3e3e3'
     },
+    titleCarouselTxt:{
+        fontSize: 25, 
+        marginLeft: 17, 
+        marginTop: 10, 
+        color:'black'
+}
 });

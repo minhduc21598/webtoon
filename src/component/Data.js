@@ -959,31 +959,31 @@ export const carouselData = [
                 rank: '1',
                 uri: 'https://pbs.twimg.com/media/DelaJhRXUAAEmxc.jpg',
                 title: 'Kushuku Gakkou no Juliet',
-                genre: 'Genre: Comedy'
+                likes: '1.11M'
             },
             {
                 rank: '2',
                 uri: 'https://vignette.wikia.nocookie.net/hayatenogotoku/images/a/a8/Hayate-no-Gotoku-Volume-32.jpg/revision/latest?cb=20120810014241',
                 title: 'Hayate no Gotoku',
-                genre: 'Genre: Comedy'
+                likes: '1.11M'
             },
             {
                 rank: '3',
                 uri: 'https://pibook.vn/uploads/products/26246_01_11_18_date-a-live-tap-2.jpg',
                 title: 'Date a Live',
-                genre: 'Genre: Scifi'
+                likes: '1.11M'
             },
             {
                 rank: '4',
                 uri: 'https://zingtv-photo.zadn.vn/tv_program_275_275/7/f/7f40a1a40081599265f38b59e46fef54_1398421379.jpg',
                 title: 'Bokura wa Minna Kawaisou',
-                genre: 'Genre: Slice of Life'
+                likes: '1.11M'
             },
             {
                 rank: '5',
                 uri: 'http://image.phimmoi.net/film/6455/poster.medium.jpg',
                 title: 'Gintama',
-                genre: 'Genre: Comedy'
+                likes: '1.11M'
             }
         ]
     },
