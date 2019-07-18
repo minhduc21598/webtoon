@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, ImageBackground, StatusBar, ActivityIndicator, RefreshControl, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, ImageBackground, ActivityIndicator, RefreshControl } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
 import { recommendationDataScreenMy, canvasDataPick1, canvasDataPick2, iconCanvas, carouselData } from '../component/Data';
 import Icon from 'react-native-vector-icons/Ionicons';

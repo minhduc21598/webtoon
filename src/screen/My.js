@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, StatusBar, TouchableHighlight, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, Image, StatusBar, TouchableHighlight, ScrollView } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,56 +14,37 @@ class My extends Component {
 
   render() {
     return (
-      <View style={{flex:1}}>
-        <View>
-          <StatusBar
-            backgroundColor = 'transparent'
-            barStyle = 'dark-content'
-          />
-        </View>
-        <View 
-          style = {{
-            width: '100%', 
-            height: 60, 
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-          }}
-        >
-          <View>
-            <Text 
-              style = {{
-                fontSize: 23, 
-                fontWeight: '500', 
-                color: 'black', 
-                marginLeft: 18,
-                marginTop: 13
-              }}
-            >My Series</Text>
-          </View>
-          <View style = {{flexDirection: 'row', marginTop: 13}}>
+      <View style={{ flex: 1 }}>
+        <StatusBar
+          backgroundColor='transparent'
+          barStyle='dark-content'
+        />
+        <View style={styles.headerTab}>
+          <Text style={styles.headerTxt}>My Series</Text>
+          <View style={{ flexDirection: 'row', marginTop: 13 }}>
             <TouchableHighlight
-              onPress = {() => alert("btn List")}
-              style = {{marginRight: 15, width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
-              underlayColor = {'gray'}
+              onPress={() => alert("btn List")}
+              style={{ marginRight: 15, width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 20 }}
+              underlayColor={'gray'}
             >
-              <Icon name = 'ios-list' size ={30} color = {'black'}/>
+              <Icon name='ios-list' size={30} color={'black'} />
             </TouchableHighlight>
             <TouchableHighlight
-              onPress = {() => alert("btn List")}
-              style = {{marginRight: 10, width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 20}}
-              underlayColor = {'gray'}
+              onPress={() => alert("btn List")}
+              style={{ marginRight: 10, width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 20 }}
+              underlayColor={'gray'}
             >
-              <Icon1 name = 'coin' size ={30} color = {'black'}/>
+              <Icon1 name='coin' size={30} color={'black'} />
             </TouchableHighlight>
           </View>
         </View>
         <ScrollableTabView
           initialPage={0}
-          renderTabBar = {() => <ScrollableTabBar /> }
-          tabBarInactiveTextColor = {'gray'}
-          tabBarActiveTextColor = {'black'}
-          tabBarUnderlineStyle = {{height: 2}}
-          style={{flex:1}}
+          renderTabBar={() => <ScrollableTabBar />}
+          tabBarInactiveTextColor={'gray'}
+          tabBarActiveTextColor={'black'}
+          tabBarUnderlineStyle={{ height: 2 }}
+          style={{ flex: 1 }}
         >
           <ScrollView tabLabel='Recent'>
             {
@@ -111,6 +92,19 @@ class My extends Component {
 export default My;
 
 const styles = StyleSheet.create({
+  headerTab: {
+    width: '100%',
+    height: 60,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  headerTxt: {
+    fontSize: 23,
+    fontWeight: '500',
+    color: 'black',
+    marginLeft: 18,
+    marginTop: 13
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
