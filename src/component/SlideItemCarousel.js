@@ -10,7 +10,7 @@ class SlideItemCarousel extends Component {
   }
 
   render() {
-    const {data, renderItem} = this.props;
+    const {data, renderItem, onSnapToItem} = this.props;
     return (
         <Carousel
         data={data}
@@ -21,6 +21,7 @@ class SlideItemCarousel extends Component {
         inactiveSlideScale={0.85}
         slideStyle={{ marginLeft: 5 }}
         activeSlideAlignment={'start'}
+        onSnapToItem ={onSnapToItem}
     />
     );
   }
