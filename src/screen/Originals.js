@@ -43,6 +43,7 @@ class Originals extends Component {
               <Text style={[styles.txtHeader, { color: this.state.colorGenres }]}>Genres</Text>
             </TouchableOpacity>
           </View>
+          <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             onPress={() => alert("btn Medal")}
             activeOpacity={1}
@@ -57,6 +58,7 @@ class Originals extends Component {
           >
             <Icon name='ios-search' size={30} color={'black'} />
           </TouchableOpacity>
+          </View>
         </View>
         {
           (this.state.daily)
