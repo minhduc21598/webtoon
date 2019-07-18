@@ -80,7 +80,7 @@ class Spotlight extends Component {
                             recommendationDataScreenMy.map(
                                 (item, index) => {
                                     return (
-                                        <ImageBackground source={{ uri: item.uri }} style={styles.imgBack}>
+                                        <ImageBackground source={{ uri: item.uri }} style={styles.imgBack} key = {index}>
                                             <View style={{ width: "100%", height: 130 }}></View>
                                             <View style={{ width: "100%", height: 50 }}>
                                                 <Text style={styles.txtRec}>
@@ -163,7 +163,7 @@ class Spotlight extends Component {
                         spacing={2}
                         style={{ marginLeft: 15, marginTop: 10 }}
                         renderItem={({ item, index }) => (
-                            <View style={{ width: 70, height: 90, alignItems: 'center' }}>
+                            <View style={{ width: 70, height: 90, alignItems: 'center' }} key = {index}>
                                 <TouchableOpacity
                                     style={styles.itemContainer}
                                     onPress={() => alert(`${item.name}`)}
