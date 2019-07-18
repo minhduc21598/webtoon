@@ -18,7 +18,6 @@ class NextItem extends Component {
                     alignItems: 'center',
                 }}
                 activeOpacity={1}
-                // onPress={() => this.props.navigation.navigate("ORIGINALS")}
                 onPress={onPress}
                 disabled={disabled}
             >
