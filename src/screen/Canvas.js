@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, ImageBackground, StatusBar, ActivityIndicator, RefreshControl, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import GenresCan from './GenresCan';
 import Spotlight from './Spotlight';

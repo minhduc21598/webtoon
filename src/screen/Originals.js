@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import GenresOri from './GenresOri';
@@ -19,20 +19,18 @@ class Originals extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View>
-          <StatusBar
-            backgroundColor='transparent'
-            barStyle='dark-content'
-          />
-        </View>
+        <StatusBar
+          backgroundColor='transparent'
+          barStyle='dark-content'
+        />
         <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
-              onPress={() => this.setState({daily: true, colorDaily: "black", colorGenres: "gray"})}
+              onPress={() => this.setState({ daily: true, colorDaily: "black", colorGenres: "gray" })}
             >
-              <Text style={[styles.txtHeader, {color: this.state.colorDaily}]}>Daily</Text>
+              <Text style={[styles.txtHeader, { color: this.state.colorDaily }]}>Daily</Text>
             </TouchableOpacity>
             <Text style={styles.txtHeader}>|</Text>
             <TouchableOpacity
@@ -40,32 +38,30 @@ class Originals extends Component {
                 alignItems: 'center'
               }}
               activeOpacity={1}
-              onPress={() => this.setState({daily: false, colorDaily: "gray", colorGenres: "black"})}
+              onPress={() => this.setState({ daily: false, colorDaily: "gray", colorGenres: "black" })}
             >
-              <Text style={[styles.txtHeader, {color: this.state.colorGenres}]}>Genres</Text>
+              <Text style={[styles.txtHeader, { color: this.state.colorGenres }]}>Genres</Text>
             </TouchableOpacity>
           </View>
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity
-              onPress={() => alert("btn Medal")}
-              activeOpacity={1}
-              style={{ marginRight: 25 }}
-            >
-              <Icon1 name='medal' size={23} color={'black'} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => alert("btn Search")}
-              activeOpacity={1}
-              style={{ marginRight: 15 }}
-            >
-              <Icon name='ios-search' size={30} color={'black'} />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPress={() => alert("btn Medal")}
+            activeOpacity={1}
+            style={{ marginRight: 25 }}
+          >
+            <Icon1 name='medal' size={23} color={'black'} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => alert("btn Search")}
+            activeOpacity={1}
+            style={{ marginRight: 15 }}
+          >
+            <Icon name='ios-search' size={30} color={'black'} />
+          </TouchableOpacity>
         </View>
         {
           (this.state.daily)
-          ? <Daily/>
-          : <GenresOri/>
+            ? <Daily />
+            : <GenresOri />
         }
       </View>
     );
