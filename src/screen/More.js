@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { btnMore } from '../component/Data';
 
 class More extends Component {
   constructor(props) {
@@ -9,188 +10,60 @@ class More extends Component {
     };
   }
 
+  gotoPolicy = () => {
+    this.props.navigation.navigate("Policy");
+  }
+
   render() {
     return (
       <View>
-        <View>
-          <StatusBar
-            backgroundColor = 'transparent'
-            barStyle = 'dark-content'
-          />
-        </View>
-        <View 
-          style = {{
-            width: '100%', 
-            height: 60, 
-            justifyContent: 'center',
-          }}
-        >
-          <Text 
-            style = {{
-              fontSize: 23, 
-              fontWeight: '500', 
-              color: 'black', 
-              marginLeft: 18
-            }}
-          >More</Text>
-        </View>
-        <View 
-          style = {{
-            width: '100%', 
-            height: 100, 
-            backgroundColor: '#f4f4f4', 
-            flexDirection: 'row',
-          }}
-        >
-          <View 
-            style = {{
-              width: 200, 
-              height: 100
-            }}
-          >
-            <Icon name = 'logo-bitcoin' size = {27} color = '#f0b600'
-              style = {{
-                marginLeft: 20, 
-                marginTop: 20
-              }}
-            >
-              <Text 
-                style = {{
-                  color: 'black', 
-                  fontSize: 30, 
-                  fontWeight: '500'
-                }}
-              >
-                {" "}0
-              </Text>
+        <StatusBar
+          backgroundColor='transparent'
+          barStyle='dark-content'
+        />
+        <Text style={styles.textMore}>More</Text>
+        <View style={styles.belowMore}>
+          <View>
+            <Icon name='logo-bitcoin' size={27} color='#f0b600' style={styles.iconCoin}>
+              <Text style={styles.coin}>{" "}0</Text>
             </Icon>
-            <Text 
-              style = {{
-                color: 'black', 
-                fontSize: 15, 
-                fontWeight: '500', 
-                marginLeft: 20, 
-                marginTop: 10
-              }}
-            >
-              Purchased{" "}0{"\t\t"}Free{" "}0
-            </Text>
+            <Text style={styles.userData}>Purchased{" "}0{"\t\t"}Free{" "}0</Text>
           </View>
           <TouchableOpacity
-            style = {{
-              width: 90, 
-              height: 40, 
-              backgroundColor: '#15d849', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              borderRadius: 5,
-              marginLeft: 50,
-              marginTop: 30
-            }}
-            onPress = {() => alert("btn Buy")}
+            style={styles.btnBuy}
+            onPress={() => alert("btn Buy")}
           >
-            <Text style = {{color: 'white'}}>Buy coins</Text>
+            <Text style={{ color: 'white' }}>Buy coins</Text>
           </TouchableOpacity>
         </View>
-        <View
-          style = {{
-            width: '100%',
-            height: 100,
-            flexDirection: 'row',
-            borderStyle: 'solid',
-            borderColor: 'gray',
-            borderWidth: 0.5
-          }}
-        >
-          <TouchableOpacity
-            style = {{
-              width: 120,
-              height: 100,
-              borderStyle: 'solid',
-              borderRightWidth: 0.5,
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            onPress = {() => alert("Search")}
-          >
-            <Icon name = 'ios-search' size = {40} color = 'black'
-              style = {{
-                marginBottom: 10
-              }}
-            />
-            <Text style = {{color: 'black'}}>Search</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style = {{
-              width: 120,
-              height: 100,
-              borderStyle: 'solid',
-              borderRightWidth: 0.5,
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            onPress = {() => alert("Settings")}
-          >
-            <Icon name = 'ios-options' size = {40} color = 'black'
-              style = {{
-                marginBottom: 10
-              }}
-            />
-            <Text style = {{color: 'black'}}>Settings</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style = {{
-              width: 120,
-              height: 100,
-              borderStyle: 'solid',
-              borderRightWidth: 0.5,
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            onPress = {() => alert("Fan Translation")}
-          >
-            <Icon name = 'ios-swap' size = {40} color = 'black'
-              style = {{
-                marginBottom: 10
-              }}
-            />
-            <Text style = {{color: 'black'}}>Fan Translation</Text>
-          </TouchableOpacity>
+        <View style={styles.grid}>
+          {
+            btnMore.map(
+              (item, index) => {
+                return (
+                  <TouchableOpacity
+                    style={styles.btnOption}
+                    onPress={() => alert(`${item.title}`)}
+                    key={index}
+                  >
+                    <Icon name={item.name} size={40} color='black' style={{ marginBottom: 10 }} />
+                    <Text style={{ color: 'black' }}>{item.title}</Text>
+                  </TouchableOpacity>
+                )
+              }
+            )
+          }
         </View>
-        <View
-          style = {{
-            width: '100%',
-            height: 40,
-            flexDirection: 'row'
-          }}
-        >
+        <View style={{ flexDirection: 'row' }}>
           <TouchableOpacity
-            onPress = {() => alert("Notice")}
+            onPress={() => alert("Notice")}
           >
-            <Text
-              style = {{
-                color: 'black',
-                fontSize: 14,
-                fontWeight: '500',
-                marginTop: 10,
-                marginLeft: 15,
-              }}
-            >
-              Notice{"   "}></Text>
+            <Text style={styles.textNotice}>Notice{"   "}></Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress = {() =>this.props.navigation.navigate("Policy")}
+            onPress={this.gotoPolicy}
           >
-            <Text
-              style = {{
-                color: 'gray',
-                fontSize: 14,
-                fontWeight: '400',
-                marginTop: 10,
-                marginLeft: 10
-              }}
-            >
-              Changes to our Terms of Use and Privacy P...</Text>
+            <Text style = {styles.textNearNotice}>Changes to our Terms of Use and Privacy P...</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -201,7 +74,74 @@ class More extends Component {
 export default More;
 
 const styles = StyleSheet.create({
-  container:{
-
+  textMore: {
+    fontSize: 23,
+    fontWeight: '500',
+    color: 'black',
+    marginLeft: 18,
+    marginTop: 20,
+    marginBottom: 20
+  },
+  belowMore: {
+    width: '100%',
+    height: 100,
+    backgroundColor: '#f4f4f4',
+    flexDirection: 'row',
+  },
+  iconCoin: {
+    marginLeft: 20,
+    marginTop: 20,
+  },
+  coin: {
+    color: 'black',
+    fontSize: 30,
+    fontWeight: '500'
+  },
+  userData: {
+    color: 'black',
+    fontSize: 15,
+    fontWeight: '500',
+    marginLeft: 20,
+    marginTop: 10
+  },
+  btnBuy: {
+    width: 90,
+    height: 40,
+    backgroundColor: '#15d849',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    marginLeft: 80,
+    marginTop: 30
+  },
+  grid: {
+    width: '100%',
+    height: 100,
+    flexDirection: 'row',
+    borderStyle: 'solid',
+    borderColor: 'gray',
+    borderWidth: 0.5
+  },
+  btnOption: {
+    width: 120,
+    height: 100,
+    borderStyle: 'solid',
+    borderRightWidth: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  textNotice: {
+    color: 'black',
+    fontSize: 14,
+    fontWeight: '500',
+    marginTop: 10,
+    marginLeft: 15,
+  },
+  textNearNotice: {
+    color: 'gray',
+    fontSize: 14,
+    fontWeight: '400',
+    marginTop: 10,
+    marginLeft: 10
   }
 });
