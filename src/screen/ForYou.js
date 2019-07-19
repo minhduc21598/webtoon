@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, Dimensions, ImageBackground, ActivityIndicator, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ImageBackground, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import Swiper from 'react-native-swiper';
 import { newHere, topNewHere, imgSwiper, type, menuShare, menuOption, typeGenres } from '../component/Data';
 import ModalForU from '../component/ModalForU';
-import Carousel from 'react-native-snap-carousel';
+import SlideItemCarousel from '../component/SlideItemCarousel';
 import ScrollHorizontal from '../component/ScrollHorizontal';
 import Label from '../component/Label';
+import Title from '../component/TitleChanges';
 
 class ForYou extends Component {
   constructor(props) {
@@ -90,6 +91,9 @@ class ForYou extends Component {
   gotoOriginals = () => {
     this.props.navigation.navigate("ORIGINALS");
   }
+  onSnapToItem = (index) => {
+    this.Title.setState({title: topNewHere[index].title})
+  }
   render() {
     return (
       <ScrollView
@@ -124,14 +128,10 @@ class ForYou extends Component {
         >
           <Label title='Start with hits read by Millions' />
         </TouchableOpacity>
-        <Carousel
-          data={newHere}
-          sliderWidth={Dimensions.get('window').width}
-          itemWidth={300}
-          inactiveSlideOpacity={1}
-          renderItem={this._renderItem}
-          inactiveSlideScale={0.85}
-          firstItem={0}
+        <SlideItemCarousel
+          data = {newHere}
+          renderItem = {this._renderItem}
+          itemWidth = {300}
         />
         <Text style={styles.textFindYourSeries}>Find your series</Text>
         <ImageBackground
@@ -147,19 +147,21 @@ class ForYou extends Component {
             <Text style={styles.textView}>View</Text>
           </TouchableOpacity>
         </ImageBackground>
-        <Label
+        {/* <Label
           title='Top Series'
           disabled={true}
+        /> */}
+        <Title
+          ref={ref => this.Title = ref}
+          initValue = {topNewHere[0].title}
+          styleTxt = {styles.title}
+          onPress = {() => alert("Another screen")}
         />
-        <Carousel
-          data={topNewHere}
-          sliderWidth={Dimensions.get('window').width}
-          itemWidth={280}
-          inactiveSlideOpacity={1}
-          renderItem={this._renderItem1}
-          inactiveSlideScale={1}
-          activeSlideAlignment={'start'}
-          slideStyle={{ start: 20 }}
+        <SlideItemCarousel
+          data = {topNewHere}
+          renderItem= {this._renderItem1}
+          itemWidth = {280}
+          onSnapToItem = {this.onSnapToItem}
         />
         <View style={styles.viewSwiper}>
           <Swiper
@@ -446,11 +448,11 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   },
   title: {
-    width: 180,
-    height: 30,
-    backgroundColor: 'green',
-    marginLeft: 20,
+    marginLeft: 15,
     marginTop: 10,
-    flexDirection: 'row'
+    marginBottom: 10,
+    fontSize: 16,
+    color: 'black',
+    fontWeight: '500'
   },
 });
