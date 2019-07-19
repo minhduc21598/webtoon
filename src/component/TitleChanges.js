@@ -1,22 +1,41 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { TouchableOpacity ,Text, StyleSheet } from 'react-native';
 
 class TitleChanges extends Component {
   constructor(props) {
     super(props);
+    let { initValue } = this.props;
     this.state = {
-      index:0
+      title: initValue
     };
   }
 
   render() {
-    const {index, data, element , styleTxt} = this.props;
-    return (   
-      
-        <Text style = {styleTxt}> {index}</Text>
-        
+    const { styleTxt, onPress } = this.props;
+    return (
+      <TouchableOpacity
+        style = {styles.container}
+        onPress = {onPress}
+        activeOpacity = {1}
+      >
+        <Text style={styleTxt}> {this.state.title}</Text>
+        <Text style = {styles.arrow}>></Text>
+      </TouchableOpacity>
     );
   }
 }
 
 export default TitleChanges;
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  arrow: {
+    marginRight: 15,
+    marginTop: 5,
+    color: 'black',
+    fontSize: 18
+  }
+});

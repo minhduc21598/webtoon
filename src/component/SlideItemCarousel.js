@@ -10,19 +10,18 @@ class SlideItemCarousel extends Component {
   }
 
   render() {
-    const {data, renderItem, onSnapToItem} = this.props;
+    const {data, renderItem, onSnapToItem, itemWidth} = this.props;
     return (
       <Carousel
         data={data}
         sliderWidth={Dimensions.get('window').width}
-        itemWidth={280}
+        itemWidth={itemWidth}
         inactiveSlideOpacity={1}
         renderItem={renderItem}
         inactiveSlideScale={0.85}
-        slideStyle={{ marginLeft: 5 }}
-        activeSlideAlignment={'start'}
         onSnapToItem ={onSnapToItem}
-        enableMomentum={true}
+        activeSlideAlignment={'start'}
+        slideStyle={{ start: 20 }}
     />
     );
   }
