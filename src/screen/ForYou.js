@@ -230,12 +230,17 @@ class ForYou extends Component {
           }
         </ScrollView>
         {
-          menuOption.map((item, index) => {
-            return <Label
-              title={item}
-              onPress={() => this.onPressOption(index)}
-            />
-          })
+          menuOption.map(
+            (item, index) => {
+              return (
+                <Label
+                  title={item}
+                  onPress={() => this.onPressOption(index)}
+                  key={index}
+                />
+              )
+            }
+          )
         }
         <View style={styles.line} />
         <Label
@@ -250,9 +255,9 @@ class ForYou extends Component {
                   style={styles.btnSocial}
                   activeOpacity={0.6}
                   onPress={() => alert("item")}
-                  key = {index}
+                  key={index}
                 >
-                  <Icon1 name = {item} size={30} color={'black'} />
+                  <Icon1 name={item} size={30} color={'black'} />
                 </TouchableOpacity>
               )
             })

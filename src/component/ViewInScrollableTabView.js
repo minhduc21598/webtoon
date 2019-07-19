@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text,StyleSheet, TouchableOpacity, ScrollView, Image, ActivityIndicator, RefreshControl } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ViewSortBy from './ViewSortBy';
 
 class ViewInScrollableTabView extends Component {
     constructor(props) {
@@ -33,18 +35,11 @@ class ViewInScrollableTabView extends Component {
         const { data,tabName, styleTxtCounter, styleFlatGrid } = this.props;
         return (
             <View tabLabel={tabName} style={{ flex: 1 }}>
-                <View style={{...styleTxtCounter}}>
-                    <Text style={{ color: 'gray', fontSize: 15 }}>
-                        10 items
-                    </Text>
-                    <TouchableOpacity
-                        activeOpacity={1}
-                    >
-                        <Text style={{ color: 'gray', fontSize: 15 }}>
-                            Sort by interest
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                <ViewSortBy 
+                    viewStyle={styleTxtCounter} 
+                    numberOfItem='10 items'
+                    titleSort='Sort by Interest'    
+                />
                 <ScrollView
                     refreshControl={
                         <RefreshControl
@@ -58,11 +53,13 @@ class ViewInScrollableTabView extends Component {
                         items={data}
                         spacing={7}
                         renderItem={({ item, index }) => (
-                            <View style={{...styleFlatGrid}} key={index}>
+                            <View style={styleFlatGrid} key={index}>
                                 <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                                <Text style={{ fontSize: 10, color: 'purple' }}>{item.genre}</Text>
+                                <Text style={{ fontSize: 10, color: 'red' }}>{item.genre}</Text>
                                 <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                                <Text style={{ fontSize: 10, color: 'purple' }}>{item.likes}</Text>
+                                <Text style={{ fontSize: 10, color: 'green' }}>
+                                    <Icon name='ios-heart' color='green' /> {item.likes}
+                                </Text>
                             </View>
                         )}
                         onEndReachedThreshold={0.5}
@@ -78,7 +75,6 @@ class ViewInScrollableTabView extends Component {
 
 export default ViewInScrollableTabView;
 const styles = StyleSheet.create({
-    
     loading: {
         width: "100%",
         justifyContent: 'center',
