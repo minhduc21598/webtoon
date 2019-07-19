@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import { dataOriginal } from '../component/Data';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
-
-const tabName = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN', 'COMPLETED'];
+import { tabNameInDaily } from '../component/Data';
 
 class Daily extends Component {
     constructor(props) {
@@ -23,7 +22,7 @@ class Daily extends Component {
                 tabBarUnderlineStyle={{ height: 2 }}
             >
                 {
-                    tabName.map(
+                    tabNameInDaily.map(
                         (item, index) => {
                             return (
                                 <ViewInScrollableTabView

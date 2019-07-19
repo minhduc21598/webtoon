@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet} from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
-import { dataOriginal } from '../component/Data';
-
-const tabName = ['Romance', 'Drama', 'Fantasy', 'Comedy', 'Action', 'Horror', 'Slice of Life', 'Heart-warming', 'Superheroes', 'Sport', 'Scifi', 'Infomative', 'Historical'];
+import { dataOriginal, tabNameInGenresCan } from '../component/Data';
 
 class GenreCan extends Component {
   constructor(props) {
@@ -25,7 +23,7 @@ class GenreCan extends Component {
           tabBarUnderlineStyle={{ height: 2 }}
         >
           {
-            tabName.map(
+            tabNameInGenresCan.map(
               (item, index) => {
                 return (
                   <ViewInScrollableTabView

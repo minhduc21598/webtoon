@@ -22,6 +22,7 @@ class SlideItemCarousel extends Component {
         slideStyle={{ marginLeft: 5 }}
         activeSlideAlignment={'start'}
         onSnapToItem ={onSnapToItem}
+        enableMomentum={true}
     />
     );
   }

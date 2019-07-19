@@ -5,6 +5,7 @@ import { recommendationDataScreenMy, canvasDataPick1, canvasDataPick2, iconCanva
 import Icon from 'react-native-vector-icons/Ionicons';
 import Carousel from '../component/SlideItemCarousel';
 import TitleChanges from '../component/TitleChanges';
+import ItemRow from '../component/ItemRow';
 
 class Spotlight extends Component {
     constructor(props) {
@@ -13,10 +14,6 @@ class Spotlight extends Component {
             refreshing: false,
             isLoading: true
         };
-    }
-
-    onSnapToItem = (index) => {
-        return index;
     }
 
     _onRefresh = () => { //bat su kien user muon reload lai data list
@@ -85,59 +82,33 @@ class Spotlight extends Component {
                             (item, index) => {
                                 return (
                                     <ImageBackground source={{ uri: item.uri }} style={styles.imgBack} key={index}>
-                                        <Text style={styles.txtRec}>
-                                            {item.genre}
-                                        </Text>
-                                        <Text style={styles.txtRec}>
-                                            {item.title}
-                                        </Text>
+                                        <Text style={styles.txtRec}> {item.genre}</Text>
+                                        <Text style={styles.txtRec}> {item.title}</Text>
                                     </ImageBackground>
                                 )
                             }
                         )}
                 </ScrollView>
-                <TitleChanges 
-                    index ={this.onSnapToItem}
-                    data = {carouselData}
+                {/* <TitleChanges
+                    index={this.onSnapToItem}
+                    data={carouselData}
                     element='titles'
                     style={styles.titleCarouselTxt}
-                />
+                /> */}
                 <Carousel
                     data={carouselData}
                     renderItem={this.renderItem}
                     onSnapToItem={this.onSnapToItem}
                 />
                 <Text style={styles.txtTitle}> Fresh Picks </Text>
-                <View style={{ marginTop: 5, height: 130, flexDirection: 'row', width: "100%" }}>
-                    {
-                        canvasDataPick1.map(
-                            (item, index) => {
-                                return (
-                                    <View style={styles.picks} key={index} >
-                                        <Image source={{ uri: item.uri }} style={{ height: 70, width: 70, borderRadius: 10 }} />
-                                        <Text style={styles.txtWeekly}>{item.genre}</Text>
-                                        <Text style={[styles.txtWeekly, { textAlign: "center" }]}>{item.title}</Text>
-                                    </View>
-                                )
-                            }
-                        )
-                    }
-                </View>
-                <View style={{ height: 140, flexDirection: 'row', width: "100%" }}>
-                    {
-                        canvasDataPick2.map(
-                            (item, index) => {
-                                return (
-                                    <View style={styles.picks} key={index} >
-                                        <Image source={{ uri: item.uri }} style={{ height: 70, width: 70, borderRadius: 10 }} />
-                                        <Text style={styles.txtWeekly}>{item.genre}</Text>
-                                        <Text style={[styles.txtWeekly, { textAlign: "center" }]}>{item.title}</Text>
-                                    </View>
-                                )
-                            }
-                        )
-                    }
-                </View>
+                <ItemRow
+                    data={canvasDataPick1}
+                    styleTxt={styles.txtWeekly}
+                />
+                <ItemRow
+                    data={canvasDataPick2}
+                    styleTxt={styles.txtWeekly}
+                />
                 <TouchableOpacity
                     style={{ flexDirection: 'row', justifyContent: 'space-between' }}
                     activeOpacity={1}
@@ -152,15 +123,14 @@ class Spotlight extends Component {
                     spacing={2}
                     style={{ marginLeft: 15, marginTop: 10, marginBottom: 15 }}
                     renderItem={({ item, index }) => (
-                        <View style={{ width: 70, height: 90, alignItems: 'center' }} key={index}>
-                            <TouchableOpacity
-                                style={styles.itemContainer}
-                                onPress={() => alert(`${item.name}`)}
-                            >
-                                <Icon name={item.icon} color={'black'} size={35} />
-                            </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.itemContainer}
+                            onPress={() => alert(`${item.name}`)}
+                            style={{ width: 70, height: 90, alignItems: 'center' }} key={index}
+                        >
+                            <Icon name={item.icon} color={'black'} size={35} />
                             <Text style={{ fontSize: 12, color: 'black' }}> {item.name} </Text>
-                        </View>
+                        </TouchableOpacity>
                     )}
                 />
             </ScrollView>
@@ -217,13 +187,6 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         color: 'black'
     },
-    picks: {
-        flexDirection: 'column',
-        margin: 4,
-        height: 110,
-        width: "33%",
-        alignItems: 'center'
-    },
     itemContainer: {
         width: 70,
         height: 70,
@@ -232,10 +195,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#e3e3e3'
     },
-    titleCarouselTxt:{
-        fontSize: 25, 
-        marginLeft: 17, 
-        marginTop: 10, 
-        color:'black'
-}
+    titleCarouselTxt: {
+        fontSize: 25,
+        marginLeft: 17,
+        marginTop: 10,
+        color: 'black'
+    },
 });

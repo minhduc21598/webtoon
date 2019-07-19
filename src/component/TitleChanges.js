@@ -5,14 +5,16 @@ class TitleChanges extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      index:0
     };
   }
 
   render() {
-      const {index, data, element , styleTxt} = this.props;
-      console.log(this.props)
-    return (     
-        <Text style = {styleTxt}> {data[index]}.{element}</Text>
+    const {index, data, element , styleTxt} = this.props;
+    return (   
+      
+        <Text style = {styleTxt}> {index}</Text>
+        
     );
   }
 }

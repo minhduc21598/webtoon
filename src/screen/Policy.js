@@ -22,14 +22,12 @@ class Policy extends Component {
                     </Text>
                 </View>
                 <View style={{ backgroundColor: '#BCE0DE' }}>
-                    <Text style={{ justifyContent: 'center', marginTop: 15, marginRight: 15, marginLeft:15 }} numberOfLines={2}>
+                    <Text style={{ justifyContent: 'center', marginTop: 15, marginRight: 15, marginLeft: 15 }} numberOfLines={2}>
                         We are updating our Term of Use and Privacy Policy on June 1, 2019.
                         Here
                     </Text>
-                    <View
-                        style={styles.divider}
-                    />
-                    <Text style={{marginLeft: 15, marginRight: 15}}> 
+                    <View style={styles.divider} />
+                    <Text style={{ marginLeft: 15, marginRight: 15 }}>
                         In the 1970s, software production was viewed as consisting of two distinct activities
             performed sequentially: development followed by maintenance. Starting from scratch, the
             software product was developed, and then installed on the client’s computer. Any change
@@ -45,10 +43,8 @@ class Policy extends Component {
             software product is installed, this would be classical development. Again, there is no difference whatsoever between the nature of the two activities, but classically one is considered
             development, the other perfective maintenance.
                     </Text>
-                    <View
-                        style={styles.divider}
-                    />
-                    <Text style={{marginLeft:15, marginRight:15, marginBottom: 15}}>
+                    <View style={styles.divider} />
+                    <Text style={{ marginLeft: 15, marginRight: 15, marginBottom: 15 }}>
                         We make some minor changes that do not affect
                     </Text>
                 </View>
@@ -68,7 +64,7 @@ const styles = StyleSheet.create({
     headerTxt: {
         color: 'white',
         fontWeight: '500',
-        fontSize: 20
+        fontSize: 20,
     },
     noticeTab: {
         justifyContent: 'center',
@@ -82,9 +78,9 @@ const styles = StyleSheet.create({
     divider: {
         borderBottomColor: 'black',
         borderBottomWidth: 1,
-        marginTop:15,
-        marginBottom:15,
-        marginLeft:45,
-        marginRight:45
+        marginTop: 15,
+        marginBottom: 15,
+        marginLeft: 45,
+        marginRight: 45
     }
 });

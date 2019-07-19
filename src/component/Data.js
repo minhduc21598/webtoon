@@ -1227,3 +1227,7 @@ export const iconCanvas = [
         name: 'Superhero'
     },
 ];
+
+export const tabNameInDaily = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN', 'COMPLETED'];
+
+export const tabNameInGenresCan = ['Romance', 'Drama', 'Fantasy', 'Comedy', 'Action', 'Horror', 'Slice of Life', 'Heart-warming', 'Superheroes', 'Sport', 'Scifi', 'Infomative', 'Historical'];
