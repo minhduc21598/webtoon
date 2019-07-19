@@ -105,6 +105,7 @@ class Spotlight extends Component {
                 <Carousel
                     data={carouselData}
                     renderItem={this.renderItem}
+                    itemWidth={280}
                     onSnapToItem={this.onSnapToItem}
                 />
                 <Text style={styles.txtTitle}> Fresh Picks </Text>
