@@ -147,10 +147,6 @@ class ForYou extends Component {
             <Text style={styles.textView}>View</Text>
           </TouchableOpacity>
         </ImageBackground>
-        {/* <Label
-          title='Top Series'
-          disabled={true}
-        /> */}
         <Title
           ref={ref => this.Title = ref}
           initValue = {topNewHere[0].title}

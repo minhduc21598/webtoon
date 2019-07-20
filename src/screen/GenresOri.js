@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
+import ViewSort from '../component/ViewSortBy';
 import { dataGenresOri } from '../component/Data';
 
 class GenresOri extends Component {
@@ -29,17 +30,11 @@ class GenresOri extends Component {
                     showsVerticalScrollIndicator={false}
                     tabLabel={item.title} key={index}
                   >
-                    <View style={styles.headerTab}>
-                      <Text style={styles.infor}>{item.quantity} items</Text>
-                      <TouchableOpacity
-                        style={styles.hideModal}
-                        activeOpacity={1}
-                        onPress={() => alert("Modal")}
-                      >
-                        <Text style={styles.title}>Sort by Popularity</Text>
-                        <Icon name='md-arrow-dropdown' size={20} />
-                      </TouchableOpacity>
-                    </View>
+                    <ViewSort
+                      viewStyle = {styles.headerTab}
+                      numberOfItem = {item.quantity}
+                      titleSort = {'Sort by Popularity'}
+                    />
                     {
                       item.listObject.map(
                         (subitem, subindex) => {
@@ -60,7 +55,6 @@ class GenresOri extends Component {
                                 </View>
                                 <Text style={styles.sum}>{subitem.sum}</Text>
                               </View>
-                              <Text style={{ fontSize: 11 }}>{subitem.sum}</Text>
                             </View>
                           )
                         }

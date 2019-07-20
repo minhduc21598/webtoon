@@ -37,7 +37,7 @@ class ViewInScrollableTabView extends Component {
             <View tabLabel={tabName} style={{ flex: 1 }}>
                 <ViewSortBy 
                     viewStyle={styleTxtCounter} 
-                    numberOfItem='10 items'
+                    numberOfItem='10'
                     titleSort='Sort by Interest'    
                 />
                 <ScrollView
