@@ -129,7 +129,9 @@ class Spotlight extends Component {
                             onPress={() => alert(`${item.name}`)}
                             style={{ width: 70, height: 90, alignItems: 'center' }} key={index}
                         >
-                            <Icon name={item.icon} color={'black'} size={35} />
+                            <View style={styles.btnCircle}>
+                                <Icon name={item.icon} color={'black'} size={35} />
+                            </View>
                             <Text style={{ fontSize: 12, color: 'black' }}> {item.name} </Text>
                         </TouchableOpacity>
                     )}
@@ -201,5 +203,14 @@ const styles = StyleSheet.create({
         marginLeft: 17,
         marginTop: 10,
         color: 'black'
+    },
+    btnCircle: {
+        width: 70,
+        height: 70,
+        backgroundColor: '#e3e3e3',
+        borderRadius: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 5
     },
 });

@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     txtCounter: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        margin: 12,
-        height: 20
+        height: 20,
+        marginTop: 10,
+        marginBottom: 10
     }
 });
