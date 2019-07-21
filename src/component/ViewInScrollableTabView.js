@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,StyleSheet, TouchableOpacity, ScrollView, Image, ActivityIndicator, RefreshControl } from 'react-native';
+import { View, Text,StyleSheet, ScrollView, Image, ActivityIndicator, RefreshControl } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ViewSortBy from './ViewSortBy';
@@ -32,7 +32,7 @@ class ViewInScrollableTabView extends Component {
     }
 
     render() {
-        const { data,tabName, styleTxtCounter, styleFlatGrid } = this.props;
+        const { data, tabName, styleTxtCounter, styleFlatGrid } = this.props;
         return (
             <View tabLabel={tabName} style={{ flex: 1 }}>
                 <ViewSortBy 

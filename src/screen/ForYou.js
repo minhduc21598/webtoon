@@ -203,7 +203,7 @@ class ForYou extends Component {
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          style={{ paddingLeft: 15, height: 110 }}
+          style={{ height: 110 }}
         >
           {
             type.map(
@@ -395,8 +395,9 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   listBtn: {
-    marginRight: 10,
-    alignItems: 'center'
+    // marginRight: 10,
+    alignItems: 'center',
+    marginLeft: 20
   },
   btnCircle: {
     width: 70,

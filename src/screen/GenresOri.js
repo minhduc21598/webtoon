@@ -1,77 +1,62 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import ViewSort from '../component/ViewSortBy';
-import { dataGenresOri } from '../component/Data';
+import Shortcuts from '../component/ShortcutsOri';
+import ScrollableTab from '../component/ScrollableOri';
 
 class GenresOri extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      shortcuts: false
     };
+    this.currentIndex = 0;
+  }
+
+  showShortcuts = () => {
+    if(this.state.shortcuts){
+      this.setState({shortcuts: false})
+    } else {
+      this.setState({shortcuts: true})
+    }
+  }
+
+  onChangeShortcuts = (index) => {
+    this.currentIndex = index;
+    this.setState({shortcuts: false});
+  }
+
+  onChangeScrollableTab = (index) => {
+    this.currentIndex = index;
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <ScrollableTabView
-          initialPage={0}
-          renderTabBar={() => <ScrollableTabBar style={styles.scrollTab} />}
-          tabBarInactiveTextColor={'gray'}
-          tabBarActiveTextColor={'black'}
-          tabBarUnderlineStyle={{ height: 2 }}
+        {
+          (!this.state.shortcuts) ? 
+          <ScrollableTab 
+            ref = {ref => this.ScrollableTab = ref}
+            data = {this.currentIndex}
+            onChange = {this.onChangeScrollableTab}
+          /> :   
+          <Shortcuts 
+            ref = {ref => this.Shortcuts = ref}
+            data = {this.currentIndex}
+            onChange = {this.onChangeShortcuts}
+          />      
+        }
+        <TouchableOpacity
+          style={styles.modalBoxStyle}
+          activeOpacity={1}
+          onPress= {this.showShortcuts}
         >
           {
-            dataGenresOri.map(
-              (item, index) => {
-                return (
-                  <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    tabLabel={item.title} key={index}
-                  >
-                    <ViewSort
-                      viewStyle = {styles.headerTab}
-                      numberOfItem = {item.quantity}
-                      titleSort = {'Sort by Popularity'}
-                    />
-                    {
-                      item.listObject.map(
-                        (subitem, subindex) => {
-                          return (
-                            <View
-                              style={styles.subItemView}
-                              key={subindex}
-                            >
-                              <Image
-                                source={{ uri: subitem.image }}
-                                style={styles.image}
-                              />
-                              <View style={styles.boxContain}>
-                                <Text style={styles.itemName}>{subitem.name}</Text>
-                                <View style={styles.like}>
-                                  <Icon name='ios-heart' size={14} color={'#17ee51'} />
-                                  <Text style={styles.sub}>{subitem.sub}</Text>
-                                </View>
-                                <Text style={styles.sum}>{subitem.sum}</Text>
-                              </View>
-                            </View>
-                          )
-                        }
-                      )
-                    }
-                  </ScrollView>
-                )
-              }
-            )
+            (this.state.shortcuts)
+              ? <Icon name='ios-arrow-up' size={20} color={'gray'} />
+              : <Icon name='ios-arrow-down' size={20} color={'gray'} />
           }
-
-        </ScrollableTabView>
-        <View
-          style={styles.modalBoxStyle}
-        >
-          <Icon name='ios-arrow-down' size={20} color={'gray'} />
-        </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -80,55 +65,6 @@ class GenresOri extends Component {
 export default GenresOri;
 
 const styles = StyleSheet.create({
-  scrollTab: {
-    width: 310,
-    borderTopWidth: 0.5,
-    borderBottomWidth: 0.5,
-    borderTopColor: '#d0cdcd'
-  },
-  headerContent: {
-    width: '100%',
-    height: 60,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  infor: {
-    marginLeft: 20
-  },
-  hideModal: {
-    flexDirection: 'row',
-    marginRight: 20
-  },
-  title: {
-    marginRight: 5,
-    fontSize: 13
-  },
-  image: {
-    width: 120,
-    height: 120,
-    borderRadius: 5
-  },
-  itemName: {
-    color: 'black',
-    fontSize: 16
-  },
-  like: {
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  sub: {
-    color: '#17ee51',
-    marginLeft: 5,
-    fontSize: 13
-  },
-  sum: {
-    fontSize: 11
-  },
-  boxContain: {
-    marginLeft: 20,
-    width: 180
-  },
   modalBoxStyle: {
     width: 50,
     height: 50,
@@ -139,18 +75,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  headerTab: {
-    width: '100%',
-    height: 40,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  subItemView: {
-    width: 320,
-    height: 120,
-    marginTop: 15,
-    marginLeft: 20,
-    flexDirection: 'row'
-  }
 });
