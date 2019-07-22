@@ -69,10 +69,10 @@ class ForYou extends Component {
         this.props.navigation.navigate("ORIGINALS")
         break;
       case 1:
-        // this.props.navigation.navigate("ORIGINALS")
+        // this.props.navigation.navigate("ORIGINALS", {daily: false, colorGenres: 'black', colorDaily: 'gray'})
         break;
       case 2:
-        // this.props.navigation.navigate("ORIGINALS")
+        this.props.navigation.navigate("ORIGINALS", {daily: false, colorGenres: 'black', colorDaily: 'gray'})
         break;
       case 3:
         // this.props.navigation.navigate("ORIGINALS")
@@ -88,8 +88,8 @@ class ForYou extends Component {
   gotoCanvas = () => {
     this.props.navigation.navigate("CANVAS");
   }
-  gotoOriginals = () => {
-    this.props.navigation.navigate("ORIGINALS");
+  gotoOriginals = (index) => {
+    this.props.navigation.navigate("ORIGINALS", {daily: false, colorGenres: 'black', colorDaily: 'gray', index: index});
   }
   onSnapToItem = (index) => {
     this.Title.setState({title: topNewHere[index].title})
@@ -194,12 +194,10 @@ class ForYou extends Component {
           <Text style={styles.textExcitingNew}>Exciting New Stories</Text>
           <Text style={{ fontSize: 13 }}>Series from our Self-Publishing Creators</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={1}
+        <Label 
+          title='Genres'
           onPress={this.gotoOriginals}
-        >
-          <Label title='Genres' />
-        </TouchableOpacity>
+        />
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -210,10 +208,10 @@ class ForYou extends Component {
               (item, index) => {
                 return (
                   <TouchableOpacity
-                    style={styles.listBtn}
-                    key={index}
-                    activeOpacity={1}
-                    onPress={this.gotoOriginals}
+                    style = {styles.listBtn}
+                    key = {index}
+                    activeOpacity = {1}
+                    onPress = {() => this.gotoOriginals(index)}
                   >
                     <View style={styles.btnCircle}>
                       <Icon name={item.icon} size={30} color={'black'} />

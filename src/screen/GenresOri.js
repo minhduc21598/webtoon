@@ -7,23 +7,29 @@ import ScrollableTab from '../component/ScrollableOri';
 class GenresOri extends Component {
   constructor(props) {
     super(props);
+    let { data } = this.props;
     this.state = {
       shortcuts: false
     };
-    this.currentIndex = 0;
+    this.currentIndex = data;
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    let { data } = this.props;
+    this.currentIndex = data;
   }
 
   showShortcuts = () => {
-    if(this.state.shortcuts){
-      this.setState({shortcuts: false})
+    if (this.state.shortcuts) {
+      this.setState({ shortcuts: false })
     } else {
-      this.setState({shortcuts: true})
+      this.setState({ shortcuts: true })
     }
   }
 
   onChangeShortcuts = (index) => {
     this.currentIndex = index;
-    this.setState({shortcuts: false});
+    this.setState({ shortcuts: false });
   }
 
   onChangeScrollableTab = (index) => {
@@ -31,28 +37,29 @@ class GenresOri extends Component {
   }
 
   render() {
+    const { shortcuts } = this.state;
     return (
       <View style={{ flex: 1 }}>
         {
-          (!this.state.shortcuts) ? 
-          <ScrollableTab 
-            ref = {ref => this.ScrollableTab = ref}
-            data = {this.currentIndex}
-            onChange = {this.onChangeScrollableTab}
-          /> :   
-          <Shortcuts 
-            ref = {ref => this.Shortcuts = ref}
-            data = {this.currentIndex}
-            onChange = {this.onChangeShortcuts}
-          />      
+          (!shortcuts) &&
+          <ScrollableTab
+            data={this.currentIndex}
+            onChange={this.onChangeScrollableTab}
+          />}
+        {
+          shortcuts && 
+            <Shortcuts
+            data={this.currentIndex}
+            onChange={this.onChangeShortcuts}
+          />
         }
         <TouchableOpacity
           style={styles.modalBoxStyle}
           activeOpacity={1}
-          onPress= {this.showShortcuts}
+          onPress={this.showShortcuts}
         >
           {
-            (this.state.shortcuts)
+            (shortcuts)
               ? <Icon name='ios-arrow-up' size={20} color={'gray'} />
               : <Icon name='ios-arrow-down' size={20} color={'gray'} />
           }
