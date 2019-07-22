@@ -8,27 +8,48 @@ import Daily from './Daily';
 class Originals extends Component {
   constructor(props) {
     super(props);
+    let daily = (this.props.navigation.state.params === undefined) ? true : this.props.navigation.state.params.daily;
+    let colorDaily = (this.props.navigation.state.params === undefined) ? 'black' : this.props.navigation.state.params.colorDaily;
+    let colorGenres = (this.props.navigation.state.params === undefined) ? 'gray' : this.props.navigation.state.params.colorGenres;
     this.state = {
       isLoadingMore: false,
-      daily: true,
-      colorDaily: "black",
-      colorGenres: "gray",
+      daily: daily,
+      colorDaily: colorDaily,
+      colorGenres: colorGenres,
     };
+    this.currentGenres = (this.props.navigation.state.params === undefined) ? 0 : this.props.navigation.state.params.index;
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    let daily = (this.props.navigation.state.params === undefined) ? true : this.props.navigation.state.params.daily;
+    let colorDaily = (this.props.navigation.state.params === undefined) ? 'black' : this.props.navigation.state.params.colorDaily;
+    let colorGenres = (this.props.navigation.state.params === undefined) ? 'gray' : this.props.navigation.state.params.colorGenres;
+    this.setState({daily: daily, colorDaily: colorDaily, colorGenres: colorGenres});
+    this.currentGenres = index;
+  }
+
+  onPressDaily = () => {
+    this.setState({ daily: true, colorDaily: "black", colorGenres: "gray" })
+  }
+
+  onPressGenres = () => {
+    this.setState({ daily: false, colorDaily: "gray", colorGenres: "black" })
   }
 
   render() {
+    let index = (this.props.navigation.state.params === undefined) ? 0 : this.props.navigation.state.params.index;
     return (
       <View style={{ flex: 1 }}>
         <StatusBar
           backgroundColor='transparent'
           barStyle='dark-content'
         />
-        <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
+        <View style={styles.headerContainer}>
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
-              onPress={() => this.setState({ daily: true, colorDaily: "black", colorGenres: "gray" })}
+              onPress = {this.onPressDaily}
             >
               <Text style={[styles.txtHeader, { color: this.state.colorDaily }]}>Daily</Text>
             </TouchableOpacity>
@@ -38,7 +59,7 @@ class Originals extends Component {
                 alignItems: 'center'
               }}
               activeOpacity={1}
-              onPress={() => this.setState({ daily: false, colorDaily: "gray", colorGenres: "black" })}
+              onPress = {this.onPressGenres}
             >
               <Text style={[styles.txtHeader, { color: this.state.colorGenres }]}>Genres</Text>
             </TouchableOpacity>
@@ -63,7 +84,10 @@ class Originals extends Component {
         {
           (this.state.daily)
             ? <Daily />
-            : <GenresOri />
+            : <GenresOri 
+                ref = {ref => this.GenresOri = ref}
+                data = {index}
+              />
         }
       </View>
     );
@@ -76,7 +100,9 @@ const styles = StyleSheet.create({
   headerContainer: {
     width: '100%',
     height: 60,
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection: 'row', 
+    justifyContent: 'space-between'
   },
   txtHeader: {
     fontSize: 23,

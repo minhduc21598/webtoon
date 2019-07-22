@@ -16,26 +16,21 @@ class ScrollableOri extends Component {
 
     onChangeTab = (item) => {
         let { onChange } = this.props;
-        this.setState({page: item.i});
+        this.setState({ page: item.i });
         onChange && onChange(item.i);
     }
 
-    shouldComponentUpdate = (nextState) => {
-        if(nextState.page != this.state.page){
-            return true;
-        }
-        return false;
-    }
-
+    renderTabBar = () => <ScrollableTabBar style={styles.scrollTab} />
+    
     render() {
         return (
             <ScrollableTabView
                 initialPage={this.state.page}
-                renderTabBar={() => <ScrollableTabBar style={styles.scrollTab} />}
+                renderTabBar={this.renderTabBar}
                 tabBarInactiveTextColor={'gray'}
                 tabBarActiveTextColor={'black'}
                 tabBarUnderlineStyle={{ height: 2 }}
-                onChangeTab = {this.onChangeTab}
+                onChangeTab={this.onChangeTab}
             >
                 {
                     dataGenresOri.map(
