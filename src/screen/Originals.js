@@ -25,11 +25,11 @@ class Originals extends Component {
     let colorDaily = (this.props.navigation.state.params === undefined) ? 'black' : this.props.navigation.state.params.colorDaily;
     let colorGenres = (this.props.navigation.state.params === undefined) ? 'gray' : this.props.navigation.state.params.colorGenres;
     this.setState({daily: daily, colorDaily: colorDaily, colorGenres: colorGenres});
-    this.currentGenres = index;
   }
 
   onPressDaily = () => {
     this.setState({ daily: true, colorDaily: "black", colorGenres: "gray" })
+    this.currentGenres = this.GenresOri.currentIndex;
   }
 
   onPressGenres = () => {
@@ -37,7 +37,7 @@ class Originals extends Component {
   }
 
   render() {
-    let index = (this.props.navigation.state.params === undefined) ? 0 : this.props.navigation.state.params.index;
+    let index = (this.props.navigation.state.params === undefined) ? this.currentGenres : this.props.navigation.state.params.index;
     return (
       <View style={{ flex: 1 }}>
         <StatusBar
