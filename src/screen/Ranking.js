@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import GenresCan from './GenresCan';
-import Spotlight from './Spotlight';
+import Manga from './Manga';
+import Anime from './Anime';
 
 class Canvas extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      spotlight: true,
+      anime: true,
       isLoadmore: false,
-      colorSpotlight: "black",
-      colorGenres: "gray",
+      colorAnime: "black",
+      colorManga: "gray",
     };
   }
 
@@ -22,14 +22,14 @@ class Canvas extends Component {
           backgroundColor='transparent'
           barStyle='dark-content'
         />
-        <View style={[styles.headerContainer, { flexDirection: 'row', justifyContent: 'space-between' }]}>
+        <View style={styles.headerContainer}>
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               style={{ alignItems: 'center' }}
               activeOpacity={1}
-              onPress={() => this.setState({ spotlight: true, colorSpotlight: "black", colorGenres: "gray" })}
+              onPress={() => this.setState({ anime: true, colorAnime: "black", colorManga: "gray" })}
             >
-              <Text style={[styles.txtHeader, { color: this.state.colorSpotlight }]}>Spotlight</Text>
+              <Text style={[styles.txtHeader, { color: this.state.colorAnime }]}>Anime</Text>
             </TouchableOpacity>
             <Text style={styles.txtHeader}>|</Text>
             <TouchableOpacity
@@ -37,9 +37,9 @@ class Canvas extends Component {
                 alignItems: 'center'
               }}
               activeOpacity={1}
-              onPress={() => this.setState({ spotlight: false, colorSpotlight: "gray", colorGenres: "black" })}
+              onPress={() => this.setState({ anime: false, colorAnime: "gray", colorManga: "black" })}
             >
-              <Text style={[styles.txtHeader, { color: this.state.colorGenres }]}>Genres</Text>
+              <Text style={[styles.txtHeader, { color: this.state.colorManga }]}>Manga</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity
@@ -51,9 +51,9 @@ class Canvas extends Component {
           </TouchableOpacity>
         </View>
         {
-          (this.state.spotlight)
-            ? <Spotlight />
-            : <GenresCan />
+          (this.state.anime)
+            ? <Anime />
+            : <Manga />
         }
       </View>
     );
@@ -72,6 +72,8 @@ const styles = StyleSheet.create({
   headerContainer: {
     width: '100%',
     height: 60,
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection: 'row', 
+    justifyContent: 'space-between'
   }
 });

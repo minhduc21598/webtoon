@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
+<<<<<<< HEAD
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { tabNameInDaily } from '../const';
 import { dataOriginal } from '../component/Data';
+=======
+import GenresOri from './Manga';
+import Daily1 from './Daily1';
+>>>>>>> d035e4ce38c89d65598c4f742a71b3c6c6399790
 
 class Originals extends Component {
   constructor(props) {
