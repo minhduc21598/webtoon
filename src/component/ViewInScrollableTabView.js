@@ -3,6 +3,7 @@ import { View, Text,StyleSheet, ScrollView, Image, ActivityIndicator, RefreshCon
 import { FlatGrid } from 'react-native-super-grid';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ViewSortBy from './ViewSortBy';
+import Grid from './FlatGridItems';
 
 class ViewInScrollableTabView extends Component {
     constructor(props) {
@@ -17,7 +18,6 @@ class ViewInScrollableTabView extends Component {
     _onScrollDown = () => { // bắt sự kiện người dùng kéo xuống
         if (this.state.isLoadingmore) return;
         this.setState({ isLoadingmore: true });
-
     }
 
     _renderLoadingIconBelow = () => {
@@ -30,6 +30,17 @@ class ViewInScrollableTabView extends Component {
         }
         return null;
     }
+
+    renderItem = ({ item, index }) => (
+        <View style={styles.itemContainer} key={index}>
+            <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
+            <Text style={{ fontSize: 10, color: 'red' }}>{item.genre}</Text>
+            <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
+            <Text style={{ fontSize: 10, color: 'green' }}>
+                <Icon name='ios-heart' color='green' /> {item.likes}
+            </Text>
+        </View>
+    )
 
     render() {
         const { data, tabName, styleTxtCounter, styleFlatGrid } = this.props;
@@ -48,23 +59,14 @@ class ViewInScrollableTabView extends Component {
                         />
                     }
                 >
-                    <FlatGrid
+                    <Grid
                         itemDimension={110}
                         items={data}
                         spacing={7}
-                        renderItem={({ item, index }) => (
-                            <View style={styleFlatGrid} key={index}>
-                                <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-                                <Text style={{ fontSize: 10, color: 'red' }}>{item.genre}</Text>
-                                <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-                                <Text style={{ fontSize: 10, color: 'green' }}>
-                                    <Icon name='ios-heart' color='green' /> {item.likes}
-                                </Text>
-                            </View>
-                        )}
+                        renderItem={this.renderItem}
                         onEndReachedThreshold={0.5}
                         onEndReached={this._onScrollDown}
-                        ListFooterComponent={this._renderLoadingIconBelow}
+                        listFooterComponent={this._renderLoadingIconBelow}
                     />
                 </ScrollView>
             </View>
@@ -80,5 +82,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 10,
+    },
+    itemContainer: {
+        borderRadius: 5,
+        width: 100,
+        height: 160,
     },
 });
