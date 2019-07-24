@@ -10,20 +10,12 @@ class ViewSortBy extends Component {
     }
 
     render() {
-        const { viewStyle, numberOfItem ,titleSort } = this.props;
+        const { viewStyle, numberOfItem } = this.props;
         return (
             <View style={viewStyle}>
                 <Text style = {styles.infor}>
                     {numberOfItem} items
                 </Text>
-                <TouchableOpacity
-                    style = {styles.modal}
-                    activeOpacity={1}
-                    onPress={() => alert("Modal")}
-                >
-                    <Text style = {styles.titleSort}>{titleSort}</Text>
-                    <Icon name='md-arrow-dropdown' size={20} />
-                </TouchableOpacity>
             </View>
         );
     }
