@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ViewSort from '../component/ViewSortBy';
-import { dataGenresOri } from '../component/Data';
+import { dataAnime } from '../const';
 
 class ScrollableOri extends Component {
     constructor(props) {
@@ -33,43 +33,14 @@ class ScrollableOri extends Component {
                 onChangeTab={this.onChangeTab}
             >
                 {
-                    dataGenresOri.map(
+                    dataAnime.map(
                         (item, index) => {
                             return (
                                 <ScrollView
                                     showsVerticalScrollIndicator={false}
-                                    tabLabel={item.title} key={index}
+                                    tabLabel={item} key={index}
                                 >
-                                    <ViewSort
-                                        viewStyle={styles.headerTab}
-                                        numberOfItem={item.quantity}
-                                        titleSort={'Sort by Popularity'}
-                                    />
-                                    {
-                                        item.listObject.map(
-                                            (subitem, subindex) => {
-                                                return (
-                                                    <View
-                                                        style={styles.subItemView}
-                                                        key={subindex}
-                                                    >
-                                                        <Image
-                                                            source={{ uri: subitem.image }}
-                                                            style={styles.image}
-                                                        />
-                                                        <View style={styles.boxContain}>
-                                                            <Text style={styles.itemName}>{subitem.name}</Text>
-                                                            <View style={styles.like}>
-                                                                <Icon name='ios-heart' size={14} color={'#17ee51'} />
-                                                                <Text style={styles.sub}>{subitem.sub}</Text>
-                                                            </View>
-                                                            <Text style={styles.sum}>{subitem.sum}</Text>
-                                                        </View>
-                                                    </View>
-                                                )
-                                            }
-                                        )
-                                    }
+                                    
                                 </ScrollView>
                             )
                         }

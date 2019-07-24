@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Shortcuts from '../component/ShortcutsOri';
 import ScrollableTab from '../component/ScrollableOri';
 
-class GenresOri extends Component {
+class Anime extends Component {
   constructor(props) {
     super(props);
     let { data } = this.props;
@@ -69,7 +69,7 @@ class GenresOri extends Component {
   }
 }
 
-export default GenresOri;
+export default Anime;
 
 const styles = StyleSheet.create({
   modalBoxStyle: {
