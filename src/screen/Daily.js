@@ -1,59 +1,113 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
-import { dataOriginal } from '../component/Data';
-import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
-import { tabNameInDaily } from '../component/Data';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Icon1 from 'react-native-vector-icons/FontAwesome5';
+import GenresOri from './GenresOri';
+import Daily1 from './Daily1';
 
-class Daily extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
+class Originals extends Component {
+  constructor(props) {
+    super(props);
+    let daily = (this.props.navigation.state.params === undefined) ? true : this.props.navigation.state.params.daily;
+    let colorDaily = (this.props.navigation.state.params === undefined) ? 'black' : this.props.navigation.state.params.colorDaily;
+    let colorGenres = (this.props.navigation.state.params === undefined) ? 'gray' : this.props.navigation.state.params.colorGenres;
+    this.state = {
+      isLoadingMore: false,
+      daily: daily,
+      colorDaily: colorDaily,
+      colorGenres: colorGenres,
+    };
+    this.currentGenres = (this.props.navigation.state.params === undefined) ? 0 : this.props.navigation.state.params.index;
+  }
 
-    render() {
-        return (
-            <ScrollableTabView
-                initialPage={0}
-                renderTabBar={() => <ScrollableTabBar style={{ borderTopWidth: 0.5, borderTopColor: '#d0cdcd' }} />}
-                tabBarInactiveTextColor={'gray'}
-                tabBarActiveTextColor={'black'}
-                tabBarUnderlineStyle={{ height: 2 }}
+  componentWillReceiveProps = (nextProps) => {
+    let daily = (this.props.navigation.state.params === undefined) ? true : this.props.navigation.state.params.daily;
+    let colorDaily = (this.props.navigation.state.params === undefined) ? 'black' : this.props.navigation.state.params.colorDaily;
+    let colorGenres = (this.props.navigation.state.params === undefined) ? 'gray' : this.props.navigation.state.params.colorGenres;
+    this.setState({daily: daily, colorDaily: colorDaily, colorGenres: colorGenres});
+  }
+
+  onPressDaily = () => {
+    this.setState({ daily: true, colorDaily: "black", colorGenres: "gray" })
+    this.currentGenres = this.GenresOri.currentIndex;
+  }
+
+  onPressGenres = () => {
+    this.setState({ daily: false, colorDaily: "gray", colorGenres: "black" })
+  }
+
+  render() {
+    let index = (this.props.navigation.state.params === undefined) ? this.currentGenres : this.props.navigation.state.params.index;
+    return (
+      <View style={{ flex: 1 }}>
+        <StatusBar
+          backgroundColor='transparent'
+          barStyle='dark-content'
+        />
+        <View style={styles.headerContainer}>
+          <View style={{ flexDirection: 'row' }}>
+            <TouchableOpacity
+              style={{ alignItems: 'center' }}
+              activeOpacity={1}
+              onPress = {this.onPressDaily}
             >
-                {
-                    tabNameInDaily.map(
-                        (item, index) => {
-                            return (
-                                <ViewInScrollableTabView
-                                    tabLabel={item}
-                                    styleTxtCounter={styles.txtCounter}
-                                    styleFlatGrid={styles.itemContainer}
-                                    data={dataOriginal}
-                                    key={index}
-                                />
-                            )
-                        }
-                    )
-                }
-            </ScrollableTabView>
-        );
-    }
+              <Text style={[styles.txtHeader, { color: this.state.colorDaily }]}>Daily</Text>
+            </TouchableOpacity>
+            <Text style={styles.txtHeader}>|</Text>
+            <TouchableOpacity
+              style={{
+                alignItems: 'center'
+              }}
+              activeOpacity={1}
+              onPress = {this.onPressGenres}
+            >
+              <Text style={[styles.txtHeader, { color: this.state.colorGenres }]}>Genres</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity
+            onPress={() => alert("btn Medal")}
+            activeOpacity={1}
+            style={{ marginRight: 25 }}
+          >
+            <Icon1 name='medal' size={23} color={'black'} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => alert("btn Search")}
+            activeOpacity={1}
+            style={{ marginRight: 15 }}
+          >
+            <Icon name='ios-search' size={30} color={'black'} />
+          </TouchableOpacity>
+          </View>
+        </View>
+        {
+          (this.state.daily)
+            ? <Daily1/>
+            : <GenresOri 
+                ref = {ref => this.GenresOri = ref}
+                data = {index}
+              />
+        }
+      </View>
+    );
+  }
 }
 
-export default Daily;
+export default Originals;
 
 const styles = StyleSheet.create({
-    itemContainer: {
-        borderRadius: 5,
-        width: 100,
-        height: 160,
-    },
-    txtCounter: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        height: 20,
-        marginTop: 10,
-        marginBottom: 10
-    }
+  headerContainer: {
+    width: '100%',
+    height: 60,
+    alignItems: 'center',
+    flexDirection: 'row', 
+    justifyContent: 'space-between'
+  },
+  txtHeader: {
+    fontSize: 23,
+    fontWeight: '500',
+    color: 'black',
+    marginLeft: 18
+  },
 });
