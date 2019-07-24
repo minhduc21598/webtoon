@@ -4,51 +4,52 @@ import {
     createAppContainer,
 } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ForYou from '../screen/ForYou';
-import Originals from '../screen/Originals';
-import Canvas from '../screen/Canvas';
-import My from '../screen/My';
-import More from '../screen/More';
+import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Season from '../screen/Season';
+import Daily from '../screen/Daily';
+import Ranking from '../screen/Ranking';
+import Previous from '../screen/Previous';
+import User from '../screen/User';
 
 const Footer = createBottomTabNavigator(
     {
-        FORYOU:{
-            screen: ForYou,
+        Season:{
+            screen: Season,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
-                    <Icon name="ios-heart-empty" color={tintColor} size={24}/>
+                    <Icon name="ios-snow" color={tintColor} size={24}/>
                 )
             }
         },
-        ORIGINALS:{
-            screen: Originals,
+        Daily:{
+            screen: Daily,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
                     <Icon name="ios-paper" color={tintColor} size={24}/>
                 )
             }
         },
-        CANVAS:{
-            screen: Canvas,
+        Previous:{
+            screen: Previous,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
-                    <Icon name="ios-image" color={tintColor} size={24}/>
+                    <Icon1 name="skip-previous" color={tintColor} size={24}/>
                 )
             }
         },
-        MY:{
-            screen: My,
+        Ranking:{
+            screen: Ranking,
+            navigationOptions:{
+                tabBarIcon: ({tintColor}) => (
+                    <Icon1 name="medal" color={tintColor} size={24}/>
+                )
+            }
+        },
+        User:{
+            screen: User,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
                     <Icon name="ios-person" color={tintColor} size={24}/>
-                )
-            }
-        },
-        MORE:{
-            screen: More,
-            navigationOptions:{
-                tabBarIcon: ({tintColor}) => (
-                    <Icon name="ios-more" color={tintColor} size={24}/>
                 )
             }
         }
