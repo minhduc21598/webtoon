@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Shortcuts from '../component/ShortcutsOri';
-import ScrollableTab from '../component/ScrollableOri';
+import Shortcuts from '../component/ShortcutsRanking';
+import ScrollableTab from '../component/ScrollableRanking';
+import {typeAnime} from '../const';
+import {dataAnime} from '../const';
 
 class Anime extends Component {
   constructor(props) {
     super(props);
-    let { data } = this.props;
     this.state = {
       shortcuts: false
     };
-    this.currentIndex = data;
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    let { data } = this.props;
-    this.currentIndex = data;
+    this.currentIndex = 0;
   }
 
   showShortcuts = () => {
@@ -44,12 +40,14 @@ class Anime extends Component {
           (!shortcuts) &&
           <ScrollableTab
             data={this.currentIndex}
+            dataTab = {dataAnime}
             onChange={this.onChangeScrollableTab}
           />}
         {
           shortcuts && 
-            <Shortcuts
+          <Shortcuts
             data={this.currentIndex}
+            dataBtn = {typeAnime}
             onChange={this.onChangeShortcuts}
           />
         }
