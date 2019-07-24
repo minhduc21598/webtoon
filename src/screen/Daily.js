@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
-import GenresOri from './GenresOri';
+import GenresOri from './Manga';
 import Daily1 from './Daily1';
 
 class Originals extends Component {

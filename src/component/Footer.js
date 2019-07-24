@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    createBottomTabNavigator, 
-    createAppContainer,
-} from 'react-navigation';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Season from '../screen/Season';
