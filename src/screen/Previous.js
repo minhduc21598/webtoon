@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, StatusBar, TouchableHighlight, ScrollView } from 'react-native';
-import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
+import { View, Text, StyleSheet, Image, StatusBar, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
-import { recentDataScreenMy } from '../component/Data';
+import Genres from './Genres';
+import OldSeason from './OldSeason';
 
 class My extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      oldSeason: true,
+      colorSeason: "black",
+      colorGenre:"gray"
     };
   }
 
@@ -19,72 +21,40 @@ class My extends Component {
           backgroundColor='transparent'
           barStyle='dark-content'
         />
-        <View style={styles.headerTab}>
-          <Text style={styles.headerTxt}>My Series</Text>
-          <View style={{ flexDirection: 'row', marginTop: 13 }}>
-            <TouchableHighlight
-              onPress={() => alert("btn List")}
-              style={{ marginRight: 15, width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 20 }}
-              underlayColor={'gray'}
+        <View style={styles.headerContainer}>
+          <View style={{ flexDirection: 'row' }}>
+            <TouchableOpacity
+              style={{ alignItems: 'center' }}
+              activeOpacity={1}
+              onPress={() => this.setState({ oldSeason: true, colorSeason: "black", colorGenre: "gray" })}
             >
-              <Icon name='ios-list' size={30} color={'black'} />
-            </TouchableHighlight>
-            <TouchableHighlight
-              onPress={() => alert("btn List")}
-              style={{ marginRight: 10, width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 20 }}
-              underlayColor={'gray'}
+              <Text style={[styles.txtHeader, { color: this.state.colorSeason }]}>Seasons</Text>
+            </TouchableOpacity>
+            <Text style={styles.txtHeader}>|</Text>
+            <TouchableOpacity
+              style={{
+                alignItems: 'center'
+              }}
+              activeOpacity={1}
+              onPress={() => this.setState({ oldSeason: false, colorSeason: "gray", colorGenre: "black" })}
             >
-              <Icon1 name='coin' size={30} color={'black'} />
-            </TouchableHighlight>
+              <Text style={[styles.txtHeader, { color: this.state.colorGenre }]}>Genres</Text>
+            </TouchableOpacity>
           </View>
+          <TouchableOpacity
+            onPress={() => alert("btn Search")}
+            activeOpacity={1}
+            style={{ marginRight: 15 }}
+          >
+            <Icon name='ios-search' size={30} color={'black'} />
+          </TouchableOpacity>
         </View>
-        <ScrollableTabView
-          initialPage={0}
-          renderTabBar={() => <ScrollableTabBar />}
-          tabBarInactiveTextColor={'gray'}
-          tabBarActiveTextColor={'black'}
-          tabBarUnderlineStyle={{ height: 2 }}
-          style={{ flex: 1 }}
-        >
-          <ScrollView tabLabel='Recent'>
-            {
-              recentDataScreenMy.map(
-                (item, index) => {
-                  return (
-                    <View style={{ flexDirection: 'row', width: "100%" }} key={index}>
-                      <Image source={{ uri: item.uri }} style={styles.imgRecent} />
-                      <View style={{ flex: 1, justifyContent: 'center' }}>
-                        <Text style={styles.txtRecent}> {item.title} </Text>
-                        <Text style={styles.txtRecent}> {item.rank} </Text>
-                      </View>
-                    </View>
-                  )
-                }
-              )
-            }
-          </ScrollView>
-          <View tabLabel='Subcribed' style={styles.tabs}>
-            <Text style={styles.txtTabs}>
-              No subcribed
-            </Text>
-          </View>
-          <View tabLabel='Downloads' style={styles.tabs}>
-            <Text style={styles.txtTabs}>
-              No downloads
-            </Text>
-          </View>
-          <View tabLabel='Fast Pass' style={styles.tabs}>
-            <Text style={styles.txtTabs}>
-              Enable fast pass for better experience
-            </Text>
-          </View>
-          <View tabLabel='Comment' style={styles.tabs}>
-            <Text style={styles.txtTabs}>
-              No comments
-            </Text>
-          </View>
-        </ScrollableTabView>
-      </View>
+        {
+          (this.state.oldSeason)
+            ? <OldSeason />
+            : <Genres />
+        }
+        </View>
     );
   }
 }
@@ -92,45 +62,17 @@ class My extends Component {
 export default My;
 
 const styles = StyleSheet.create({
-  headerTab: {
+  headerContainer: {
     width: '100%',
     height: 60,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+    alignItems: 'center',
+    flexDirection: 'row', 
+    justifyContent: 'space-between'
   },
-  headerTxt: {
+  txtHeader: {
     fontSize: 23,
     fontWeight: '500',
     color: 'black',
-    marginLeft: 18,
-    marginTop: 13
+    marginLeft: 18
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  recentView: {
-    flex: 1,
-    height: 500
-  },
-  imgRecent: {
-    width: 100,
-    height: 100
-  },
-  txtRecent: {
-    color: 'red',
-    fontSize: 20,
-    margin: 4,
-  },
-  tabs: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1
-  },
-  txtTabs: {
-    color: 'red',
-    fontSize: 25,
-    textAlign: 'center'
-  }
 });

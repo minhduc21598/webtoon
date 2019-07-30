@@ -1,49 +1,20 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Icon1 from 'react-native-vector-icons/FontAwesome5';
-<<<<<<< HEAD
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { tabNameInDaily } from '../const';
 import { dataOriginal } from '../component/Data';
-=======
-import GenresOri from './Manga';
-import Daily1 from './Daily1';
->>>>>>> d035e4ce38c89d65598c4f742a71b3c6c6399790
 
 class Originals extends Component {
   constructor(props) {
     super(props);
-    let daily = (this.props.navigation.state.params === undefined) ? true : this.props.navigation.state.params.daily;
-    let colorDaily = (this.props.navigation.state.params === undefined) ? 'black' : this.props.navigation.state.params.colorDaily;
-    let colorGenres = (this.props.navigation.state.params === undefined) ? 'gray' : this.props.navigation.state.params.colorGenres;
     this.state = {
       isLoadingMore: false,
-      colorDaily: colorDaily,
-      colorGenres: colorGenres,
     };
-    this.currentGenres = (this.props.navigation.state.params === undefined) ? 0 : this.props.navigation.state.params.index;
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    let daily = (this.props.navigation.state.params === undefined) ? true : this.props.navigation.state.params.daily;
-    let colorDaily = (this.props.navigation.state.params === undefined) ? 'black' : this.props.navigation.state.params.colorDaily;
-    let colorGenres = (this.props.navigation.state.params === undefined) ? 'gray' : this.props.navigation.state.params.colorGenres;
-    this.setState({ daily: daily, colorDaily: colorDaily, colorGenres: colorGenres });
-  }
-
-  onPressDaily = () => {
-    this.setState({ daily: true, colorDaily: "black", colorGenres: "gray" })
-    this.currentGenres = this.GenresOri.currentIndex;
-  }
-
-  onPressGenres = () => {
-    this.setState({ daily: false, colorDaily: "gray", colorGenres: "black" })
   }
 
   render() {
-    let index = (this.props.navigation.state.params === undefined) ? this.currentGenres : this.props.navigation.state.params.index;
     return (
       <View style={{ flex: 1 }}>
         <StatusBar
@@ -51,7 +22,6 @@ class Originals extends Component {
           barStyle='dark-content'
         />
         <View style={styles.headerContainer}>
-
           <Text style={[styles.txtHeader, { color: 'black' }]}>Daily</Text>
           <TouchableOpacity
             onPress={() => alert("btn Search")}
@@ -104,7 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 23,
     fontWeight: '500',
     color: 'black',
-    marginLeft: 18
+    marginLeft: 25
   },
   itemContainer: {
     borderRadius: 5,
