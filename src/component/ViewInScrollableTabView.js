@@ -43,7 +43,7 @@ class ViewInScrollableTabView extends Component {
     )
 
     render() {
-        const { data, tabName, styleTxtCounter, styleFlatGrid } = this.props;
+        const { data, tabName, styleTxtCounter } = this.props;
         return (
             <View tabLabel={tabName} style={{ flex: 1 }}>
                 <ViewSortBy 

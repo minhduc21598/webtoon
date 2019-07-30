@@ -41,6 +41,7 @@ class Manga extends Component {
           <ScrollableTab
             data={this.currentIndex}
             dataTab = {dataManga}
+            styleTabBar = {styles.scrollTab}
             onChange={this.onChangeScrollableTab}
           />}
         {
@@ -79,5 +80,11 @@ const styles = StyleSheet.create({
     borderColor: '#d0cdcd',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  scrollTab: {
+    width: 310,
+    borderTopWidth: 0.5,
+    borderBottomWidth: 0.5,
+    borderTopColor: '#d0cdcd'
   },
 });
