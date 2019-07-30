@@ -3,12 +3,11 @@ import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import { recentDataScreenMy } from '../component/Data';
 
-import YearPicker from "react-year-picker";
 class OldSeason extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            date:""
+            date: ""
         };
     }
 
@@ -18,8 +17,7 @@ class OldSeason extends Component {
 
     render() {
         return (
-            <View style={{flex:1}}>
-                <YearPicker onChange={this.dateChange} />
+            <View style={{ flex: 1 }}>
                 <ScrollableTabView
                     initialPage={0}
                     renderTabBar={() => <ScrollableTabBar />}
@@ -48,22 +46,22 @@ class OldSeason extends Component {
                     <View tabLabel='Subcribed' style={styles.tabs}>
                         <Text style={styles.txtTabs}>
                             No subcribed
-          </Text>
+                        </Text>
                     </View>
                     <View tabLabel='Downloads' style={styles.tabs}>
                         <Text style={styles.txtTabs}>
                             No downloads
-          </Text>
+                        </Text>
                     </View>
                     <View tabLabel='Fast Pass' style={styles.tabs}>
                         <Text style={styles.txtTabs}>
                             Enable fast pass for better experience
-          </Text>
+                        </Text>
                     </View>
                     <View tabLabel='Comment' style={styles.tabs}>
                         <Text style={styles.txtTabs}>
                             No comments
-          </Text>
+                        </Text>
                     </View>
                 </ScrollableTabView>
             </View>

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { FlatGrid } from 'react-native-super-grid';
-import { type } from '../component/Data';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Grid from './FlatGridItems';
 
-class ShortcutsOri extends Component {
+class ShortcutsRanking extends Component {
   constructor(props) {
     super(props);
     let { data } = this.props;
@@ -34,14 +33,15 @@ class ShortcutsOri extends Component {
   }
 
   render() {
+    let { dataBtn } = this.props;
     return (
       <View>
         <View style={styles.title}>
           <Text style={styles.titleName}>SHORTCUTS</Text>
         </View>
-        <FlatGrid
+        <Grid
           itemDimension={75}
-          items={type}
+          items={dataBtn}
           spacing={8}
           renderItem={this.renderItem}
         />
@@ -50,7 +50,7 @@ class ShortcutsOri extends Component {
   }
 }
 
-export default ShortcutsOri;
+export default ShortcutsRanking;
 
 const styles = StyleSheet.create({
   title: {

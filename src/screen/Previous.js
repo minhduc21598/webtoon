@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, StatusBar, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, StatusBar, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Genres from './Genres';
 import OldSeason from './OldSeason';
 
-class My extends Component {
+class Previous extends Component {
   constructor(props) {
     super(props);
     this.state = {
       oldSeason: true,
       colorSeason: "black",
-      colorGenre:"gray"
+      colorGenre: "gray"
     };
   }
 
@@ -54,19 +54,23 @@ class My extends Component {
             ? <OldSeason />
             : <Genres />
         }
-        </View>
+      </View>
     );
   }
 }
 
-export default My;
+export default Previous;
 
 const styles = StyleSheet.create({
   headerContainer: {
     width: '100%',
     height: 60,
     alignItems: 'center',
+<<<<<<< HEAD
     flexDirection: 'row', 
+=======
+    flexDirection: 'row',
+>>>>>>> 52123a73cf02063e7bb8e51ea64e890820011272
     justifyContent: 'space-between'
   },
   txtHeader: {

@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Shortcuts from '../component/ShortcutsOri';
-import ScrollableTab from '../component/ScrollableOri';
+import Shortcuts from '../component/ShortcutsRanking';
+import ScrollableTab from '../component/ScrollableRanking';
+import {typeManga} from '../const';
+import {dataManga} from '../const';
 
 class Manga extends Component {
   constructor(props) {
     super(props);
-    let { data } = this.props;
     this.state = {
       shortcuts: false
     };
-    this.currentIndex = data;
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    let { data } = this.props;
-    this.currentIndex = data;
+    this.currentIndex = 0;
   }
 
   showShortcuts = () => {
@@ -44,12 +40,15 @@ class Manga extends Component {
           (!shortcuts) &&
           <ScrollableTab
             data={this.currentIndex}
+            dataTab = {dataManga}
+            styleTabBar = {styles.scrollTab}
             onChange={this.onChangeScrollableTab}
           />}
         {
           shortcuts && 
-            <Shortcuts
+          <Shortcuts
             data={this.currentIndex}
+            dataBtn = {typeManga}
             onChange={this.onChangeShortcuts}
           />
         }
@@ -81,5 +80,11 @@ const styles = StyleSheet.create({
     borderColor: '#d0cdcd',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  scrollTab: {
+    width: 310,
+    borderTopWidth: 0.5,
+    borderBottomWidth: 0.5,
+    borderTopColor: '#d0cdcd'
   },
 });

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 
 class Genres extends Component {
   constructor(props) {
@@ -18,6 +18,3 @@ class Genres extends Component {
 }
 
 export default Genres;
-const styles = StyleSheet.create({
-    
-});
