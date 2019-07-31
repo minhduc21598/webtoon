@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, StatusBar, TouchableOpacity } from 'react-nativ
 import Icon from 'react-native-vector-icons/Ionicons';
 import { btnMore } from '../component/Data';
 
-class More extends Component {
+class Download extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,7 +71,7 @@ class More extends Component {
   }
 }
 
-export default More;
+export default Download;
 
 const styles = StyleSheet.create({
   textMore: {

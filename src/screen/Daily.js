@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { tabNameInDaily } from '../const';
 import { dataOriginal } from '../component/Data';
+import Header from '../component/Header';
 
 class Originals extends Component {
   constructor(props) {
@@ -21,17 +21,10 @@ class Originals extends Component {
           backgroundColor='transparent'
           barStyle='dark-content'
         />
-        <View style={styles.headerContainer}>
-          <Text style={[styles.txtHeader, { color: 'black' }]}>Daily</Text>
-          <TouchableOpacity
-            onPress={() => alert("btn Search")}
-            activeOpacity={1}
-            style={{ marginRight: 15 }}
-          >
-            <Icon name='ios-search' size={30} color={'black'} />
-          </TouchableOpacity>
-
-        </View>
+        <Header
+          firstTxt = {'Daily'}
+          secondTxt = {''}
+        />
         <ScrollableTabView
           initialPage={0}
           renderTabBar={() => <ScrollableTabBar style={{ borderTopWidth: 0.5, borderTopColor: '#d0cdcd' }} />}
@@ -63,19 +56,6 @@ class Originals extends Component {
 export default Originals;
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    width: '100%',
-    height: 60,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  txtHeader: {
-    fontSize: 23,
-    fontWeight: '500',
-    color: 'black',
-    marginLeft: 25
-  },
   itemContainer: {
     borderRadius: 5,
     width: 100,
