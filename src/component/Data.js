@@ -896,7 +896,7 @@ export const btnMore = [
 
 export const typeGenres = ["Staff Picks", "Specials", "Today's Hot Series", "Rising Stars", "LoL", "Brand New World", "Binge-worthy Series", "Spotlight", "Romance", "Drama"];
 
-export const menuOption = ['Daily', 'Ranking', 'Genres', 'Fan Translation', 'Settings'];
+export const menuOption = ['Daily', 'Previous', 'Genres', 'Ranking', 'Download'];
 
 export const menuShare = ['facebook', 'instagram', 'twitter', 'youtube']
 

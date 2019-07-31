@@ -66,21 +66,20 @@ class ForYou extends Component {
   onPressOption = (index) => {
     switch (index) {
       case 0:
-        this.props.navigation.navigate("ORIGINALS")
+        this.props.navigation.navigate("Daily");
         break;
       case 1:
-        // this.props.navigation.navigate("ORIGINALS", {daily: false, colorGenres: 'black', colorDaily: 'gray'})
+        this.props.navigation.navigate("Previous");
         break;
       case 2:
-        this.props.navigation.navigate("ORIGINALS", {daily: false, colorGenres: 'black', colorDaily: 'gray'})
+        this.props.navigation.navigate("Previous");
         break;
       case 3:
-        // this.props.navigation.navigate("ORIGINALS")
+        this.props.navigation.navigate("Ranking");
         break;
       case 4:
-        // this.props.navigation.navigate("ORIGINALS")
+        this.props.navigation.navigate("Download");
         break;
-
       default:
         break;
     }
