@@ -5,6 +5,7 @@ import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-ta
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { tabNameInDaily } from '../const';
 import { dataOriginal } from '../component/Data';
+import Header from '../component/Header';
 
 class Originals extends Component {
   constructor(props) {
@@ -17,21 +18,10 @@ class Originals extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar
-          backgroundColor='transparent'
-          barStyle='dark-content'
+        <Header 
+          ref = {ref => this.Header = ref}
+          firstTxt = {'Daily'}
         />
-        <View style={styles.headerContainer}>
-          <Text style={[styles.txtHeader, { color: 'black' }]}>Daily</Text>
-          <TouchableOpacity
-            onPress={() => alert("btn Search")}
-            activeOpacity={1}
-            style={{ marginRight: 15 }}
-          >
-            <Icon name='ios-search' size={30} color={'black'} />
-          </TouchableOpacity>
-
-        </View>
         <ScrollableTabView
           initialPage={0}
           renderTabBar={() => <ScrollableTabBar style={{ borderTopWidth: 0.5, borderTopColor: '#d0cdcd' }} />}
