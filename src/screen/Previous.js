@@ -1,54 +1,37 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, StatusBar, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View } from 'react-native';
 import Genres from './Genres';
 import OldSeason from './OldSeason';
+import Header from '../component/Header';
 
 class Previous extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      oldSeason: true,
-      colorSeason: "black",
-      colorGenre: "gray"
+      oldSeason: true
     };
+  }
+
+  firstOnPress = () => {
+    this.Header.setState({ colorFirstTxt: "black", colorSecondTxt: "gray" })
+    this.setState({ oldSeason: true})
+  }
+
+  secondOnPress = () => {
+    this.Header.setState({ colorFirstTxt: "gray", colorSecondTxt: "black" })
+    this.setState({ oldSeason: false})
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar
-          backgroundColor='transparent'
-          barStyle='dark-content'
+        <Header 
+          ref = {ref => this.Header = ref}
+          firstTxt = {'Season'}
+          secondTxt = {'Genres'}
+          firstOnPress = {this.firstOnPress}
+          secondOnPress = {this.secondOnPress}
         />
-        <View style={styles.headerContainer}>
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity
-              style={{ alignItems: 'center' }}
-              activeOpacity={1}
-              onPress={() => this.setState({ oldSeason: true, colorSeason: "black", colorGenre: "gray" })}
-            >
-              <Text style={[styles.txtHeader, { color: this.state.colorSeason }]}>Seasons</Text>
-            </TouchableOpacity>
-            <Text style={styles.txtHeader}>|</Text>
-            <TouchableOpacity
-              style={{
-                alignItems: 'center'
-              }}
-              activeOpacity={1}
-              onPress={() => this.setState({ oldSeason: false, colorSeason: "gray", colorGenre: "black" })}
-            >
-              <Text style={[styles.txtHeader, { color: this.state.colorGenre }]}>Genres</Text>
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity
-            onPress={() => alert("btn Search")}
-            activeOpacity={1}
-            style={{ marginRight: 15 }}
-          >
-            <Icon name='ios-search' size={30} color={'black'} />
-          </TouchableOpacity>
-        </View>
         {
           (this.state.oldSeason)
             ? <OldSeason />
@@ -60,23 +43,3 @@ class Previous extends Component {
 }
 
 export default Previous;
-
-const styles = StyleSheet.create({
-  headerContainer: {
-    width: '100%',
-    height: 60,
-    alignItems: 'center',
-<<<<<<< HEAD
-    flexDirection: 'row', 
-=======
-    flexDirection: 'row',
->>>>>>> 52123a73cf02063e7bb8e51ea64e890820011272
-    justifyContent: 'space-between'
-  },
-  txtHeader: {
-    fontSize: 23,
-    fontWeight: '500',
-    color: 'black',
-    marginLeft: 18
-  },
-});
