@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {dataOriginal} from './Data';
+import { dataOriginal } from './Data';
 
 class ScrollableRanking extends Component {
     constructor(props) {
@@ -18,13 +18,13 @@ class ScrollableRanking extends Component {
         this.setState({ page: item.i });
         onChange && onChange(item.i);
     }
-    
+
     render() {
-        let {dataTab, styleTabBar} = this.props;
+        let { dataTab, styleTabBar } = this.props;
         return (
             <ScrollableTabView
                 initialPage={this.state.page}
-                renderTabBar={() => <ScrollableTabBar style = {styleTabBar} />}
+                renderTabBar={() => <ScrollableTabBar style={styleTabBar} />}
                 tabBarInactiveTextColor={'gray'}
                 tabBarActiveTextColor={'black'}
                 tabBarUnderlineStyle={{ height: 2 }}
@@ -41,19 +41,19 @@ class ScrollableRanking extends Component {
                                     {
                                         dataOriginal.map(
                                             (item1, index1) => {
-                                                return(
+                                                return (
                                                     <View
-                                                        style = {styles.container}
-                                                        key = {index1}
+                                                        style={styles.container}
+                                                        key={index1}
                                                     >
-                                                        <Image 
-                                                            style = {styles.image}
-                                                            source = {{uri: item1.uri}}
+                                                        <Image
+                                                            style={styles.image}
+                                                            source={{ uri: item1.uri }}
                                                         />
                                                         <View>
-                                                            <Text style = {styles.title}>{item1.title}</Text>
-                                                            <Text style = {styles.genre}>{item1.genre}</Text>
-                                                            <Text style = {styles.like}><Icon name = 'ios-heart'/> {item1.likes}</Text>
+                                                            <Text style={styles.title}>{item1.title}</Text>
+                                                            <Text style={styles.genre}>{item1.genre}</Text>
+                                                            <Text style={styles.like}><Icon name='ios-heart' /> {item1.likes}</Text>
                                                         </View>
                                                     </View>
                                                 )
@@ -85,24 +85,24 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     image: {
-        width: 100, 
-        height: 100, 
+        width: 100,
+        height: 100,
         marginLeft: 30
     },
     title: {
-        flex: 1, 
-        marginLeft: 15, 
-        color: 'purple', 
+        flex: 1,
+        marginLeft: 15,
+        color: 'purple',
         fontSize: 15
     },
     genre: {
-        flex: 1, 
-        marginLeft: 15, 
+        flex: 1,
+        marginLeft: 15,
         color: 'red'
     },
     like: {
-        flex: 1, 
-        marginLeft: 15, 
+        flex: 1,
+        marginLeft: 15,
         color: 'green'
     }
 });

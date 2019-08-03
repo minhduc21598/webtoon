@@ -7,9 +7,23 @@ import Header from '../component/Header';
 class Previous extends Component {
   constructor(props) {
     super(props);
+    let oldSeason = (this.props.navigation.getParam('oldSeason') === undefined) ? true : this.props.navigation.getParam('oldSeason');
     this.state = {
-      oldSeason: true
+      oldSeason: oldSeason
     };
+  }
+
+  componentDidMount = () => {
+    if(this.state.oldSeason){
+      this.firstOnPress();
+    } else {
+      this.secondOnPress();
+    }
+  }
+
+  componentWillReceiveProps = () => {
+    this.setState({oldSeason: false});
+    this.secondOnPress();
   }
 
   firstOnPress = () => {

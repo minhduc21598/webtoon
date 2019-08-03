@@ -9,10 +9,18 @@ import {dataManga} from '../const';
 class Manga extends Component {
   constructor(props) {
     super(props);
+    let {index} = this.props;
     this.state = {
-      shortcuts: false
+      shortcuts: false,
     };
-    this.currentIndex = 0;
+    this.currentIndex = (index === undefined) ? 0 : index;
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    let {index} = this.props;
+    if(nextProps.index != index){
+      this.currentIndex = nextProps.index;
+    }
   }
 
   showShortcuts = () => {
@@ -33,7 +41,7 @@ class Manga extends Component {
   }
 
   render() {
-    const { shortcuts } = this.state;
+    const { shortcuts, currentIndex } = this.state;
     return (
       <View style={{ flex: 1 }}>
         {

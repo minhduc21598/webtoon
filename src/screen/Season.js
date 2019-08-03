@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ImageBackground, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Swiper from 'react-native-swiper';
 import { newHere, topNewHere, imgSwiper, type, menuShare, menuOption, typeGenres } from '../component/Data';
+import {typeManga} from '../const';
 import ModalForU from '../component/ModalForU';
 import SlideItemCarousel from '../component/SlideItemCarousel';
 import ScrollHorizontal from '../component/ScrollHorizontal';
@@ -72,7 +74,7 @@ class ForYou extends Component {
         this.props.navigation.navigate("Previous");
         break;
       case 2:
-        this.props.navigation.navigate("Previous");
+        this.props.navigation.navigate("Previous", {oldSeason: false});
         break;
       case 3:
         this.props.navigation.navigate("Ranking");
@@ -87,8 +89,8 @@ class ForYou extends Component {
   gotoCanvas = () => {
     this.props.navigation.navigate("CANVAS");
   }
-  gotoOriginals = (index) => {
-    this.props.navigation.navigate("ORIGINALS", {daily: false, colorGenres: 'black', colorDaily: 'gray', index: index});
+  gotoRankings = (index) => {
+    this.props.navigation.navigate("Ranking", {anime: false, index: index});
   }
   onSnapToItem = (index) => {
     this.Title.setState({title: topNewHere[index].title})
@@ -194,7 +196,7 @@ class ForYou extends Component {
           <Text style={{ fontSize: 13 }}>Series from our Self-Publishing Creators</Text>
         </TouchableOpacity>
         <Label 
-          title='Genres'
+          title='Manga'
           onPress={this.gotoOriginals}
         />
         <ScrollView
@@ -203,17 +205,17 @@ class ForYou extends Component {
           style={{ height: 110 }}
         >
           {
-            type.map(
+            typeManga.map(
               (item, index) => {
                 return (
                   <TouchableOpacity
                     style = {styles.listBtn}
                     key = {index}
                     activeOpacity = {1}
-                    onPress = {() => this.gotoOriginals(index)}
+                    onPress = {() => this.gotoRankings(index)}
                   >
                     <View style={styles.btnCircle}>
-                      <Icon name={item.icon} size={30} color={'black'} />
+                      <Icon2 name={item.icon} size={30} color={'black'} />
                     </View>
                     <Text style={styles.titleBtn}>{item.name}</Text>
                   </TouchableOpacity>
@@ -235,11 +237,6 @@ class ForYou extends Component {
             }
           )
         }
-        <View style={styles.line} />
-        <Label
-          title='Notice'
-          onPress={() => alert("Another screen")}
-        />
         <View style={styles.listSocial}>
           {
             menuShare.map((item, index) => {
@@ -392,7 +389,6 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   listBtn: {
-    // marginRight: 10,
     alignItems: 'center',
     marginLeft: 20
   },
@@ -420,7 +416,8 @@ const styles = StyleSheet.create({
   listSocial: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 20
   },
   btnSocial: {
     width: 40,
