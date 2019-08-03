@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
+import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { recentDataScreenMy } from '../component/Data';
+import Picker from 'react-native-picker';
 
 class OldSeason extends Component {
     constructor(props) {
@@ -15,9 +17,35 @@ class OldSeason extends Component {
         this.setState({ date: date })
     }
 
+    openYear = () => {
+        let data =[];
+        for (var i = 1945; i < 2019; i++) {
+            data.push(i);
+        }
+
+        Picker.init({
+            pickerData: data,
+            selectedValue: [2018],
+            onPickerConfirm: data => {
+                console.log(data);
+            },
+            onPickerCancel: data => {
+                console.log(data);
+            },
+            onPickerSelect: data => {
+                console.log(data);
+            }
+        });
+        Picker.show();
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
+                <Button
+                    title="Choose a year"
+                    onPress={this.openYear}
+                />
                 <ScrollableTabView
                     initialPage={0}
                     renderTabBar={() => <ScrollableTabBar />}
@@ -26,43 +54,21 @@ class OldSeason extends Component {
                     tabBarUnderlineStyle={{ height: 2 }}
                     style={{ flex: 1 }}
                 >
-                    <ScrollView tabLabel='Recent'>
-                        {
-                            recentDataScreenMy.map(
-                                (item, index) => {
-                                    return (
-                                        <View style={{ flexDirection: 'row', width: "100%" }} key={index}>
-                                            <Image source={{ uri: item.uri }} style={styles.imgRecent} />
-                                            <View style={{ flex: 1, justifyContent: 'center' }}>
-                                                <Text style={styles.txtRecent}> {item.title} </Text>
-                                                <Text style={styles.txtRecent}> {item.rank} </Text>
-                                            </View>
-                                        </View>
-                                    )
-                                }
-                            )
-                        }
-                    </ScrollView>
-                    <View tabLabel='Subcribed' style={styles.tabs}>
-                        <Text style={styles.txtTabs}>
-                            No subcribed
-                        </Text>
-                    </View>
-                    <View tabLabel='Downloads' style={styles.tabs}>
-                        <Text style={styles.txtTabs}>
-                            No downloads
-                        </Text>
-                    </View>
-                    <View tabLabel='Fast Pass' style={styles.tabs}>
-                        <Text style={styles.txtTabs}>
-                            Enable fast pass for better experience
-                        </Text>
-                    </View>
-                    <View tabLabel='Comment' style={styles.tabs}>
-                        <Text style={styles.txtTabs}>
-                            No comments
-                        </Text>
-                    </View>
+                    {
+                        seasons.map(
+                            (item, index) => {
+                                return (
+                                    <ViewInScrollableTabView
+                                        tabLabel={item}
+                                        styleTxtCounter={styles.txtCounter}
+                                        styleFlatGrid={styles.itemContainer}
+                                        data={recentDataScreenMy}
+                                        key={index}
+                                    />
+                                )
+                            }
+                        )
+                    }
                 </ScrollableTabView>
             </View>
         );
@@ -71,27 +77,29 @@ class OldSeason extends Component {
 
 export default OldSeason;
 const styles = StyleSheet.create({
-    txtRecent: {
-        color: 'red',
-        fontSize: 20,
-        margin: 4,
-    },
-    tabs: {
-        justifyContent: 'center',
+    headerContainer: {
+        width: '100%',
+        height: 60,
         alignItems: 'center',
-        flex: 1
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
-    txtTabs: {
-        color: 'red',
-        fontSize: 25,
-        textAlign: 'center'
+    txtHeader: {
+        fontSize: 23,
+        fontWeight: '500',
+        color: 'black',
+        marginLeft: 25
     },
-    recentView: {
-        flex: 1,
-        height: 500
-    },
-    imgRecent: {
+    itemContainer: {
+        borderRadius: 5,
         width: 100,
-        height: 100
+        height: 160,
     },
+    txtCounter: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        height: 20,
+        marginTop: 10,
+        marginBottom: 10
+    }
 });

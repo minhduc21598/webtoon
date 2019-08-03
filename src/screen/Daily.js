@@ -17,13 +17,9 @@ class Originals extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar
-          backgroundColor='transparent'
-          barStyle='dark-content'
-        />
-        <Header
+        <Header 
+          ref = {ref => this.Header = ref}
           firstTxt = {'Daily'}
-          secondTxt = {''}
         />
         <ScrollableTabView
           initialPage={0}
