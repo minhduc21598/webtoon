@@ -7,10 +7,24 @@ import Header from '../component/Header';
 class Canvas extends Component {
   constructor(props) {
     super(props);
+    let anime = (this.props.navigation.getParam('anime') === undefined) ? true : this.props.navigation.getParam('anime');
     this.state = {
-      anime: true,
+      anime: anime,
       isLoadmore: false,
     };
+  }
+
+  componentDidMount = () => {
+    if(this.state.anime){
+      this.firstOnPress();
+    } else {
+      this.secondOnPress();
+    }
+  }
+
+  componentWillReceiveProps = () => {
+    this.setState({anime: false});
+    this.secondOnPress();
   }
 
   firstOnPress = () => {
@@ -24,6 +38,7 @@ class Canvas extends Component {
   }
 
   render() {
+    let index = this.props.navigation.getParam('index');
     return (
       <View style={{ flex: 1 }}>
         <StatusBar
@@ -40,7 +55,7 @@ class Canvas extends Component {
         {
           (this.state.anime)
             ? <Anime />
-            : <Manga />
+            : <Manga index = {index}/>
         }
       </View>
     );
