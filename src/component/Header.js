@@ -28,7 +28,7 @@ class Header extends Component {
                         >
                             <Text style={[styles.txtHeader, { color: this.state.colorFirstTxt }]}>{firstTxt}</Text>
                         </TouchableOpacity>
-                        <Text style={styles.txtHeader}>|</Text>
+                        <Text style={styles.txtHeader}>{(secondTxt == '') ? '' : '|'}</Text>
                         <TouchableOpacity
                             style={{
                                 alignItems: 'center'

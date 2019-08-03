@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, StyleSheet} from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
-import ViewInScrollableTabView from '../component/ViewInScrollableTabView'; 
+import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { recentDataScreenMy } from '../component/Data';
-import YearPicker from "react-year-picker";
+import Picker from 'react-native-picker';
 
 class OldSeason extends Component {
     constructor(props) {
@@ -17,10 +17,35 @@ class OldSeason extends Component {
         this.setState({ date: date })
     }
 
+    openYear = () => {
+        let data =[];
+        for (var i = 1945; i < 2019; i++) {
+            data.push(i);
+        }
+
+        Picker.init({
+            pickerData: data,
+            selectedValue: [2018],
+            onPickerConfirm: data => {
+                console.log(data);
+            },
+            onPickerCancel: data => {
+                console.log(data);
+            },
+            onPickerSelect: data => {
+                console.log(data);
+            }
+        });
+        Picker.show();
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <YearPicker onChange={this.handleChange} />;
+                <Button
+                    title="Choose a year"
+                    onPress={this.openYear}
+                />
                 <ScrollableTabView
                     initialPage={0}
                     renderTabBar={() => <ScrollableTabBar />}
@@ -58,23 +83,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between'
-      },
-      txtHeader: {
+    },
+    txtHeader: {
         fontSize: 23,
         fontWeight: '500',
         color: 'black',
         marginLeft: 25
-      },
-      itemContainer: {
+    },
+    itemContainer: {
         borderRadius: 5,
         width: 100,
         height: 160,
-      },
-      txtCounter: {
+    },
+    txtCounter: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: 20,
         marginTop: 10,
         marginBottom: 10
-      }
+    }
 });

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { tabNameInDaily } from '../const';
@@ -53,19 +52,6 @@ class Originals extends Component {
 export default Originals;
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    width: '100%',
-    height: 60,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  txtHeader: {
-    fontSize: 23,
-    fontWeight: '500',
-    color: 'black',
-    marginLeft: 25
-  },
   itemContainer: {
     borderRadius: 5,
     width: 100,
