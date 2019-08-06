@@ -24,8 +24,8 @@ export default ViewSortBy;
 
 const styles = StyleSheet.create({
     infor:{
-        color: 'gray', 
-        fontSize: 15, 
+        color: 'black', 
+        fontSize: 18, 
         marginLeft: 20
     },
     modal: {
