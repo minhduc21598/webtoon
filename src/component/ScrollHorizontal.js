@@ -12,7 +12,7 @@ class ScrollHorizontal extends Component {
   render() {
     const { title } = this.props;
     return (
-      <View style={{ marginBottom: 20 }}>
+      <View>
         <Text style={styles.title}>{title}</Text>
         <ScrollView
           horizontal={true}

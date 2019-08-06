@@ -21,11 +21,6 @@ class Previous extends Component {
     }
   }
 
-  componentWillReceiveProps = () => {
-    this.setState({oldSeason: false});
-    this.secondOnPress();
-  }
-
   firstOnPress = () => {
     this.Header.setState({ colorFirstTxt: "black", colorSecondTxt: "gray" })
     this.setState({ oldSeason: true})
@@ -34,6 +29,10 @@ class Previous extends Component {
   secondOnPress = () => {
     this.Header.setState({ colorFirstTxt: "gray", colorSecondTxt: "black" })
     this.setState({ oldSeason: false})
+  }
+
+  componentWillReceiveProps = () => {
+    this.secondOnPress();
   }
 
   render() {

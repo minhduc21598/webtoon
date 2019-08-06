@@ -20,6 +20,7 @@ class Originals extends Component {
         <Header 
           ref = {ref => this.Header = ref}
           firstTxt = {'Daily'}
+          secondTxt = {''}
         />
         <ScrollableTabView
           initialPage={0}

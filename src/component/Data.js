@@ -29,154 +29,154 @@ export const newHere = [
     }
 ];
 
-export const topNewHere = [
+export const season = [
     {
-        title: "Top Series",
+        title: "Spring",
         list: [
             {
-                order: "1",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "True Beauty",
-                type: "Drama"
+                order: '1',
+                type: 'Comedy',
+                image: 'https://images-na.ssl-images-amazon.com/images/I/51NllmIYLAL._SX332_BO1,204,203,200_.jpg',
+                name: 'Kaguya-sama wa Kakurasetai',
             },
             {
-                order: "2",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "unOrdinary",
-                type: "Fantasy"
+                order: '2',
+                type: 'Adventure',
+                image: 'https://images-na.ssl-images-amazon.com/images/I/51d0zpwcYzL._SX321_BO1,204,203,200_.jpg',
+                name: 'The Promised Neverland',
             },
             {
-                order: "3",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "Lore Olympus",
-                type: "Romance"
+                order: '3',
+                type: 'Drama',
+                image: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Nisekoi_Volume_1.jpg/230px-Nisekoi_Volume_1.jpg',
+                name: 'Nisekoi',
             },
             {
-                order: "4",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "Age Matters",
-                type: "Romance"
+                order: '4',
+                type: 'Adventure',
+                image: 'https://vignette.wikia.nocookie.net/twin-star-exorcists/images/1/14/Volume_08.png/revision/latest?cb=20160506171222',
+                name: 'Sousei no Onmiouji',
             },
             {
-                order: "5",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "LUFF",
-                type: "Romance"
+                order: '5',
+                type: 'Slice of Life',
+                image: 'https://upload.wikimedia.org/wikipedia/vi/a/af/Relife_manga.jpg',
+                name: 'ReLife',
             },
         ]
     },
     {
-        title: "Top Drama",
+        title: "Summer",
         list: [
             {
-                order: "1",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "True Beauty",
-                type: "Drama"
+                order: '1',
+                type: 'Comedy',
+                image: 'https://images-na.ssl-images-amazon.com/images/I/51NllmIYLAL._SX332_BO1,204,203,200_.jpg',
+                name: 'Kaguya-sama wa Kakurasetai',
             },
             {
-                order: "2",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "unOrdinary",
-                type: "Fantasy"
+                order: '2',
+                type: 'Adventure',
+                image: 'https://images-na.ssl-images-amazon.com/images/I/51d0zpwcYzL._SX321_BO1,204,203,200_.jpg',
+                name: 'The Promised Neverland',
             },
             {
-                order: "3",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "Lore Olympus",
-                type: "Romance"
+                order: '3',
+                type: 'Drama',
+                image: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Nisekoi_Volume_1.jpg/230px-Nisekoi_Volume_1.jpg',
+                name: 'Nisekoi',
             },
             {
-                order: "4",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "Age Matters",
-                type: "Romance"
+                order: '4',
+                type: 'Adventure',
+                image: 'https://vignette.wikia.nocookie.net/twin-star-exorcists/images/1/14/Volume_08.png/revision/latest?cb=20160506171222',
+                name: 'Sousei no Onmiouji',
             },
             {
-                order: "5",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "LUFF",
-                type: "Romance"
+                order: '5',
+                type: 'Slice of Life',
+                image: 'https://upload.wikimedia.org/wikipedia/vi/a/af/Relife_manga.jpg',
+                name: 'ReLife',
             },
         ]
     },
     {
-        title: "Top Fantasy",
+        title: "Autumn",
         list: [
             {
-                order: "1",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "True Beauty",
-                type: "Drama"
+                order: '1',
+                type: 'Comedy',
+                image: 'https://images-na.ssl-images-amazon.com/images/I/51NllmIYLAL._SX332_BO1,204,203,200_.jpg',
+                name: 'Kaguya-sama wa Kakurasetai',
             },
             {
-                order: "2",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "unOrdinary",
-                type: "Fantasy"
+                order: '2',
+                type: 'Adventure',
+                image: 'https://images-na.ssl-images-amazon.com/images/I/51d0zpwcYzL._SX321_BO1,204,203,200_.jpg',
+                name: 'The Promised Neverland',
             },
             {
-                order: "3",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "Lore Olympus",
-                type: "Romance"
+                order: '3',
+                type: 'Drama',
+                image: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Nisekoi_Volume_1.jpg/230px-Nisekoi_Volume_1.jpg',
+                name: 'Nisekoi',
             },
             {
-                order: "4",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "Age Matters",
-                type: "Romance"
+                order: '4',
+                type: 'Adventure',
+                image: 'https://vignette.wikia.nocookie.net/twin-star-exorcists/images/1/14/Volume_08.png/revision/latest?cb=20160506171222',
+                name: 'Sousei no Onmiouji',
             },
             {
-                order: "5",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "LUFF",
-                type: "Romance"
+                order: '5',
+                type: 'Slice of Life',
+                image: 'https://upload.wikimedia.org/wikipedia/vi/a/af/Relife_manga.jpg',
+                name: 'ReLife',
             },
         ]
     },
     {
-        title: "Top Comedy",
+        title: "Winter",
         list: [
             {
-                order: "1",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "True Beauty",
-                type: "Drama"
+                order: '1',
+                type: 'Comedy',
+                image: 'https://images-na.ssl-images-amazon.com/images/I/51NllmIYLAL._SX332_BO1,204,203,200_.jpg',
+                name: 'Kaguya-sama wa Kakurasetai',
             },
             {
-                order: "2",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "unOrdinary",
-                type: "Fantasy"
+                order: '2',
+                type: 'Adventure',
+                image: 'https://images-na.ssl-images-amazon.com/images/I/51d0zpwcYzL._SX321_BO1,204,203,200_.jpg',
+                name: 'The Promised Neverland',
             },
             {
-                order: "3",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "Lore Olympus",
-                type: "Romance"
+                order: '3',
+                type: 'Drama',
+                image: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Nisekoi_Volume_1.jpg/230px-Nisekoi_Volume_1.jpg',
+                name: 'Nisekoi',
             },
             {
-                order: "4",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "Age Matters",
-                type: "Romance"
+                order: '4',
+                type: 'Adventure',
+                image: 'https://vignette.wikia.nocookie.net/twin-star-exorcists/images/1/14/Volume_08.png/revision/latest?cb=20160506171222',
+                name: 'Sousei no Onmiouji',
             },
             {
-                order: "5",
-                image: "https://musicimage.xboxlive.com/catalog/video.movie.8D6KGWZL5BWW/image?locale=en-us&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg",
-                name: "LUFF",
-                type: "Romance"
+                order: '5',
+                type: 'Slice of Life',
+                image: 'https://upload.wikimedia.org/wikipedia/vi/a/af/Relife_manga.jpg',
+                name: 'ReLife',
             },
         ]
     }
 ];
 
 export const imgSwiper = [
-    'http://nawacita.co/wp-content/uploads/2018/04/https_2F2Fblueprint-api-production.s3.amazonaws.com2Fuploads2Fcard2Fimage2F7614442F912f914e-1438-4963-bb73-e9a890019db0-1.jpg',
-    'https://cdn.akurat.co/images/uploads/images/akurat_20181207054909_9900f7.jpg',
-    'https://pmcvariety.files.wordpress.com/2014/04/01-avengers-2012.jpg?w=1000&h=563&crop=1',
-    'https://static.wixstatic.com/media/8225d3_e37385c248ac4d2baab53f28583e9f6d~mv2.jpg'
+    'https://cdn2.hercampus.com/styles/hcxo_tile_standard/s3/hero-images/2018/11/07/Webtoon%20Art%20Official%20Official.jpg?timestamp=1541648075',
+    'http://www.thecanetassel.com/wp-content/uploads/2019/02/webtoon.png',
+    'https://static01.nyt.com/images/2015/07/06/business/06webtoons/06webtoons-articleLarge.jpg?quality=90&auto=webp',
+    'http://thecomicsourceblog.com/wp-content/uploads/2019/04/Ep-793.jpg'
 ];
 
 export const imgScroll = [
@@ -900,7 +900,7 @@ export const menuOption = ['Daily', 'Previous', 'Genres', 'Ranking', 'Download']
 
 export const menuShare = ['facebook', 'instagram', 'twitter', 'youtube']
 
-export const recommendationDataScreenMy=[
+export const recommendationDataScreenMy = [
     {
         uri: 'https://images-na.ssl-images-amazon.com/images/P/4757559208.jpg',
         title: 'Sono Bisque Doll wa koi wo suru',
@@ -989,7 +989,7 @@ export const carouselData = [
     },
     {
         titles: "Drama",
-        lists:[
+        lists: [
             {
                 rank: '1',
                 uri: 'https://images-na.ssl-images-amazon.com/images/I/51NllmIYLAL._SX332_BO1,204,203,200_.jpg',
@@ -1023,8 +1023,8 @@ export const carouselData = [
         ]
     },
     {
-        titles:"Comedy",
-        lists:[
+        titles: "Comedy",
+        lists: [
             {
                 rank: '1',
                 uri: 'http://truyenvip.net/content/upload/images/komi-san-wa-komyusho-desu.jpg',
@@ -1058,8 +1058,8 @@ export const carouselData = [
         ]
     },
     {
-        titles:"Slice of Life",
-        lists:[
+        titles: "Slice of Life",
+        lists: [
             {
                 rank: '1',
                 uri: 'https://1.bp.blogspot.com/-qRQYQmQh7lo/W3PWWhAcQEI/AAAAAAAALdQ/aIyGYSOk7uM2EeERiOuuHp2JG0D86WF2wCHMYCw/s0/bb.mpPjJQXX.jpg',
