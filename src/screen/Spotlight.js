@@ -51,7 +51,7 @@ class Spotlight extends Component {
                             <Image source={{ uri: item1.uri }} style={{ height: 60, width: 60, borderRadius: 10 }} />
                             <View style={{ flexDirection: 'column' }}>
                                 <Text style={styles.txtWeekly}>{item1.title}</Text>
-                                <Text style={styles.txtWeekly}>{item1.likes}</Text>
+                                <Text style={styles.txtWeekly}>{item1.watching}</Text>
                             </View>
                         </View>
                     )
