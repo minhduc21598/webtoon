@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ImageBackground, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Icon1 from 'react-native-vector-icons/FontAwesome5';
-import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Swiper from 'react-native-swiper';
-import { newHere, topNewHere, imgSwiper, type, menuShare, menuOption, typeGenres } from '../component/Data';
-import {typeManga} from '../const';
+import { season, imgSwiper, menuShare, menuOption, typeGenres } from '../component/Data';
+import { typeManga } from '../const';
 import ModalForU from '../component/ModalForU';
 import SlideItemCarousel from '../component/SlideItemCarousel';
 import ScrollHorizontal from '../component/ScrollHorizontal';
@@ -21,16 +20,6 @@ class ForYou extends Component {
     };
   }
   _renderItem({ item }) {
-    return (
-      <View>
-        <Image
-          source={{ uri: item.image }}
-          style={styles.imgBelowNewHere}
-        />
-      </View>
-    )
-  }
-  _renderItem1({ item }) {
     return (
       item.list.map(
         (item1, index1) => {
@@ -74,7 +63,7 @@ class ForYou extends Component {
         this.props.navigation.navigate("Previous");
         break;
       case 2:
-        this.props.navigation.navigate("Previous", {oldSeason: false});
+        this.props.navigation.navigate("Previous", { oldSeason: false });
         break;
       case 3:
         this.props.navigation.navigate("Ranking");
@@ -86,14 +75,11 @@ class ForYou extends Component {
         break;
     }
   }
-  gotoCanvas = () => {
-    this.props.navigation.navigate("CANVAS");
-  }
   gotoRankings = (index) => {
-    this.props.navigation.navigate("Ranking", {anime: false, index: index});
+    this.props.navigation.navigate("Ranking", { anime: false, index: index });
   }
   onSnapToItem = (index) => {
-    this.Title.setState({title: topNewHere[index].title})
+    this.Title.setState({ title: season[index].title })
   }
   render() {
     return (
@@ -122,44 +108,6 @@ class ForYou extends Component {
             <Icon name='ios-search' size={35} color='black' style={{ marginRight: 15 }} />
           </TouchableOpacity>
         </View>
-        <Text style={styles.textNewHere}>New Here?</Text>
-        <TouchableOpacity
-          activeOpacity={0}
-          onPress={() => alert("Another screen")}
-        >
-          <Label title='Start with hits read by Millions' />
-        </TouchableOpacity>
-        <SlideItemCarousel
-          data = {newHere}
-          renderItem = {this._renderItem}
-          itemWidth = {300}
-        />
-        <Text style={styles.textFindYourSeries}>Find your series</Text>
-        <ImageBackground
-          style={styles.imgback}
-          source={{ uri: 'https://ss-images.catscdn.vn/2019/04/01/4877331/avengers-endgame-mcu-rewatch.jpg' }}
-        >
-          <Text style={styles.textInsideImg}>WEBTOON{"\n"}recommends for you</Text>
-          <TouchableOpacity
-            style={styles.btnView}
-            onPress={() => alert("btnView")}
-            activeOpacity={1}
-          >
-            <Text style={styles.textView}>View</Text>
-          </TouchableOpacity>
-        </ImageBackground>
-        <Title
-          ref={ref => this.Title = ref}
-          initValue = {topNewHere[0].title}
-          styleTxt = {styles.title}
-          onPress = {() => alert("Another screen")}
-        />
-        <SlideItemCarousel
-          data = {topNewHere}
-          renderItem= {this._renderItem1}
-          itemWidth = {280}
-          onSnapToItem = {this.onSnapToItem}
-        />
         <View style={styles.viewSwiper}>
           <Swiper
             autoplay={true}
@@ -179,25 +127,56 @@ class ForYou extends Component {
             }
           </Swiper>
         </View>
+        <TouchableOpacity
+          activeOpacity={0}
+          onPress={() => alert("Another screen")}
+        >
+        </TouchableOpacity>
+        <Text style={styles.textFindYourSeries}>Find your series</Text>
+        <ImageBackground
+          style={styles.imgback}
+          imageStyle={{ borderRadius: 10, opacity: 0.8 }}
+          source={{ uri: 'https://usabilitygeek.com/wp-content/uploads/2014/09/10th-dimension-boys-webtoon.jpg' }}
+        >
+          <Text style={styles.textInsideImg}>WEBTOON{"\n"}recommends for you</Text>
+          <TouchableOpacity
+            style={styles.btnView}
+            onPress={() => alert("btnView")}
+            activeOpacity={1}
+          >
+            <Text style={styles.textView}>View</Text>
+          </TouchableOpacity>
+        </ImageBackground>
+        <Title
+          ref={ref => this.Title = ref}
+          initValue={season[0].title}
+          styleTxt={styles.title}
+          onPress={() => alert("Another screen")}
+        />
+        <SlideItemCarousel
+          data={season}
+          renderItem={this._renderItem}
+          itemWidth={280}
+          onSnapToItem={this.onSnapToItem}
+        />
         {
           typeGenres.map((item, index) => {
-            return <ScrollHorizontal
-              title={item}
-              key={index}
-            />
+            return (
+              <View key = {index}>
+                <ScrollHorizontal
+                  title={item}
+                />
+                <ScrollHorizontal
+                  title={'Recommendations'}
+                />
+                <View style = {{marginTop: 60}}/>
+              </View>
+            )
           })
         }
-        <TouchableOpacity
-          activeOpacity={1}
-          style={styles.excitingNew}
-          onPress={this.gotoCanvas}
-        >
-          <Text style={styles.textExcitingNew}>Exciting New Stories</Text>
-          <Text style={{ fontSize: 13 }}>Series from our Self-Publishing Creators</Text>
-        </TouchableOpacity>
-        <Label 
+        <Label
           title='Manga'
-          onPress={this.gotoOriginals}
+          onPress={() => this.gotoRankings(0)}
         />
         <ScrollView
           horizontal={true}
@@ -209,13 +188,13 @@ class ForYou extends Component {
               (item, index) => {
                 return (
                   <TouchableOpacity
-                    style = {styles.listBtn}
-                    key = {index}
-                    activeOpacity = {1}
-                    onPress = {() => this.gotoRankings(index)}
+                    style={styles.listBtn}
+                    key={index}
+                    activeOpacity={1}
+                    onPress={() => this.gotoRankings(index)}
                   >
                     <View style={styles.btnCircle}>
-                      <Icon2 name={item.icon} size={30} color={'black'} />
+                      <Icon1 name={item.icon} size={30} color={'black'} />
                     </View>
                     <Text style={styles.titleBtn}>{item.name}</Text>
                   </TouchableOpacity>
@@ -244,7 +223,7 @@ class ForYou extends Component {
                 <TouchableOpacity
                   style={styles.btnSocial}
                   activeOpacity={0.6}
-                  onPress={() => alert("item")}
+                  onPress={() => alert(`${item}`)}
                   key={index}
                 >
                   <Icon1 name={item} size={30} color={'black'} />
@@ -276,45 +255,34 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: '#eeebeb'
   },
-  imgBelowNewHere: {
-    width: 280,
-    height: 160,
-    borderRadius: 5,
-  },
   header: {
     width: '100%',
     height: 60,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   iconHeader: {
     width: 50,
     height: 50,
     marginLeft: 15
   },
-  textNewHere: {
-    color: 'black',
-    fontSize: 35,
-    fontWeight: '500',
-    marginLeft: 20
-  },
   imgback: {
     width: 320,
-    height: 100,
+    height: 120,
     marginLeft: 20,
     marginTop: 15,
-    borderRadius: 5,
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 20
   },
   textInsideImg: {
-    color: 'white',
+    color: 'purple',
     fontWeight: '500',
     lineHeight: 20,
     fontSize: 15,
-    marginLeft: 16
+    marginLeft: 16,
   },
   listItem: {
     flexDirection: 'row',
@@ -335,19 +303,19 @@ const styles = StyleSheet.create({
   },
   itemName: {
     marginLeft: 10,
-    fontSize: 14,
-    color: 'black'
+    fontSize: 11,
+    color: 'green'
   },
   itemType: {
     marginLeft: 10,
     fontSize: 11,
+    color: 'red'
   },
   textFindYourSeries: {
     color: 'black',
     fontSize: 16,
     fontWeight: '500',
     marginLeft: 20,
-    marginTop: 25
   },
   btnView: {
     width: 75,
@@ -371,16 +339,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 220,
     resizeMode: 'stretch'
-  },
-  excitingNew: {
-    width: 230,
-    height: 60,
-    marginLeft: 20,
-    marginTop: 20
-  },
-  textExcitingNew: {
-    fontSize: 23,
-    color: 'black'
   },
   textGenres: {
     color: 'black',
