@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { recentDataScreenMy } from '../component/Data';
 import Picker from 'react-native-picker';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { seasons } from '../const';
 
 class OldSeason extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: ""
+            date: "2019"
         };
     }
 
@@ -18,22 +20,18 @@ class OldSeason extends Component {
     }
 
     openYear = () => {
-        let data =[];
-        for (var i = 1945; i < 2019; i++) {
+        let data = [];
+        for (var i = 1945; i < 2020; i++) {
             data.push(i);
         }
-
         Picker.init({
             pickerData: data,
-            selectedValue: [2018],
+            selectedValue: [2019],
             onPickerConfirm: data => {
-                console.log(data);
-            },
-            onPickerCancel: data => {
-                console.log(data);
+                this.dateChange(data);
             },
             onPickerSelect: data => {
-                console.log(data);
+                this.dateChange(data);
             }
         });
         Picker.show();
@@ -42,10 +40,16 @@ class OldSeason extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <Button
-                    title="Choose a year"
+                <TouchableOpacity
                     onPress={this.openYear}
-                />
+                    style={styles.btnChooseTab}
+                >
+                    <Text style={styles.txtChooseTab}>Choose a year</Text>
+                    <Text style={styles.txtChooseTab}>
+                        {this.state.date} {'  '}
+                        <Icon name='ios-arrow-down' color='black' size={20} />
+                    </Text>
+                </TouchableOpacity>
                 <ScrollableTabView
                     initialPage={0}
                     renderTabBar={() => <ScrollableTabBar />}
@@ -77,6 +81,19 @@ class OldSeason extends Component {
 
 export default OldSeason;
 const styles = StyleSheet.create({
+    btnChooseTab: {
+        height: 50,
+        marginLeft: 28,
+        marginRight: 38,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    txtChooseTab: {
+        color: 'black',
+        fontSize: 17,
+        fontWeight: '400'
+    },
     headerContainer: {
         width: '100%',
         height: 60,

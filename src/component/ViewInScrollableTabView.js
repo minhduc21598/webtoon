@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text,StyleSheet, ScrollView, Image, ActivityIndicator, RefreshControl } from 'react-native';
-import { FlatGrid } from 'react-native-super-grid';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ViewSortBy from './ViewSortBy';
 import Grid from './FlatGridItems';
@@ -10,6 +9,7 @@ class ViewInScrollableTabView extends Component {
         super(props);
         this.state = {
             refreshing: false,
+            isLoadingmore : false,
             isLoading: true
         };
     }
@@ -37,7 +37,7 @@ class ViewInScrollableTabView extends Component {
             <Text style={{ fontSize: 10, color: 'red' }}>{item.genre}</Text>
             <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
             <Text style={{ fontSize: 10, color: 'green' }}>
-                <Icon name='ios-heart' color='green' /> {item.likes}
+                <Icon name='ios-heart' color='green' /> {item.watching}
             </Text>
         </View>
     )

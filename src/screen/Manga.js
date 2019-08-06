@@ -41,7 +41,7 @@ class Manga extends Component {
   }
 
   render() {
-    const { shortcuts, currentIndex } = this.state;
+    const { shortcuts } = this.state;
     return (
       <View style={{ flex: 1 }}>
         {

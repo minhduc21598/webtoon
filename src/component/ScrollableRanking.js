@@ -53,7 +53,7 @@ class ScrollableRanking extends Component {
                                                         <View>
                                                             <Text style={styles.title}>{item1.title}</Text>
                                                             <Text style={styles.genre}>{item1.genre}</Text>
-                                                            <Text style={styles.like}><Icon name='ios-heart' /> {item1.likes}</Text>
+                                                            <Text style={styles.like}><Icon name='ios-heart' /> {item1.watching}</Text>
                                                         </View>
                                                     </View>
                                                 )

@@ -1135,61 +1135,61 @@ export const dataOriginal = [
         genre: 'Comedy',
         uri: 'https://images-na.ssl-images-amazon.com/images/I/51NllmIYLAL._SX332_BO1,204,203,200_.jpg',
         title: 'Kaguya-sama wa Kakurasetai',
-        likes: '1.11M'
+        watching: '1.11M'
     },
     {
         genre: 'Adventure',
         uri: 'https://images-na.ssl-images-amazon.com/images/I/51d0zpwcYzL._SX321_BO1,204,203,200_.jpg',
         title: 'The Promised Neverland',
-        likes: '1.02M'
+        watching: '1.02M'
     },
     {
         genre: 'Drama',
         uri: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Nisekoi_Volume_1.jpg/230px-Nisekoi_Volume_1.jpg',
         title: 'Nisekoi',
-        likes: '900.000'
+        watching: '900.000'
     },
     {
         genre: 'Adventure',
         uri: 'https://vignette.wikia.nocookie.net/twin-star-exorcists/images/1/14/Volume_08.png/revision/latest?cb=20160506171222',
         title: 'Sousei no Onmiouji',
-        likes: '800.000'
+        watching: '800.000'
     },
     {
         genre: 'Slice of Life',
         uri: 'https://upload.wikimedia.org/wikipedia/vi/a/af/Relife_manga.jpg',
         title: 'ReLife',
-        likes: '700.000'
+        watching: '700.000'
     },
     {
         genre: 'Slice of Life',
         uri: 'http://truyenvip.net/content/upload/images/komi-san-wa-komyusho-desu.jpg',
         title: 'Komi-san wa Komyushou desu',
-        likes: '1.11M'
+        watching: '1.11M'
     },
     {
         genre: 'Comedy',
         uri: 'https://images-na.ssl-images-amazon.com/images/I/611T6Fy6UcL.jpg',
         title: 'Grand Blue',
-        likes: '1.03M'
+        watching: '1.03M'
     },
     {
         genre: 'Isekai',
         uri: 'https://images-na.ssl-images-amazon.com/images/I/91jDwdQ-vUL.jpg',
         title: 'Isekai Tensei Soudouki',
-        likes: '1.11M'
+        watching: '1.11M'
     },
     {
         genre: 'Comedy',
         uri: 'https://vignette.wikia.nocookie.net/zennomi/images/b/bb/That_Girl_Is_Not_Just_Cute.jpg/revision/latest?cb=20190504091410',
         title: 'That girl is not just cute',
-        likes: '900.000'
+        watching: '900.000'
     },
     {
         genre: 'Comedy',
         uri: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/00/Baka_to_Test_to_Shoukanjuu_DVD_boxset_cover.jpg/300px-Baka_to_Test_to_Shoukanjuu_DVD_boxset_cover.jpg',
         title: 'Baka to Test to Shoukanjuu',
-        likes: '800.000'
+        watching: '800.000'
     }
 ];
 

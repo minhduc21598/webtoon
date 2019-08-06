@@ -3,8 +3,9 @@ const dbAnime = {
     season_name:'string',
     season_year: 'int',
     genres:[],
-    score: 'int',
+    watching: 'int',
     synopsys:'string',
+    airing_start:'string',
     episode: [],
     picture: [],
     recommendations: []
