@@ -24,11 +24,7 @@ class Manga extends Component {
   }
 
   showShortcuts = () => {
-    if (this.state.shortcuts) {
-      this.setState({ shortcuts: false })
-    } else {
-      this.setState({ shortcuts: true })
-    }
+    this.setState({shortcuts: !this.state.shortcuts});
   }
 
   onChangeShortcuts = (index) => {
