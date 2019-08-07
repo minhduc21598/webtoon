@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 class Header extends Component {
@@ -15,10 +15,6 @@ class Header extends Component {
         const { firstTxt, secondTxt, firstOnPress, secondOnPress } = this.props;
         return (
             <View>
-                <StatusBar
-                    backgroundColor='transparent'
-                    barStyle='dark-content'
-                />
                 <View style={styles.headerContainer}>
                     <View style={{ flexDirection: 'row' }}>
                         <TouchableOpacity

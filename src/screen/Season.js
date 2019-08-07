@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ImageBackground, RefreshControl } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Swiper from 'react-native-swiper';
 import { season, imgSwiper, menuShare, menuOption, typeGenres } from '../component/Data';
 import { typeManga } from '../const';
@@ -10,8 +9,9 @@ import SlideItemCarousel from '../component/SlideItemCarousel';
 import ScrollHorizontal from '../component/ScrollHorizontal';
 import Label from '../component/Label';
 import Title from '../component/TitleChanges';
+import Header from '../component/Header';
 
-class ForYou extends Component {
+class Season extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -96,18 +96,11 @@ class ForYou extends Component {
           barStyle='dark-content'
           backgroundColor='white'
         />
-        <View style={styles.header}>
-          <Image
-            source={{ uri: 'https://camo.githubusercontent.com/7e50feeb3a97b68ff0640b290cbe412e45e57b65/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f302f30392f4e617665725f4c696e655f576562746f6f6e5f6c6f676f2e706e67' }}
-            style={styles.iconHeader}
-          />
-          <TouchableOpacity
-            activeOpacity={0}
-            onPress={() => alert("btnSearch")}
-          >
-            <Icon name='ios-search' size={35} color='black' style={{ marginRight: 15 }} />
-          </TouchableOpacity>
-        </View>
+        <Header
+          firstTxt = {'This season'}
+          secondTxt = {''}
+        />
+        <Text style = {styles.welcome}>Welcome Back!</Text>
         <View style={styles.viewSwiper}>
           <Swiper
             autoplay={true}
@@ -162,14 +155,14 @@ class ForYou extends Component {
         {
           typeGenres.map((item, index) => {
             return (
-              <View key = {index}>
+              <View key = {index} style = {{marginTop: 20}}>
                 <ScrollHorizontal
                   title={item}
                 />
                 <ScrollHorizontal
                   title={'Recommendations'}
                 />
-                <View style = {{marginTop: 60}}/>
+                <View style = {{marginTop: 40}}/>
               </View>
             )
           })
@@ -194,7 +187,7 @@ class ForYou extends Component {
                     onPress={() => this.gotoRankings(index)}
                   >
                     <View style={styles.btnCircle}>
-                      <Icon1 name={item.icon} size={30} color={'black'} />
+                      <Icon name={item.icon} size={30} color={'black'} />
                     </View>
                     <Text style={styles.titleBtn}>{item.name}</Text>
                   </TouchableOpacity>
@@ -226,7 +219,7 @@ class ForYou extends Component {
                   onPress={() => alert(`${item}`)}
                   key={index}
                 >
-                  <Icon1 name={item} size={30} color={'black'} />
+                  <Icon name={item} size={30} color={'black'} />
                 </TouchableOpacity>
               )
             })
@@ -247,25 +240,14 @@ class ForYou extends Component {
   }
 }
 
-export default ForYou;
+export default Season;
 
 const styles = StyleSheet.create({
-  newHere: {
-    width: '100%',
-    height: 400,
-    backgroundColor: '#eeebeb'
-  },
-  header: {
-    width: '100%',
-    height: 60,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  iconHeader: {
-    width: 50,
-    height: 50,
-    marginLeft: 15
+  welcome: {
+    fontSize: 30,
+    fontWeight: '700',
+    color: 'green',
+    marginLeft: 20
   },
   imgback: {
     width: 320,
@@ -340,12 +322,6 @@ const styles = StyleSheet.create({
     height: 220,
     resizeMode: 'stretch'
   },
-  textGenres: {
-    color: 'black',
-    fontSize: 18,
-    fontWeight: '500',
-    marginLeft: 20
-  },
   listBtn: {
     alignItems: 'center',
     marginLeft: 20
@@ -405,7 +381,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 10,
     marginBottom: 10,
-    fontSize: 16,
+    fontSize: 18,
     color: 'black',
     fontWeight: '500'
   },

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Manga from './Manga';
 import Anime from './Anime';
 import Header from '../component/Header';
@@ -15,11 +15,7 @@ class Canvas extends Component {
   }
 
   componentDidMount = () => {
-    if(this.state.anime){
-      this.firstOnPress();
-    } else {
-      this.secondOnPress();
-    }
+    (this.state.anime) ? this.firstOnPress() : this.secondOnPress()
   }
 
   componentWillReceiveProps = () => {
@@ -41,10 +37,6 @@ class Canvas extends Component {
     let index = this.props.navigation.getParam('index');
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar
-          backgroundColor='transparent'
-          barStyle='dark-content'
-        />
         <Header
           ref = {ref => this.Header = ref}
           firstTxt = {'Anime'}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import ScrollableTab from '../component/ScrollableRanking';
 import { dataAnime } from '../const';
 
@@ -12,12 +12,10 @@ class Anime extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <ScrollableTab
-          dataTab={dataAnime}
-          styleTabBar = {styles.scrollTab}
-        />
-      </View>
+      <ScrollableTab
+        dataTab={dataAnime}
+        styleTabBar = {styles.scrollTab}
+      />
     );
   }
 }

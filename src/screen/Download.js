@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { recentDataScreenMy } from '../component/Data';
 import Header from '../component/Header';
 import ViewSortBy from '../component/ViewSortBy';
@@ -14,10 +14,6 @@ class Download extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar
-          backgroundColor='transparent'
-          barStyle='dark-content'
-        />
         <Header
           firstTxt={'Downloaded'}
           secondTxt={''}
