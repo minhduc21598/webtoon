@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { recentDataScreenMy } from '../component/Data';
-import Picker from 'react-native-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { seasons } from '../const';
+import { PickerView } from '../component/PickerView';
 
 class OldSeason extends Component {
     constructor(props) {
@@ -21,25 +21,15 @@ class OldSeason extends Component {
 
     openYear = () => {
         let data = [];
-        for (var i = 1945; i < 2020; i++) {
+        for (var i = 1975; i < 2020; i++) {
             data.push(i);
         }
-        Picker.init({
-            pickerData: data,
-            selectedValue: [2019],
-            onPickerConfirm: data => {
-                this.dateChange(data);
-            },
-            onPickerSelect: data => {
-                this.dateChange(data);
-            }
-        });
-        Picker.show();
+        PickerView(data, 2019, this.dateChange);
     }
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <View style={styles.container}>
                 <TouchableOpacity
                     onPress={this.openYear}
                     style={styles.btnChooseTab}
@@ -52,11 +42,10 @@ class OldSeason extends Component {
                 </TouchableOpacity>
                 <ScrollableTabView
                     initialPage={0}
-                    renderTabBar={() => <ScrollableTabBar />}
                     tabBarInactiveTextColor={'gray'}
                     tabBarActiveTextColor={'black'}
-                    tabBarUnderlineStyle={{ height: 2 }}
-                    style={{ flex: 1 }}
+                    tabBarUnderlineStyle={styles.scrollTab}
+                    style={styles.scrollTabStyle}
                 >
                     {
                         seasons.map(
@@ -81,6 +70,9 @@ class OldSeason extends Component {
 
 export default OldSeason;
 const styles = StyleSheet.create({
+    container: { 
+        flex: 1 
+    },
     btnChooseTab: {
         height: 50,
         marginLeft: 28,
@@ -118,5 +110,11 @@ const styles = StyleSheet.create({
         height: 20,
         marginTop: 10,
         marginBottom: 10
+    },
+    scrollTab: { 
+        height: 2 
+    },
+    scrollTabStyle:{ 
+        flex: 1 
     }
 });

@@ -13,7 +13,7 @@ class Download extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
         <Header
           firstTxt={'Downloaded'}
           secondTxt={''}
@@ -26,9 +26,9 @@ class Download extends Component {
           recentDataScreenMy.map(
             (item, index) => {
               return (
-                <View style={{ flexDirection: 'row' }} key={index}>
+                <View style={styles.rowItem} key={index}>
                   <Image source={{ uri: item.uri }} style={styles.imgRecent} />
-                  <View style={{ flex: 1, justifyContent: 'center' }}>
+                  <View style={styles.detail}>
                     <Text style={styles.txtRecent}> {item.title} </Text>
                     <Text style={styles.txtRecent}> {item.rank} </Text>
                   </View>
@@ -45,6 +45,9 @@ class Download extends Component {
 export default Download;
 
 const styles = StyleSheet.create({
+  container: { 
+    flex: 1 
+  },
   imgRecent: {
     width: 100,
     height: 100
@@ -54,6 +57,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 4,
   },
+  rowItem: { 
+    flexDirection: 'row' 
+  },
+  detail: { 
+    flex: 1, 
+    justifyContent: 'center' 
+},
   tabs: {
     justifyContent: 'center',
     alignItems: 'center',

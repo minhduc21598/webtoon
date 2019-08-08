@@ -19,15 +19,21 @@ class ScrollableRanking extends Component {
         onChange && onChange(item.i);
     }
 
+    renderTabBar = (style) =>{ 
+        <ScrollableTabBar 
+            style={style} 
+        />
+    }
+
     render() {
         let { dataTab, styleTabBar } = this.props;
         return (
             <ScrollableTabView
                 initialPage={this.state.page}
-                renderTabBar={() => <ScrollableTabBar style={styleTabBar} />}
+                renderTabBar={this.renderTabBar(styleTabBar)}
                 tabBarInactiveTextColor={'gray'}
                 tabBarActiveTextColor={'black'}
-                tabBarUnderlineStyle={{ height: 2 }}
+                tabBarUnderlineStyle={styles.tabBar}
                 onChangeTab={this.onChangeTab}
             >
                 {
@@ -78,6 +84,9 @@ const styles = StyleSheet.create({
         borderTopWidth: 0.5,
         borderBottomWidth: 0.5,
         borderTopColor: '#d0cdcd'
+    },
+    tabBar: { 
+        height: 2 
     },
     container: {
         flexDirection: 'row',
