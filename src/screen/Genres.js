@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
-import Picker from 'react-native-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { genres } from '../const';
 import { dataOriginal } from '../component/Data';
 import FlatGridItems from '../component/FlatGridItems';
 import { ScrollView } from 'react-native-gesture-handler';
+import { PickerView } from '../component/PickerView';
 
 class Genres extends Component {
   constructor(props) {
@@ -26,16 +26,7 @@ class Genres extends Component {
     for (var i = 0; i < genres.length; i++) {
       data.push(genres[i].name);
     }
-    Picker.init({
-      pickerData: data,
-      onPickerConfirm: data => {
-        this.genreChange(data);
-      },
-      onPickerSelect: data => {
-        this.genreChange(data);
-      }
-    });
-    Picker.show();
+    PickerView(data, 'Action' ,this.genreChange);
   }
 
   renderItem = ({ item, index }) => (
@@ -67,7 +58,7 @@ class Genres extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
         <TouchableOpacity
           onPress={this.openGenre}
           style={styles.btnChooseTab}
@@ -103,6 +94,9 @@ class Genres extends Component {
 
 export default Genres;
 const styles = StyleSheet.create({
+  container: { 
+    flex: 1 
+  },
   btnChooseTab: {
     height: 50,
     marginLeft: 28,
