@@ -39,7 +39,7 @@ class Manga extends Component {
   render() {
     const { shortcuts } = this.state;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
         {
           (!shortcuts) &&
           <ScrollableTab
@@ -75,6 +75,9 @@ class Manga extends Component {
 export default Manga;
 
 const styles = StyleSheet.create({
+  container: { 
+    flex: 1 
+  },
   modalBoxStyle: {
     width: 50,
     height: 50,

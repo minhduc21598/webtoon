@@ -6,7 +6,7 @@ import { tabNameInDaily } from '../const';
 import { dataOriginal } from '../component/Data';
 import Header from '../component/Header';
 
-class Originals extends Component {
+class Daily extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,20 +14,26 @@ class Originals extends Component {
     };
   }
 
+  renderTabBar = () => {
+    return (
+      <ScrollableTabBar style={styles.tabBar} />
+    )
+  }
+
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <Header 
-          ref = {ref => this.Header = ref}
-          firstTxt = {'Daily'}
-          secondTxt = {''}
+      <View style={styles.container}>
+        <Header
+          ref={ref => this.Header = ref}
+          firstTxt={'Daily'}
+          secondTxt={''}
         />
         <ScrollableTabView
           initialPage={0}
-          renderTabBar={() => <ScrollableTabBar style={{ borderTopWidth: 0.5, borderTopColor: '#d0cdcd' }} />}
+          renderTabBar={this.renderTabBar}
           tabBarInactiveTextColor={'gray'}
           tabBarActiveTextColor={'black'}
-          tabBarUnderlineStyle={{ height: 2 }}
+          tabBarUnderlineStyle={styles.tabBarUnder}
         >
           {
             tabNameInDaily.map(
@@ -50,9 +56,12 @@ class Originals extends Component {
   }
 }
 
-export default Originals;
+export default Daily;
 
 const styles = StyleSheet.create({
+  container: { 
+    flex: 1 
+  },
   itemContainer: {
     borderRadius: 5,
     width: 100,
@@ -64,5 +73,12 @@ const styles = StyleSheet.create({
     height: 20,
     marginTop: 10,
     marginBottom: 10
+  },
+  tabBar:{ 
+    borderTopWidth: 0.5, 
+    borderTopColor: '#d0cdcd' 
+  },
+  tabBarUnder:{ 
+    height: 2 
   }
 });

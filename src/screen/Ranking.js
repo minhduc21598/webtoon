@@ -35,7 +35,7 @@ class Canvas extends Component {
   render() {
     let index = this.props.navigation.getParam('index');
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
         <Header
           ref = {ref => this.Header = ref}
           firstTxt = {'Anime'}
@@ -56,5 +56,7 @@ class Canvas extends Component {
 export default Canvas;
 
 const styles = StyleSheet.create({
-
+  container: { 
+    flex: 1 
+  }
 });
