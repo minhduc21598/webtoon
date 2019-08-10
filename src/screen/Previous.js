@@ -14,11 +14,7 @@ class Previous extends Component {
   }
 
   componentDidMount = () => {
-    if(this.state.oldSeason){
-      this.firstOnPress();
-    } else {
-      this.secondOnPress();
-    }
+    (this.state.oldSeason) ? this.firstOnPress() : this.secondOnPress()
   }
 
   firstOnPress = () => {

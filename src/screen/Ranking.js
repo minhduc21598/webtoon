@@ -19,7 +19,6 @@ class Canvas extends Component {
   }
 
   componentWillReceiveProps = () => {
-    this.setState({anime: false});
     this.secondOnPress();
   }
 
