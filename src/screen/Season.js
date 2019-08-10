@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ImageBackground, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Swiper from 'react-native-swiper';
+import SplashScreen from 'react-native-splash-screen';
 import { season, imgSwiper, menuShare, menuOption, typeGenres } from '../component/Data';
 import { typeManga } from '../const';
 import ModalForU from '../component/ModalForU';
@@ -18,6 +19,9 @@ class Season extends Component {
       refreshing: false,
       isLoading: true,
     };
+  }
+  componentDidMount() {
+    SplashScreen.hide();
   }
   _renderItem({ item }) {
     return (
