@@ -11,10 +11,12 @@ class Anime extends Component {
   }
 
   render() {
+    let { onPress } = this.props;
     return (
       <ScrollableTab
         dataTab={dataAnime}
         styleTabBar = {styles.scrollTab}
+        onPress = {onPress}
       />
     );
   }

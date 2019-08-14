@@ -23,6 +23,9 @@ class Season extends Component {
   componentDidMount() {
     SplashScreen.hide();
   }
+  gotoDetail = () => {
+    this.props.navigation.navigate("DetailAnime");
+  }
   _renderItem({ item }) {
     return (
       item.list.map(
@@ -32,7 +35,7 @@ class Season extends Component {
               style={styles.listItem}
               key={index1}
               activeOpacity={1}
-              onPress={() => alert(`${item1.name}`)}
+              onPress={this.gotoDetail}
             >
               <Text style={styles.itemOrder}>{item1.order}</Text>
               <Image
@@ -162,9 +165,11 @@ class Season extends Component {
               <View key = {index} style = {{marginTop: 20}}>
                 <ScrollHorizontal
                   title={item}
+                  onPress = {this.gotoDetail}
                 />
                 <ScrollHorizontal
                   title={'Recommendations'}
+                  onPress = {this.gotoDetail}
                 />
                 <View style = {{marginTop: 40}}/>
               </View>

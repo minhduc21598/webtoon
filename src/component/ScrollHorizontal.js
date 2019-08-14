@@ -8,9 +8,8 @@ class ScrollHorizontal extends Component {
     this.state = {
     };
   }
-
   render() {
-    const { title } = this.props;
+    const { title, onPress } = this.props;
     return (
       <View>
         <Text style={styles.title}>{title}</Text>
@@ -27,7 +26,7 @@ class ScrollHorizontal extends Component {
                     style={styles.detailItem}
                     key={index}
                     activeOpacity={1}
-                    onPress={() => alert("Detail")}
+                    onPress={onPress}
                   >
                     <Image
                       source={{ uri: item.image }}
