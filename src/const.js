@@ -203,3 +203,74 @@ export const genres = [
         name: 'Josei'
     },
 ];
+
+export const recomExem = [
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/1424/93855.jpg?s=581c9137cdaf2116e76a64bc5655fc44",
+        title: "Irozuku Sekai no Ashita kara",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/3/88476.jpg?s=0dcaf8e0720f4a54712da5423b63bd1e",
+        title: "Mahoutsukai no Yome",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/3/67177.jpg?s=bc267f764bffe825e1e8d60f7185a2e9",
+        title: "Shigatsu wa Kimi no Uso",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/4/72750.jpg?s=61d6461811fb65b5ad164b3d69115af8",
+        title: "Plastic Memories",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/1884/93539.jpg?s=5bce48eef7e3fb77e471f3053ca90ae8",
+        title: "Kino no Tabi: The Beautiful World",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/9/71808.jpg?s=be66c8d2b9ab60b8066e420c9cd255c0",
+        title: "Tegamibachi",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/1122/96435.jpg?s=56d2750d600af93a5d326daec7748cae",
+        title: "Koe no Katachi",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/13/24647.jpg?s=316823146f54557fbe7518a81f4fc57f",
+        title: "Clannad: After Story",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/5/87048.jpg?s=2bca128fcb9dfd6d0908f3d9986576c6",
+        title: "Kimi no Na wa.",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/11/89556.jpg?s=c81e5bf28128120f3ebe27b03bb2e527",
+        title: "Sayonara no Asa ni Yakusoku no Hana wo Kazarou",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/7/28859.jpg?s=20b8d8228e7be6c1ee5b2359db30e95c",
+        title: "Natsume Yuujinchou",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/8/79838.jpg?s=9119af95e79c578d1e00b2711dda4f1f",
+        title: "Kobato.",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/1879/100467.jpg?s=fd59137a5eb37dbabe9510bde27fe4ba",
+        title: "Dororo",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/8/23336.jpg?s=fb3c10e711f2633c82f8a8b660251542",
+        title: "Casshern Sins",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/4/26472.jpg?s=2e25f43284e5c9d775b8e6f7662a698e",
+        title: "Tegamibachi Reverse",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/11/48817.jpg?s=35fd18f87ba3739ee6f1389efd90e9ae",
+        title: "Suisei no Gargantia",
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/anime/5/71553.jpg?s=68833377dab9077cd7847c91eec46f08",
+        title: "Death Parade",
+    },
+]

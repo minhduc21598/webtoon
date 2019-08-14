@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { dataOriginal } from './Data';
@@ -19,18 +19,18 @@ class ScrollableRanking extends Component {
         onChange && onChange(item.i);
     }
 
-    renderTabBar = (style) =>{ 
-        <ScrollableTabBar 
+    renderTabBar = (style) => { 
+        return <ScrollableTabBar 
             style={style} 
         />
     }
 
     render() {
-        let { dataTab, styleTabBar } = this.props;
+        let { dataTab, styleTabBar, onPress } = this.props;
         return (
             <ScrollableTabView
                 initialPage={this.state.page}
-                renderTabBar={this.renderTabBar(styleTabBar)}
+                renderTabBar={() => this.renderTabBar(styleTabBar)}
                 tabBarInactiveTextColor={'gray'}
                 tabBarActiveTextColor={'black'}
                 tabBarUnderlineStyle={styles.tabBar}
@@ -48,9 +48,11 @@ class ScrollableRanking extends Component {
                                         dataOriginal.map(
                                             (item1, index1) => {
                                                 return (
-                                                    <View
+                                                    <TouchableOpacity
                                                         style={styles.container}
                                                         key={index1}
+                                                        onPress = {onPress}
+                                                        activeOpacity = {1}
                                                     >
                                                         <Image
                                                             style={styles.image}
@@ -61,7 +63,7 @@ class ScrollableRanking extends Component {
                                                             <Text style={styles.genre}>{item1.genre}</Text>
                                                             <Text style={styles.like}><Icon name='ios-heart' /> {item1.watching}</Text>
                                                         </View>
-                                                    </View>
+                                                    </TouchableOpacity>
                                                 )
                                             }
                                         )

@@ -32,6 +32,10 @@ class Canvas extends Component {
     this.Header.setState({colorFirstTxt: "gray", colorSecondTxt: "black"})
   }
 
+  gotoDetail = () => {
+    this.props.navigation.navigate("DetailAnime");
+  }
+
   render() {
     let index = this.props.navigation.getParam('index');
     return (
@@ -45,7 +49,7 @@ class Canvas extends Component {
         />
         {
           (this.state.anime)
-            ? <Anime />
+            ? <Anime onPress = {this.gotoDetail}/>
             : <Manga index = {index}/>
         }
       </View>
