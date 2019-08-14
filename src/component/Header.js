@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 class Header extends Component {
@@ -14,35 +14,33 @@ class Header extends Component {
     render() {
         const { firstTxt, secondTxt, firstOnPress, secondOnPress } = this.props;
         return (
-            <View>
-                <View style={styles.headerContainer}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <TouchableOpacity
-                            style={{ alignItems: 'center' }}
-                            activeOpacity={1}
-                            onPress={firstOnPress}
-                        >
-                            <Text style={[styles.txtHeader, { color: this.state.colorFirstTxt }]}>{firstTxt}</Text>
-                        </TouchableOpacity>
-                        <Text style={styles.txtHeader}>{(secondTxt == '') ? '' : '|'}</Text>
-                        <TouchableOpacity
-                            style={{
-                                alignItems: 'center'
-                            }}
-                            activeOpacity={1}
-                            onPress={secondOnPress}
-                        >
-                            <Text style={[styles.txtHeader, { color: this.state.colorSecondTxt }]}>{secondTxt}</Text>
-                        </TouchableOpacity>
-                    </View>
+            <View style={styles.headerContainer}>
+                <View style={{ flexDirection: 'row' }}>
                     <TouchableOpacity
-                        onPress={() => alert("btn Search")}
+                        style={{ alignItems: 'center' }}
                         activeOpacity={1}
-                        style={{ marginRight: 15 }}
+                        onPress={firstOnPress}
                     >
-                        <Icon name='ios-search' size={30} color={'black'} />
+                        <Text style={[styles.txtHeader, { color: this.state.colorFirstTxt }]}>{firstTxt}</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.txtHeader}>{(secondTxt == '') ? '' : '|'}</Text>
+                    <TouchableOpacity
+                        style={{
+                            alignItems: 'center'
+                        }}
+                        activeOpacity={1}
+                        onPress={secondOnPress}
+                    >
+                        <Text style={[styles.txtHeader, { color: this.state.colorSecondTxt }]}>{secondTxt}</Text>
                     </TouchableOpacity>
                 </View>
+                <TouchableOpacity
+                    onPress={() => alert("btn Search")}
+                    activeOpacity={1}
+                    style={{ marginRight: 15 }}
+                >
+                    <Icon name='ios-search' size={30} color={'black'} />
+                </TouchableOpacity>
             </View>
         );
     }
@@ -52,10 +50,11 @@ export default Header;
 const styles = StyleSheet.create({
     headerContainer: {
         width: '100%',
-        height: 60,
+        height: (Platform.OS === 'ios') ? 80 : 60,
         alignItems: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingTop: (Platform.OS === 'ios')? 20: 0
     },
     txtHeader: {
         fontSize: 23,

@@ -13,6 +13,7 @@ class OldSeason extends Component {
         this.state = {
             date: "2019"
         };
+        this.showPicker = false;
     }
 
     dateChange = (date) => {
@@ -20,11 +21,7 @@ class OldSeason extends Component {
     }
 
     openYear = () => {
-        let data = [];
-        for (var i = 1975; i < 2020; i++) {
-            data.push(i);
-        }
-        PickerView(data, 2019, this.dateChange);
+        PickerView(dataYear, 2019, this.dateChange);
     }
 
     render() {
