@@ -3,5 +3,6 @@ const dbManga={
     pic:'string',
     title:'string',
     vote:'int',
-    type:'string'
+    recommendations: [],
+    characters: []
 }

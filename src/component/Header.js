@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
         height: (Platform.OS === 'ios') ? 80 : 60,
         alignItems: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingTop: (Platform.OS === 'ios')? 20: 0
     },
     txtHeader: {
         fontSize: 23,
