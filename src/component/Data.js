@@ -1,32 +1,74 @@
-export const newHere = [
+export const chars = [
     {
-        image: "http://image.phimmoi.net/post/2019/04/21/popup-avenger-endgame-800kb.jpg",
-        name: "Edith",
-        icon: "ios-checkmark-circle",
-        sub: "515,107",
-        sum: "Nobody paid much attention to John – just a normal teenager at a high school where the social elite happen to possess unthinkable powers and abilities. But John’s got a secret past that threatens to bring down the school’s whole social order – and much more. Fulfilling his destiny won’t be easy though, because there are battles, frenemies and deadly conspiracies around every corner."
+        image_url: "https://cdn.myanimelist.net/images/characters/14/72697.jpg?s=a9e8f30edd16226a70374fe4d0c5df1e",
+        name: "Casca",
+        role: "Main"
     },
     {
-        image: "http://image.phimmoi.net/post/2019/04/21/popup-avenger-endgame-800kb.jpg",
-        name: "Edith",
-        icon: "ios-checkmark-circle",
-        sub: "600,000",
-        sum: "Nobody paid much attention to John – just a normal teenager at a high school where the social elite happen to possess unthinkable powers and abilities. But John’s got a secret past that threatens to bring down the school’s whole social order – and much more. Fulfilling his destiny won’t be easy though, because there are battles, frenemies and deadly conspiracies around every corner."
+        image_url: "https://cdn.myanimelist.net/images/characters/3/150707.jpg?s=69e02544120dfbf48d11f7bf5d55196a",
+        name: "de Vandimion, Farnese",
+        role: "Main"
     },
     {
-        image: "http://image.phimmoi.net/post/2019/04/21/popup-avenger-endgame-800kb.jpg",
-        name: "Edith",
-        icon: "ios-checkmark-circle",
-        sub: "700,000",
-        sum: "Nobody paid much attention to John – just a normal teenager at a high school where the social elite happen to possess unthinkable powers and abilities. But John’s got a secret past that threatens to bring down the school’s whole social order – and much more. Fulfilling his destiny won’t be easy though, because there are battles, frenemies and deadly conspiracies around every corner."
+        image_url: "https://cdn.myanimelist.net/images/characters/9/326322.jpg?s=e76be64ccbf711f9152ebe67f767dd3b",
+        name: "Griffith",
+        role: "Main"
     },
     {
-        image: "http://image.phimmoi.net/post/2019/04/21/popup-avenger-endgame-800kb.jpg",
-        name: "Edith",
-        icon: "ios-checkmark-circle",
-        sub: "800,000",
-        sum: "Nobody paid much attention to John – just a normal teenager at a high school where the social elite happen to possess unthinkable powers and abilities. But John’s got a secret past that threatens to bring down the school’s whole social order – and much more. Fulfilling his destiny won’t be easy though, because there are battles, frenemies and deadly conspiracies around every corner."
-    }
+        image_url: "https://cdn.myanimelist.net/images/characters/9/347984.jpg?s=3d9b0d9ae5041c315f13c1e81a98c742",
+        name: "Guts",
+        role: "Main"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/9/101956.jpg?s=3ef9f2127bbdc8023d9ca61012151ae2",
+        name: "Isidro",
+        role: "Main"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/8/101984.jpg?s=3b5ea51897ba28cad0269050f2b3c913",
+        name: "Puck",
+        role: "Main"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/13/75899.jpg?s=0a05a344d9371de083aa966f7a678140",
+        name: "Schierke",
+        role: "Main"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/15/150923.jpg?s=82adc250c15486654d1e52d6ef599dbe",
+        name: "Serpico",
+        role: "Main"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/4/319066.jpg?s=2e09b7cca55699957fb2eeadbec8f8af",
+        name: "Adolf",
+        role: "Supporting"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/4/300545.jpg?s=e92653b29688059095a9ae4f9f841c28",
+        name: "Adonis",
+        role: "Supporting"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/11/68278.jpg?s=11514ae9d8a07482a95ddee41ca0524d",
+        name: "Azan",
+        role: "Supporting"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/5/135205.jpg?s=310aa18b5ecd0a3dc1bece7a1c68f9a5",
+        name: "Bazuso",
+        role: "Supporting"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/13/68878.jpg?s=2aeb19f396835af746b08f590f343017",
+        name: "Beast of Darkness",
+        role: "Supporting"
+    },
+    {
+        image_url: "https://cdn.myanimelist.net/images/characters/2/187651.jpg?s=e06e41c5ef500b26538bfa176577fede",
+        name: "Chicchi",
+        role: "Supporting"
+    },
 ];
 
 export const season = [
