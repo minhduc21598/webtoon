@@ -1,6 +1,7 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Footer from './src/component/Footer';
 import DetailAnime from './src/screen/DetailAnime';
+import DetailManga from './src/screen/DetailManga';
 
 const makeRoot = createStackNavigator(
   {
@@ -9,6 +10,9 @@ const makeRoot = createStackNavigator(
     },
     DetailAnime: {
       screen: DetailAnime
+    },
+    DetailManga: {
+      screen: DetailManga
     }
   },
   {

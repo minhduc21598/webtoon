@@ -37,7 +37,8 @@ class Manga extends Component {
   }
 
   render() {
-    const { shortcuts } = this.state;
+    const {shortcuts} = this.state;
+    let {onPress} = this.props;
     return (
       <View style={styles.container}>
         {
@@ -47,6 +48,7 @@ class Manga extends Component {
             dataTab = {dataManga}
             styleTabBar = {styles.scrollTab}
             onChange={this.onChangeScrollableTab}
+            onPress = {onPress}
           />}
         {
           shortcuts && 
