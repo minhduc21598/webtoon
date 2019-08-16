@@ -142,9 +142,10 @@ const styles = StyleSheet.create({
         height: 240
     },
     titleRecom: {
-        color: 'black', 
+        color: 'green', 
         fontSize: 12, 
         marginTop: 5, 
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: '500'
     }
 });
