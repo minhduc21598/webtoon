@@ -1,70 +1,88 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Flat from '../component/FlatGridItems';
-import {recomExem} from '../const';
+import { getRecomAnime } from '../services/GetAPI';
 
 class DetailAnime extends Component {
     constructor(props) {
         super(props);
+        let item = this.props.navigation.getParam('item');
         this.state = {
+            isLoading: true,
+            itemsRecom: []
         };
+        this.id = item.mal_id;
+    }
+
+    componentDidMount = () => {
+        getRecomAnime(this.id).then(
+            response => response.json()
+        ).then(
+            res => this.setState({ itemsRecom: res.recommendations, isLoading: false })
+        ).catch((error) => {
+            console.error(error);
+            return error;
+        });
     }
 
     onPress = () => {
         this.props.navigation.goBack();
     }
 
-    renderRecomItem = ({item, index}) => {
-        return(
-            <View style = {styles.containerRecom} key = {index}>
+    renderRecomItem = ({ item, index }) => {
+        return (
+            <View style={styles.containerRecom} key={index}>
                 <Image
-                    source = {{uri: item.image_url}}
-                    style = {styles.imageRecom}
+                    source={{ uri: item.image_url }}
+                    style={styles.imageRecom}
                 />
-                <Text style = {styles.titleRecom}>{item.title}</Text>
+                <Text style={styles.titleRecom}>{item.title}</Text>
             </View>
         )
     }
-
-    render() {
+    renderLoading = () => {
         return (
-            <View style = {styles.container}>
-                <View style={styles.header}>
-                    <TouchableOpacity
-                        activeOpacity = {1}
-                        onPress = {this.onPress}
-                        style = {styles.icon}
-                    >
-                        <Icon name = 'ios-arrow-round-back' size = {40} color = {'black'}/>
-                    </TouchableOpacity>
-                    <Text style = {styles.detail}>Detail</Text>
-                </View>
-                <ScrollView>
-                    <Image
-                        style={styles.image}
-                        source={{ uri: 'https://cdn.myanimelist.net/images/anime/1059/101535.jpg?s=c09d572c8f0eb2199fc21541aaeb9cba' }}
-                    />
-                    <Text style = {styles.title}>Violet Evergarden</Text>
-                    <Text style = {styles.type}>TV</Text>
-                    <Text style = {styles.members}>Member: 566,740</Text>
-                    <Text style = {styles.episodes}>Episodes: 13</Text>
-                    <Text style = {styles.titleTxt}>Synopsis</Text>
-                    <Text style = {styles.synopsis}>
-                        The Great War finally came to an end after four long years of conflict; 
-                        fractured in two, the continent of Telesis slowly began to flourish once again. 
-                        Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines. 
-                        Hospitalized and maimed in a bloody skirmish during the War's final leg, she was left with only words from the person she held dearest, but with no understanding of their meaning.
-                    </Text>
-                    <Text style = {styles.titleTxt}>Recommendations</Text>
-                    <Flat
-                        itemDimension = {130}
-                        items = {recomExem}
-                        spacing = {15}
-                        renderItem = {this.renderRecomItem}
-                    />
-                </ScrollView>
+            <View style={styles.loading}>
+                <ActivityIndicator size='large' color='black' />
             </View>
+        )
+    }
+    render() {
+        let item = this.props.navigation.getParam('item');
+        return (
+            (this.state.isLoading) ? this.renderLoading() :
+                <View style={styles.container}>
+                    <View style={styles.header}>
+                        <TouchableOpacity
+                            activeOpacity={1}
+                            onPress={this.onPress}
+                            style={styles.icon}
+                        >
+                            <Icon name='ios-arrow-round-back' size={40} color={'black'} />
+                        </TouchableOpacity>
+                        <Text style={styles.detail}>Detail</Text>
+                    </View>
+                    <ScrollView>
+                        <Image
+                            style={styles.image}
+                            source={{ uri: item.image_url }}
+                        />
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text style={styles.type}>{item.type}</Text>
+                        <Text style={styles.members}>Member: {item.members}</Text>
+                        <Text style={styles.episodes}>Episodes: {item.episodes}</Text>
+                        <Text style={styles.titleTxt}>Synopsis</Text>
+                        <Text style={styles.synopsis}>{item.synopsis}</Text>
+                        <Text style={styles.titleTxt}>Recommendations</Text>
+                        <Flat
+                            itemDimension={130}
+                            items={this.state.itemsRecom}
+                            spacing={5}
+                            renderItem={this.renderRecomItem}
+                        />
+                    </ScrollView>
+                </View>
         );
     }
 }
@@ -72,6 +90,11 @@ class DetailAnime extends Component {
 export default DetailAnime;
 
 const styles = StyleSheet.create({
+    loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     header: {
         width: '100%',
         height: 50,
@@ -134,17 +157,19 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     containerRecom: {
-        width: 150, 
+        width: 170,
         height: 290
     },
     imageRecom: {
-        width: 150, 
-        height: 240
+        width: 170,
+        height: 240,
+        borderRadius: 8
     },
     titleRecom: {
-        color: 'black', 
-        fontSize: 12, 
-        marginTop: 5, 
-        textAlign: 'center'
+        color: 'green',
+        fontSize: 12,
+        marginTop: 5,
+        textAlign: 'center',
+        fontWeight: '500'
     }
 });

@@ -1175,61 +1175,61 @@ export const canvasDataPick2 = [
 export const dataOriginal = [
     {
         genre: 'Comedy',
-        uri: 'https://images-na.ssl-images-amazon.com/images/I/51NllmIYLAL._SX332_BO1,204,203,200_.jpg',
+        image_url: 'https://images-na.ssl-images-amazon.com/images/I/51NllmIYLAL._SX332_BO1,204,203,200_.jpg',
         title: 'Kaguya-sama wa Kakurasetai',
         watching: '1.11M'
     },
     {
         genre: 'Adventure',
-        uri: 'https://images-na.ssl-images-amazon.com/images/I/51d0zpwcYzL._SX321_BO1,204,203,200_.jpg',
+        image_url: 'https://images-na.ssl-images-amazon.com/images/I/51d0zpwcYzL._SX321_BO1,204,203,200_.jpg',
         title: 'The Promised Neverland',
         watching: '1.02M'
     },
     {
         genre: 'Drama',
-        uri: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Nisekoi_Volume_1.jpg/230px-Nisekoi_Volume_1.jpg',
+        image_url: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Nisekoi_Volume_1.jpg/230px-Nisekoi_Volume_1.jpg',
         title: 'Nisekoi',
         watching: '900.000'
     },
     {
         genre: 'Adventure',
-        uri: 'https://vignette.wikia.nocookie.net/twin-star-exorcists/images/1/14/Volume_08.png/revision/latest?cb=20160506171222',
+        image_url: 'https://vignette.wikia.nocookie.net/twin-star-exorcists/images/1/14/Volume_08.png/revision/latest?cb=20160506171222',
         title: 'Sousei no Onmiouji',
         watching: '800.000'
     },
     {
         genre: 'Slice of Life',
-        uri: 'https://upload.wikimedia.org/wikipedia/vi/a/af/Relife_manga.jpg',
+        image_url: 'https://upload.wikimedia.org/wikipedia/vi/a/af/Relife_manga.jpg',
         title: 'ReLife',
         watching: '700.000'
     },
     {
         genre: 'Slice of Life',
-        uri: 'http://truyenvip.net/content/upload/images/komi-san-wa-komyusho-desu.jpg',
+        image_url: 'http://truyenvip.net/content/upload/images/komi-san-wa-komyusho-desu.jpg',
         title: 'Komi-san wa Komyushou desu',
         watching: '1.11M'
     },
     {
         genre: 'Comedy',
-        uri: 'https://images-na.ssl-images-amazon.com/images/I/611T6Fy6UcL.jpg',
+        image_url: 'https://images-na.ssl-images-amazon.com/images/I/611T6Fy6UcL.jpg',
         title: 'Grand Blue',
         watching: '1.03M'
     },
     {
         genre: 'Isekai',
-        uri: 'https://images-na.ssl-images-amazon.com/images/I/91jDwdQ-vUL.jpg',
+        image_url: 'https://images-na.ssl-images-amazon.com/images/I/91jDwdQ-vUL.jpg',
         title: 'Isekai Tensei Soudouki',
         watching: '1.11M'
     },
     {
         genre: 'Comedy',
-        uri: 'https://vignette.wikia.nocookie.net/zennomi/images/b/bb/That_Girl_Is_Not_Just_Cute.jpg/revision/latest?cb=20190504091410',
+        image_url: 'https://vignette.wikia.nocookie.net/zennomi/images/b/bb/That_Girl_Is_Not_Just_Cute.jpg/revision/latest?cb=20190504091410',
         title: 'That girl is not just cute',
         watching: '900.000'
     },
     {
         genre: 'Comedy',
-        uri: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/00/Baka_to_Test_to_Shoukanjuu_DVD_boxset_cover.jpg/300px-Baka_to_Test_to_Shoukanjuu_DVD_boxset_cover.jpg',
+        image_url: 'https://upload.wikimedia.org/wikipedia/vi/thumb/0/00/Baka_to_Test_to_Shoukanjuu_DVD_boxset_cover.jpg/300px-Baka_to_Test_to_Shoukanjuu_DVD_boxset_cover.jpg',
         title: 'Baka to Test to Shoukanjuu',
         watching: '800.000'
     }
