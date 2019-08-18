@@ -32,16 +32,15 @@ class Canvas extends Component {
     this.Header.setState({colorFirstTxt: "gray", colorSecondTxt: "black"})
   }
 
-  gotoDetailAnime = () => {
-    this.props.navigation.navigate("DetailAnime");
+  gotoDetailAnime = (item) => {
+    this.props.navigation.navigate("DetailAnime", {item: item});
   }
 
-  gotoDetailManga = () =>{
+  gotoDetailManga = () => {
     this.props.navigation.navigate("DetailManga");
   }
 
   render() {
-    let index = this.props.navigation.getParam('index');
     return (
       <View style={styles.container}>
         <Header
@@ -53,8 +52,8 @@ class Canvas extends Component {
         />
         {
           (this.state.anime)
-            ? <Anime onPress = {this.gotoDetailAnime}/>
-            : <Manga onPress ={this.gotoDetailManga}/>
+            ? <Anime onPress = {(item) => this.props.navigation.navigate("DetailAnime", {item: item})}/>
+            : <Manga onPress ={(item) => this.props.navigation.navigate("DetailManga", {item: item})}/>
         }
       </View>
     );

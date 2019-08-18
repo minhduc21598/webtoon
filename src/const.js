@@ -1,7 +1,7 @@
 export const tabNameInDaily = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+export const seasons = ['Spring', 'Summer', 'Autumn', 'Winter'];
 export const dataAnime = ['TV', 'Movie', 'Ova', 'Special'];
 export const dataManga = ['Manga', 'Novels', 'Oneshots', 'Doujin', 'Manhwa', 'Manhua'];
-
 export const typeManga = [
     {
         icon: 'cat',
@@ -30,8 +30,6 @@ export const typeManga = [
 ];
 
 export const dataYear = [ '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'];
-
-export const seasons = ['Spring', 'Summer', 'Autumn', 'Winter'];
 
 export const genres = [
     {
@@ -274,3 +272,9 @@ export const recomExem = [
         title: "Death Parade",
     },
 ]
+
+export const url = `https://api.jikan.moe/v3/`;
+export const season = ['spring', 'summer', 'fall', 'winter'];
+export const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+export const animeType = ['tv', 'movie', 'ova', 'special'];
+export const mangaType = ['manga', 'novels', 'oneshots', 'doujin', 'manhwa', 'manhua'];

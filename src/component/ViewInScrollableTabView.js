@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, ActivityIndicator, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, RefreshControl, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ViewSortBy from './ViewSortBy';
 import Grid from './FlatGridItems';
@@ -8,54 +8,41 @@ class ViewInScrollableTabView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            refreshing: false,
-            isLoadingmore: false,
-            isLoading: true
         };
     }
 
-
-    _onScrollDown = () => { // bắt sự kiện người dùng kéo xuống
-        if (this.state.isLoadingmore) return;
-        this.setState({ isLoadingmore: true });
+    renderItem = ({ item, index }) => {
+        let { onPress } = this.props;
+        return(
+            <TouchableOpacity 
+                style={styles.itemContainer} 
+                key={index} 
+                onPress = {() => onPress && onPress(item)} 
+                activeOpacity = {1}
+            >
+                <Image source={{ uri: item.image_url }} style={styles.image} />
+                <Text style={styles.txtGenre}>{item.type}</Text>
+                <Text style={styles.txtTitle}>{item.title}</Text>
+                <Text style={styles.icon}>
+                    <Icon name='ios-heart' color='green' /> {item.score}
+                </Text>
+            </TouchableOpacity>
+        )
     }
-
-    _renderLoadingIconBelow = () => {
-        if (this.state.isLoadingmore) {
-            return (
-                <View style={styles.loading}>
-                    <ActivityIndicator color='black' size='large' />
-                </View>
-            )
-        }
-        return null;
-    }
-
-    renderItem = ({ item, index }) => (
-        <View style={styles.itemContainer} key={index}>
-            <Image source={{ uri: item.uri }} style={styles.image} />
-            <Text style={styles.txtGenre}>{item.genre}</Text>
-            <Text style={styles.txtTitle}>{item.title}</Text>
-            <Text style={styles.icon}>
-                <Icon name='ios-heart' color='green' /> {item.watching}
-            </Text>
-        </View>
-    )
 
     render() {
-        const { data, tabName, styleTxtCounter } = this.props;
+        const { data, tabName, styleTxtCounter, onEndReachedThreshold, onEndReached, listFooterComponent, onRefresh, refreshing } = this.props;
         return (
             <View tabLabel={tabName} style={styles.container}>
-                <ViewSortBy
+                {/* <ViewSortBy
                     viewStyle={styleTxtCounter}
-                    numberOfItem='10'
-                    titleSort='Sort by Interest'
-                />
+                    numberOfItem = {data.length}
+                /> */}
                 <ScrollView
                     refreshControl={
                         <RefreshControl
-                            refreshing={this.state.refreshing}
-                            onRefresh={this._onRefresh}
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
                         />
                     }
                 >
@@ -64,9 +51,9 @@ class ViewInScrollableTabView extends Component {
                         items={data}
                         spacing={7}
                         renderItem={this.renderItem}
-                        onEndReachedThreshold={0.5}
-                        onEndReached={this._onScrollDown}
-                        listFooterComponent={this._renderLoadingIconBelow}
+                        onEndReachedThreshold={onEndReachedThreshold}
+                        onEndReached={onEndReached}
+                        listFooterComponent={listFooterComponent}
                     />
                 </ScrollView>
             </View>
@@ -93,7 +80,8 @@ const styles = StyleSheet.create({
     },
     image:{ 
         height: 100, 
-        width: 100 
+        width: 100,
+        borderRadius: 5 
     },
     txtGenre: { 
         fontSize: 10, 
