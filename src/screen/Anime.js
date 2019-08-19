@@ -31,6 +31,11 @@ class Anime extends Component {
     });
   }
 
+  shouldComponentUpdate = (nextState) => {
+    if(nextState.items != this.state.items) return true;
+    return false;
+  }
+
   renderLoading = () => {
     return (
       <View style={styles.loading}>
@@ -41,6 +46,7 @@ class Anime extends Component {
 
   onChangeTab = (item) => {
     this.type = animeType[item.i];
+    this.setState({items: []});
     getTypeAnime(this.page, this.type).then(
       response => response.json()
     ).then(

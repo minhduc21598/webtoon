@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ImageBackground, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Swiper from 'react-native-swiper';
 import SplashScreen from 'react-native-splash-screen';
 import { imgSwiper, menuShare, menuOption } from '../component/Data';
-import { typeManga } from '../const';
 import ModalForU from '../component/ModalForU';
 import Label from '../component/Label';
 import Flat from '../component/FlatGridItems';
@@ -81,9 +80,6 @@ class Season extends Component {
         break;
     }
   }
-  gotoRankings = (index) => {
-    this.props.navigation.navigate("Ranking", { anime: false, index: index });
-  }
   render() {
     return (
       (this.state.isLoading) ? this.renderLoading() :
@@ -120,21 +116,6 @@ class Season extends Component {
           onPress={() => alert("Another screen")}
         >
         </TouchableOpacity>
-        <Text style={styles.textFindYourSeries}>Find your series</Text>
-        <ImageBackground
-          style={styles.imgback}
-          imageStyle={{ borderRadius: 10, opacity: 0.8 }}
-          source={{ uri: 'https://usabilitygeek.com/wp-content/uploads/2014/09/10th-dimension-boys-webtoon.jpg' }}
-        >
-          <Text style={styles.textInsideImg}>WEBTOON{"\n"}recommends for you</Text>
-          <TouchableOpacity
-            style={styles.btnView}
-            onPress={() => alert("btnView")}
-            activeOpacity={1}
-          >
-            <Text style={styles.textView}>View</Text>
-          </TouchableOpacity>
-        </ImageBackground>
         <Text style={styles.titleTxt}>What's new?</Text>
         <Flat
           itemDimension={130}
@@ -142,35 +123,6 @@ class Season extends Component {
           spacing={5}
           renderItem={this.renderSeasonItem}
         />
-        <Label
-          title='Manga'
-          onPress={() => this.gotoRankings(0)}
-        />
-        <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          style={{ height: 110 }}
-        >
-          {
-            typeManga.map(
-              (item, index) => {
-                return (
-                  <TouchableOpacity
-                    style={styles.listBtn}
-                    key={index}
-                    activeOpacity={1}
-                    onPress={() => this.gotoRankings(index)}
-                  >
-                    <View style={styles.btnCircle}>
-                      <Icon name={item.icon} size={30} color={'black'} />
-                    </View>
-                    <Text style={styles.titleBtn}>{item.name}</Text>
-                  </TouchableOpacity>
-                )
-              }
-            )
-          }
-        </ScrollView>
         {
           menuOption.map(
             (item, index) => {
@@ -229,43 +181,6 @@ const styles = StyleSheet.create({
     color: 'green',
     marginLeft: 20
   },
-  imgback: {
-    width: 320,
-    height: 120,
-    marginLeft: 20,
-    marginTop: 15,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20
-  },
-  textInsideImg: {
-    color: 'purple',
-    fontWeight: '500',
-    lineHeight: 20,
-    fontSize: 15,
-    marginLeft: 16,
-  },
-  textFindYourSeries: {
-    color: 'black',
-    fontSize: 16,
-    fontWeight: '500',
-    marginLeft: 20,
-  },
-  btnView: {
-    width: 75,
-    height: 35,
-    backgroundColor: '#30ea33',
-    marginRight: 20,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 1,
-  },
-  textView: {
-    color: 'white',
-    fontWeight: '500'
-  },
   viewSwiper: {
     width: "100%",
     height: 280,
@@ -274,23 +189,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 220,
     resizeMode: 'stretch'
-  },
-  listBtn: {
-    alignItems: 'center',
-    marginLeft: 20
-  },
-  btnCircle: {
-    width: 70,
-    height: 70,
-    backgroundColor: '#e3e3e3',
-    borderRadius: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 5
-  },
-  titleBtn: {
-    color: 'black',
-    fontSize: 12
   },
   line: {
     width: '100%',

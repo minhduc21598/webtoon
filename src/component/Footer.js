@@ -6,6 +6,7 @@ import Season from '../screen/Season';
 import Daily from '../screen/Daily';
 import Ranking from '../screen/Ranking';
 import Previous from '../screen/Previous';
+import Search from '../screen/Search';
 
 const Footer = createBottomTabNavigator(
     {
@@ -38,6 +39,14 @@ const Footer = createBottomTabNavigator(
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
                     <Icon1 name="medal" color={tintColor} size={24}/>
+                )
+            }
+        },
+        Search:{
+            screen: Search,
+            navigationOptions:{
+                tabBarIcon: ({tintColor}) => (
+                    <Icon name="ios-search" color={tintColor} size={24}/>
                 )
             }
         }
