@@ -16,6 +16,21 @@ class OldSeason extends Component {
         this.showPicker = false;
     }
 
+    componentDidMount() {
+        getAnimeByYear(this.state.genreID, this.page)
+          .then(response => response.json())    // convert respense sang json
+          .then(res => {
+            console.log(res)             //da convert xong, ket qua la responseJson
+            this.setState({
+              items: res.anime,
+              isLoading: false
+            })
+          })
+          .catch((error) => {                     // neu co loi thi chay o day
+            console.error(error);
+          });
+      }
+
     dateChange = (date) => {
         this.setState({ date: date })
     }
@@ -23,6 +38,17 @@ class OldSeason extends Component {
     openYear = () => {
         PickerView(dataYear, 2019, this.dateChange);
     }
+
+    _renderLoadingIconBelow = () => {
+        if (this.state.isLoadingmore) {
+          return (
+            <View style={styles.loading}>
+              <ActivityIndicator color='black' size='large' />
+            </View>
+          )
+        }
+        return null;
+      }
 
     render() {
         return (

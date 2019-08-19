@@ -3,14 +3,35 @@ import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from 'rea
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { dataOriginal } from './Data';
+import { getListTopManga } from '../services/HieuAPI';
 
 class ScrollableRanking extends Component {
     constructor(props) {
         super(props);
-        let { data } = this.props;
+        let { dataTab, data } = this.props;
         this.state = {
-            page: data
+            page: data,
+            items:[],
+            isLoadmore: false,
+            isLoading: true,
+            refreshing: false,
         };
+        this.pageIndex = 1;
+        this.type= dataTab[0];
+    }
+
+    componentDidMount() {
+        getListTopManga(this.type, this.pageIndex)
+            .then(response => response.json())    // convert respense sang json
+            .then(res => {               //da convert xong, ket qua la responseJson
+                this.setState({
+                    items: res.results,
+                    isLoading: false
+                })
+            })
+            .catch((error) => {                     // neu co loi thi chay o day
+                console.error(error);
+            });
     }
 
     onChangeTab = (item) => {
