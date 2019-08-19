@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, RefreshControl, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ViewSortBy from './ViewSortBy';
 import Grid from './FlatGridItems';
 
 class ViewInScrollableTabView extends Component {
@@ -34,10 +33,6 @@ class ViewInScrollableTabView extends Component {
         const { data, tabName, styleTxtCounter, onEndReachedThreshold, onEndReached, listFooterComponent, onRefresh, refreshing } = this.props;
         return (
             <View tabLabel={tabName} style={styles.container}>
-                {/* <ViewSortBy
-                    viewStyle={styleTxtCounter}
-                    numberOfItem = {data.length}
-                /> */}
                 <ScrollView
                     refreshControl={
                         <RefreshControl
@@ -76,7 +71,8 @@ const styles = StyleSheet.create({
     itemContainer: {
         borderRadius: 5,
         width: 100,
-        height: 160,
+        height: 200,
+        flex: 1
     },
     image:{ 
         height: 100, 
@@ -89,7 +85,7 @@ const styles = StyleSheet.create({
     },
     txtTitle: { 
         fontSize: 10, 
-        color: 'purple' 
+        color: 'purple',
     },
     icon: { 
         fontSize: 10, 

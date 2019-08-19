@@ -34,13 +34,6 @@ class Header extends Component {
                         <Text style={[styles.txtHeader, { color: this.state.colorSecondTxt }]}>{secondTxt}</Text>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity
-                    onPress={() => alert("btn Search")}
-                    activeOpacity={1}
-                    style={{ marginRight: 15 }}
-                >
-                    <Icon name='ios-search' size={30} color={'black'} />
-                </TouchableOpacity>
             </View>
         );
     }

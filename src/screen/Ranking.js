@@ -36,8 +36,8 @@ class Canvas extends Component {
     this.props.navigation.navigate("DetailAnime", {item: item});
   }
 
-  gotoDetailManga = () => {
-    this.props.navigation.navigate("DetailManga");
+  gotoDetailManga = (item) => {
+    this.props.navigation.navigate("DetailManga", {item: item});
   }
 
   render() {
@@ -52,8 +52,8 @@ class Canvas extends Component {
         />
         {
           (this.state.anime)
-            ? <Anime onPress = {(item) => this.props.navigation.navigate("DetailAnime", {item: item})}/>
-            : <Manga onPress ={(item) => this.props.navigation.navigate("DetailManga", {item: item})}/>
+            ? <Anime onPress = {this.gotoDetailAnime}/>
+            : <Manga onPress ={this.gotoDetailManga}/>
         }
       </View>
     );
