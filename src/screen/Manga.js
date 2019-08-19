@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
+import TabView from '../component/ViewInScrollableTabView';
 import { dataManga, mangaType } from '../const';
 import { getTypeManga } from '../services/GetAPI';
 
@@ -9,64 +9,18 @@ class Manga extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
-      loadingMore: false,
-      refreshing: false,
-      isLoading: true,
     };
+    this.index = 0;
     this.page = 1;
-    this.type = mangaType[0];
   }
 
-  componentDidMount = () => {
-    getTypeManga(this.page, this.type).then(
-      response => response.json()
-    ).then(
-      res => {
-        this.setState({ items: res.top, isLoading: false })
-      }
-    ).catch((error) => {
-      console.error(error);
-      return error;
-    });
-  }
-
-  renderLoading = () => {
-    return (
-      <View style={styles.loading}>
-        <ActivityIndicator size='large' color='black' />
-      </View>
-    )
-  }
-
-  onChangeTab = (item) => {
-    this.type = mangaType[item.i];
-    getTypeManga(this.page, this.type).then(
-      response => response.json()
-    ).then(
-      res => {
-        this.setState({ items: res.top })
-      }
-    ).catch((error) => {
-      console.error(error);
-      return error;
-    });
-  }
-
-  renderTabBar = (style) => {
-    return <ScrollableTabBar
-      style={style}
-    />
-  }
-
-  onRefresh = () => {
-    this.setState({ refreshing: true })
+  getData = () => {
     this.page = 1;
-    getTypeManga(this.page, this.type).then(
+    getTypeManga(this.page, mangaType[this.index]).then(
       response => response.json()
     ).then(
       res => {
-        this.setState({ items: res.top, refreshing: false })
+        this.TabView.setState({ items: res.top, isLoading: false })
       }
     ).catch((error) => {
       console.error(error);
@@ -74,16 +28,16 @@ class Manga extends Component {
     });
   }
 
-  onScrollDown = () => {
-    if (this.state.loadingMore) return;
-    this.setState({ loadingMore: true });
+  getMoreData = () => {
+    if (this.TabView.state.loadingMore) return;
+    this.TabView.setState({ loadingMore: true });
     this.page = this.page + 1;
-    getTypeManga(this.page, this.type).then(
+    getTypeManga(this.page, mangaType[this.index]).then(
       response => response.json()
     ).then(
       res => {
-        this.setState({
-          items: this.state.items.concat(res.top),
+        this.TabView.setState({
+          items: this.TabView.state.items.concat(res.top),
           loadingMore: false
         })
       }
@@ -93,8 +47,20 @@ class Manga extends Component {
     });
   }
 
+  onChangeTab = (item) => {
+    this.index = item.i;
+    this.page = 1;
+    this.getData();
+  }
+
+  renderTabBar = (style) => {
+    return <ScrollableTabBar
+      style={style}
+    />
+  }
+
   renderLoadingIconBelow = () => {
-    if (this.state.loadingMore) {
+    if (this.TabView.state.loadingMore) {
       return (
         <View style={styles.loadingMore}>
           <ActivityIndicator color='black' size='large' />
@@ -105,36 +71,35 @@ class Manga extends Component {
   }
 
   render() {
-    let {onPress} = this.props;
+    let { onPress } = this.props;
     return (
       (this.state.isLoading) ? this.renderLoading() :
-      <ScrollableTabView
-        renderTabBar={() => this.renderTabBar(styles.scrollTab)}
-        tabBarInactiveTextColor={'gray'}
-        tabBarActiveTextColor={'black'}
-        tabBarUnderlineStyle={styles.tabBar}
-        onChangeTab={this.onChangeTab}
-      >
-        {
-          dataManga.map(
-            (item, index) => {
-              return (
-                <ViewInScrollableTabView
-                  tabLabel={item}
-                  data={this.state.items}
-                  onEndReachedThreshold={0.5}
-                  onEndReached={this.onScrollDown}
-                  listFooterComponent={this.renderLoadingIconBelow}
-                  onRefresh={this.onRefresh}
-                  refreshing={this.state.refreshing}
-                  onPress={(item) => onPress(item)}
-                  key={index}
-                />
-              )
-            }
-          )
-        }
-      </ScrollableTabView>
+        <ScrollableTabView
+          renderTabBar={() => this.renderTabBar(styles.scrollTab)}
+          tabBarInactiveTextColor={'gray'}
+          tabBarActiveTextColor={'black'}
+          tabBarUnderlineStyle={styles.tabBar}
+          onChangeTab={this.onChangeTab}
+        >
+          {
+            dataManga.map(
+              (item, index) => {
+                return (
+                  <TabView
+                    ref={ref => this.TabView = ref}
+                    tabLabel={item}
+                    getData={this.getData}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this.getMoreData}
+                    listFooterComponent={this.renderLoadingIconBelow}
+                    onPress={(item) => onPress(item)}
+                    key={index}
+                  />
+                )
+              }
+            )
+          }
+        </ScrollableTabView>
     );
   }
 }

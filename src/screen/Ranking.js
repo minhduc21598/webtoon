@@ -7,19 +7,14 @@ import Header from '../component/Header';
 class Canvas extends Component {
   constructor(props) {
     super(props);
-    let anime = (this.props.navigation.getParam('anime') === undefined) ? true : this.props.navigation.getParam('anime');
     this.state = {
-      anime: anime,
+      anime: true,
       isLoadmore: false,
     };
   }
 
   componentDidMount = () => {
     (this.state.anime) ? this.firstOnPress() : this.secondOnPress()
-  }
-
-  componentWillReceiveProps = () => {
-    this.secondOnPress();
   }
 
   firstOnPress = () => {

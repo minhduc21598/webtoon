@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
+import TabView from '../component/ViewInScrollableTabView';
 import { dataAnime, animeType } from '../const';
 import { getTypeAnime } from '../services/GetAPI';
 
@@ -9,70 +9,18 @@ class Anime extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
-      loadingMore: false,
-      refreshing: false,
-      isLoading: true,
     };
+    this.index = 0;
     this.page = 1;
-    this.type = animeType[0];
   }
 
-  componentDidMount = () => {
-    getTypeAnime(this.page, this.type).then(
-      response => response.json()
-    ).then(
-      res => {
-        this.setState({ items: res.top, isLoading: false })
-      }
-    ).catch((error) => {
-      console.error(error);
-      return error;
-    });
-  }
-
-  shouldComponentUpdate = (nextState) => {
-    if(nextState.items != this.state.items) return true;
-    return false;
-  }
-
-  renderLoading = () => {
-    return (
-      <View style={styles.loading}>
-        <ActivityIndicator size='large' color='black' />
-      </View>
-    )
-  }
-
-  onChangeTab = (item) => {
-    this.type = animeType[item.i];
-    this.setState({items: []});
-    getTypeAnime(this.page, this.type).then(
-      response => response.json()
-    ).then(
-      res => {
-        this.setState({ items: res.top })
-      }
-    ).catch((error) => {
-      console.error(error);
-      return error;
-    });
-  }
-
-  renderTabBar = (style) => {
-    return <ScrollableTabBar
-      style={style}
-    />
-  }
-
-  onRefresh = () => {
-    this.setState({ refreshing: true })
+  getData = () => {
     this.page = 1;
-    getTypeAnime(this.page, this.type).then(
+    getTypeAnime(this.page, animeType[this.index]).then(
       response => response.json()
     ).then(
       res => {
-        this.setState({ items: res.top, refreshing: false })
+        this.TabView.setState({ items: res.top, isLoading: false })
       }
     ).catch((error) => {
       console.error(error);
@@ -80,16 +28,16 @@ class Anime extends Component {
     });
   }
 
-  onScrollDown = () => {
-    if (this.state.loadingMore) return;
-    this.setState({ loadingMore: true });
+  getMoreData = () => {
+    if (this.TabView.state.loadingMore) return;
+    this.TabView.setState({ loadingMore: true });
     this.page = this.page + 1;
-    getTypeAnime(this.page, this.type).then(
+    getTypeAnime(this.page, animeType[this.index]).then(
       response => response.json()
     ).then(
       res => {
-        this.setState({
-          items: this.state.items.concat(res.top),
+        this.TabView.setState({
+          items: this.TabView.state.items.concat(res.top),
           loadingMore: false
         })
       }
@@ -100,7 +48,7 @@ class Anime extends Component {
   }
 
   renderLoadingIconBelow = () => {
-    if (this.state.loadingMore) {
+    if (this.TabView.state.loadingMore) {
       return (
         <View style={styles.loadingMore}>
           <ActivityIndicator color='black' size='large' />
@@ -110,37 +58,48 @@ class Anime extends Component {
     return null;
   }
 
+  onChangeTab = (item) => {
+    this.index = item.i;
+    this.page = 1;
+    this.getData();
+  }
+
+  renderTabBar = (style) => {
+    return <ScrollableTabBar
+      style={style}
+    />
+  }
+
   render() {
     let { onPress } = this.props;
     return (
       (this.state.isLoading) ? this.renderLoading() :
-      <ScrollableTabView
-        renderTabBar={() => this.renderTabBar(styles.scrollTab)}
-        tabBarInactiveTextColor={'gray'}
-        tabBarActiveTextColor={'black'}
-        tabBarUnderlineStyle={styles.tabBar}
-        onChangeTab={this.onChangeTab}
-      >
-        {
-          dataAnime.map(
-            (item, index) => {
-              return (
-                <ViewInScrollableTabView
-                  tabLabel={item}
-                  data={this.state.items}
-                  onEndReachedThreshold={0.5}
-                  onEndReached={this.onScrollDown}
-                  listFooterComponent={this.renderLoadingIconBelow}
-                  onRefresh={this.onRefresh}
-                  refreshing={this.state.refreshing}
-                  onPress={(item) => onPress(item)}
-                  key={index}
-                />
-              )
-            }
-          )
-        }
-      </ScrollableTabView>
+        <ScrollableTabView
+          renderTabBar={() => this.renderTabBar(styles.scrollTab)}
+          tabBarInactiveTextColor={'gray'}
+          tabBarActiveTextColor={'black'}
+          tabBarUnderlineStyle={styles.tabBar}
+          onChangeTab={this.onChangeTab}
+        >
+          {
+            dataAnime.map(
+              (item, index) => {
+                return (
+                  <TabView
+                    ref={ref => this.TabView = ref}
+                    tabLabel={item}
+                    getData={this.getData}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this.getMoreData}
+                    listFooterComponent={this.renderLoadingIconBelow}
+                    onPress={(item) => onPress(item)}
+                    key={index}
+                  />
+                )
+              }
+            )
+          }
+        </ScrollableTabView>
     );
   }
 }
