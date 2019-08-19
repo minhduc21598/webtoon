@@ -273,7 +273,9 @@ export const recomExem = [
     },
 ]
 
-export const url = `https://api.jikan.moe/v3/`;
+export const url = 'https://api.jikan.moe/v3/';
+
+export const url_image= 'https://cdn.myanimelist.net/images/';
 export const season = ['spring', 'summer', 'fall', 'winter'];
 export const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 export const animeType = ['tv', 'movie', 'ova', 'special'];

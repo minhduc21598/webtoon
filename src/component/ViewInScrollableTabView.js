@@ -51,6 +51,7 @@ class ViewInScrollableTabView extends Component {
                         listFooterComponent={listFooterComponent}
                     />
                 </ScrollView>
+
             </View>
 
         );
@@ -59,8 +60,13 @@ class ViewInScrollableTabView extends Component {
 
 export default ViewInScrollableTabView;
 const styles = StyleSheet.create({
-    container:{ 
-        flex: 1 
+    container: {
+        flex: 1
+    },
+    loadingAtStart: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     loading: {
         width: "100%",
@@ -79,16 +85,16 @@ const styles = StyleSheet.create({
         width: 100,
         borderRadius: 5 
     },
-    txtGenre: { 
-        fontSize: 10, 
-        color: 'red' 
+    txtGenre: {
+        fontSize: 10,
+        color: 'red'
     },
     txtTitle: { 
         fontSize: 10, 
         color: 'purple',
     },
-    icon: { 
-        fontSize: 10, 
-        color: 'green' 
+    icon: {
+        fontSize: 10,
+        color: 'green'
     }
 });

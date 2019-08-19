@@ -6,19 +6,25 @@ import { dataOriginal } from '../component/Data';
 import FlatGridItems from '../component/FlatGridItems';
 import { ScrollView } from 'react-native-gesture-handler';
 import { PickerView } from '../component/PickerView';
+import { getAnimeByGenre } from '../services/HieuAPI';
 
 class Genres extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      items: [],
       genre: "",
+      genreID: 0,
       isLoadingmore: false,
       refreshing: false
     };
+    this.page = 1;
   }
 
   genreChange = (genre) => {
-    this.setState({ genre: genre })
+    for(var i= 0; i<genres.length;i++){
+      if(genres[i].name === genre) this.setState({ genre: genre, genreID: i})
+    }
   }
 
   openGenre = () => {
@@ -26,17 +32,14 @@ class Genres extends Component {
     for (var i = 0; i < genres.length; i++) {
       data.push(genres[i].name);
     }
-    PickerView(data, 'Action' ,this.genreChange);
+    PickerView(data, 'Action', this.genreChange);
   }
 
   renderItem = ({ item, index }) => (
     <View style={styles.itemContainer} key={index}>
-      <Image source={{ uri: item.uri }} style={{ height: 100, width: 100 }} />
-      <Text style={{ fontSize: 10, color: 'red' }}>{item.genre}</Text>
-      <Text style={{ fontSize: 10, color: 'purple' }}>{item.title}</Text>
-      <Text style={{ fontSize: 10, color: 'green' }}>
-        <Icon name='ios-heart' color='green' /> {item.watching}
-      </Text>
+      <Image source={{ uri: item.image_url }} style={styles.image} />
+      <Text style={styles.txtTitle}>{item.title}</Text>
+      {/* <Text style={styles.txtGenre}>{item.genres[0].name}</Text> */}
     </View>
   )
 
@@ -79,7 +82,7 @@ class Genres extends Component {
         >
           <FlatGridItems
             itemDimension={110}
-            items={dataOriginal}
+            items={this.state.items}
             spacing={7}
             renderItem={this.renderItem}
             onEndReachedThreshold={0.5}
@@ -94,8 +97,8 @@ class Genres extends Component {
 
 export default Genres;
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1 
+  container: {
+    flex: 1
   },
   btnChooseTab: {
     height: 50,
@@ -120,5 +123,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 100,
     height: 160,
+  },
+  image: {
+    height: 100,
+    width: 100
+  }, txtGenre: {
+    fontSize: 10,
+    color: 'red'
+  },
+  txtTitle: {
+    fontSize: 10,
+    color: 'purple'
   },
 });
