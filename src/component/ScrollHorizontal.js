@@ -9,39 +9,34 @@ class ScrollHorizontal extends Component {
     };
   }
   render() {
-    const { title, onPress } = this.props;
-    return (
-      <View>
-        <Text style={styles.title}>{title}</Text>
-        <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          style={{ marginTop: 15 }}
-        >
-          {
-            imgScroll.map(
-              (item, index) => {
-                return (
-                  <TouchableOpacity
-                    style={styles.detailItem}
-                    key={index}
-                    activeOpacity={1}
-                    onPress={onPress}
-                  >
-                    <Image
-                      source={{ uri: item.image }}
-                      style={styles.image}
-                    />
-                    <Text style={styles.type}>{item.type}</Text>
-                    <Text style = {styles.name}>{item.name}</Text>
-                  </TouchableOpacity>
-                )
-              }
-            )
-          }
-        </ScrollView>
-      </View>
-    );
+    const { items, onPress } = this.props;
+    return(
+      items.map(
+        (item, index) => {
+          return (
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              style={{ marginTop: 15 }}
+              key={index}
+            >
+              <TouchableOpacity
+                style={styles.detailItem}
+                activeOpacity={1}
+                onPress={onPress}
+              >
+                <Image
+                  source={{ uri: item.image_url }}
+                  style={styles.image}
+                />
+                <Text style={styles.type}>{item.type}</Text>
+                <Text style={styles.name}>{item.title}</Text>
+              </TouchableOpacity>
+            </ScrollView>
+          )
+        }
+      )
+    )
   }
 }
 

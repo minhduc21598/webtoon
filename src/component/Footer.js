@@ -6,7 +6,7 @@ import Season from '../screen/Season';
 import Daily from '../screen/Daily';
 import Ranking from '../screen/Ranking';
 import Previous from '../screen/Previous';
-import Download from '../screen/Download';
+import Search from '../screen/Search';
 
 const Footer = createBottomTabNavigator(
     {
@@ -42,11 +42,11 @@ const Footer = createBottomTabNavigator(
                 )
             }
         },
-        Download:{
-            screen: Download,
+        Search:{
+            screen: Search,
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
-                    <Icon name="ios-download" color={tintColor} size={24}/>
+                    <Icon name="ios-search" color={tintColor} size={24}/>
                 )
             }
         }

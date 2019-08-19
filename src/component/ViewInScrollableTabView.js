@@ -1,55 +1,43 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Image, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, RefreshControl, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ViewSortBy from './ViewSortBy';
 import Grid from './FlatGridItems';
 
 class ViewInScrollableTabView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            refreshing: false,
-            isLoading: true,
-            isLoadMore: false
         };
     }
 
-    _onPressItem = (item) => {//bat su kien click vao item
-        console.log("Click item", item);
-        this.props.navigation.navigate("DetailAnime", {
-
-        });
+    renderItem = ({ item, index }) => {
+        let { onPress } = this.props;
+        return(
+            <TouchableOpacity 
+                style={styles.itemContainer} 
+                key={index} 
+                onPress = {() => onPress && onPress(item)} 
+                activeOpacity = {1}
+            >
+                <Image source={{ uri: item.image_url }} style={styles.image} />
+                <Text style={styles.txtGenre}>{item.type}</Text>
+                <Text style={styles.txtTitle}>{item.title}</Text>
+                <Text style={styles.icon}>
+                    <Icon name='ios-heart' color='green' /> {item.score}
+                </Text>
+            </TouchableOpacity>
+        )
     }
-
-    _onScrollDown = () => { // bắt sự kiện người dùng kéo xuống
-        if (this.state.isLoadMore) return;
-        this.setState({ isLoadMore: true });
-    }
-
-    renderItem = ({ item, index }) => (
-        <View style={styles.itemContainer} key={index}>
-            <Image source={{ uri: item.image_url }} style={styles.image} />
-            <Text style={styles.txtTitle}>{item.title}</Text>
-            {/* <Text style={styles.txtGenre}>{item.genres[0].name}</Text> */}
-        </View>
-    )
-
-
 
     render() {
-        const { data, number, tabName, styleTxtCounter, renderLoadingIconBelow } = this.props;
+        const { data, tabName, styleTxtCounter, onEndReachedThreshold, onEndReached, listFooterComponent, onRefresh, refreshing } = this.props;
         return (
             <View tabLabel={tabName} style={styles.container}>
-                <ViewSortBy
-                    viewStyle={styleTxtCounter}
-                    numberOfItem={number}
-                    titleSort='Sort by Interest'
-                />
                 <ScrollView
                     refreshControl={
                         <RefreshControl
-                            refreshing={this.state.refreshing}
-                            onRefresh={this._onRefresh}
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
                         />
                     }
                 >
@@ -58,9 +46,9 @@ class ViewInScrollableTabView extends Component {
                         items={data}
                         spacing={7}
                         renderItem={this.renderItem}
-                        onEndReachedThreshold={0.5}
-                        onEndReached={this._onScrollDown}
-                        listFooterComponent={renderLoadingIconBelow}
+                        onEndReachedThreshold={onEndReachedThreshold}
+                        onEndReached={onEndReached}
+                        listFooterComponent={listFooterComponent}
                     />
                 </ScrollView>
 
@@ -89,19 +77,21 @@ const styles = StyleSheet.create({
     itemContainer: {
         borderRadius: 5,
         width: 100,
-        height: 160,
+        height: 200,
+        flex: 1
     },
-    image: {
-        height: 100,
-        width: 100
+    image:{ 
+        height: 100, 
+        width: 100,
+        borderRadius: 5 
     },
     txtGenre: {
         fontSize: 10,
         color: 'red'
     },
-    txtTitle: {
-        fontSize: 10,
-        color: 'purple'
+    txtTitle: { 
+        fontSize: 10, 
+        color: 'purple',
     },
     icon: {
         fontSize: 10,

@@ -32,16 +32,15 @@ class Canvas extends Component {
     this.Header.setState({colorFirstTxt: "gray", colorSecondTxt: "black"})
   }
 
-  gotoDetailAnime = () => {
-    this.props.navigation.navigate("DetailAnime");
+  gotoDetailAnime = (item) => {
+    this.props.navigation.navigate("DetailAnime", {item: item});
   }
 
-  gotoDetailManga = () =>{
-    this.props.navigation.navigate("DetailManga");
+  gotoDetailManga = (item) => {
+    this.props.navigation.navigate("DetailManga", {item: item});
   }
 
   render() {
-    let index = this.props.navigation.getParam('index');
     return (
       <View style={styles.container}>
         <Header
