@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Swiper from 'react-native-swiper';
 import SplashScreen from 'react-native-splash-screen';
-import { imgSwiper, menuShare, menuOption } from '../component/Data';
-import ModalForU from '../component/ModalForU';
+import { imgSwiper, menuOption } from '../component/Data';
 import Label from '../component/Label';
 import Flat from '../component/FlatGridItems';
 import { getCurrentSeason } from '../services/GetAPI';
@@ -55,9 +53,6 @@ class Season extends Component {
         <Text style={styles.titleSeason}>{item.title}</Text>
       </TouchableOpacity>
     )
-  }
-  showModal = () => {
-    this.ModalForU.setState({ hide: false });
   }
   onPressOption = (index) => {
     switch (index) {
@@ -136,32 +131,6 @@ class Season extends Component {
             }
           )
         }
-        <View style={styles.listSocial}>
-          {
-            menuShare.map((item, index) => {
-              return (
-                <TouchableOpacity
-                  style={styles.btnSocial}
-                  activeOpacity={0.6}
-                  onPress={() => alert(`${item}`)}
-                  key={index}
-                >
-                  <Icon name={item} size={30} color={'black'} />
-                </TouchableOpacity>
-              )
-            })
-          }
-        </View>
-        <TouchableOpacity
-          style={styles.btnShare}
-          activeOpacity={1}
-          onPress={this.showModal}
-        >
-          <Text style={styles.textShare}>Share WEBTOON</Text>
-        </TouchableOpacity>
-        <ModalForU
-          ref={ref => this.ModalForU = ref}
-        />
       </ScrollView>
     );
   }
@@ -197,36 +166,6 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     marginTop: 30,
     marginBottom: 20
-  },
-  listSocial: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20
-  },
-  btnSocial: {
-    width: 40,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 20
-  },
-  btnShare: {
-    width: 140,
-    height: 48,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: 'black',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    marginTop: 30,
-    marginBottom: 40
-  },
-  textShare: {
-    color: 'black',
-    fontSize: 14,
-    fontWeight: '500'
   },
   title: {
     marginLeft: 15,
