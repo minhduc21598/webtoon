@@ -15,6 +15,7 @@ class OldSeason extends Component {
         };
         this.showPicker = false;
         this.season = season[0];
+        this.index = 0;
     }
 
     dateChange = (date) => {
@@ -32,13 +33,15 @@ class OldSeason extends Component {
         this.getData();
     }
 
+    ma manga o dau the :v
     getData = () => {
         getAnimeByYear(this.state.date, this.season)
             .then(
                 response => response.json()
             ).then(
                 res => {
-                    this.ViewInScrollableTabView.setState({ items: res.top, isLoading: false })
+                    console.log(res)
+                    this.ViewInScrollableTabView.setState({ items: res.anime, isLoading: false })
                 }
             ).catch((error) => {
                 console.error(error);
