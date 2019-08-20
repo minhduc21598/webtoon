@@ -1,54 +1,81 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, ActivityIndicator} from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
-import { recentDataScreenMy } from '../component/Data';
+import { getAnimeByYear} from '../services/HieuAPI';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { seasons } from '../const';
+import { season, seasons, dataYear } from '../const';
 import { PickerView } from '../component/PickerView';
 
 class OldSeason extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isLoading: true,
+            items: [],
             date: "2019"
         };
         this.showPicker = false;
     }
 
     componentDidMount() {
-        getAnimeByYear(this.state.genreID, this.page)
-          .then(response => response.json())    // convert respense sang json
-          .then(res => {
-            console.log(res)             //da convert xong, ket qua la responseJson
-            this.setState({
-              items: res.anime,
-              isLoading: false
+        getAnimeByYear(this.state.date, season[0])
+            .then(response => response.json())    // convert respense sang json
+            .then(res => {
+                console.log(res)             //da convert xong, ket qua la responseJson
+                this.setState({
+                    items: res.anime,
+                    isLoading: false
+                })
             })
-          })
-          .catch((error) => {                     // neu co loi thi chay o day
-            console.error(error);
-          });
-      }
+            .catch((error) => {                     // neu co loi thi chay o day
+                console.error(error);
+            });
+    }
 
     dateChange = (date) => {
         this.setState({ date: date })
+        getAnimeByYear(this.state.date, season[0])
+            .then(response => response.json())    // convert respense sang json
+            .then(res => {
+                console.log(res)             //da convert xong, ket qua la responseJson
+                this.setState({
+                    items: res.anime,
+                    isLoading: false
+                })
+            })
+            .catch((error) => {                     // neu co loi thi chay o day
+                console.error(error);
+            });
+    }
+
+    _renderLoading = () => {
+        return (
+            <View style={styles.loadingAtStart}>
+                <ActivityIndicator size="large" color='black' />
+            </View>
+        )
     }
 
     openYear = () => {
         PickerView(dataYear, 2019, this.dateChange);
     }
 
-    _renderLoadingIconBelow = () => {
-        if (this.state.isLoadingmore) {
-          return (
-            <View style={styles.loading}>
-              <ActivityIndicator color='black' size='large' />
-            </View>
-          )
-        }
-        return null;
-      }
+    onChangeTab = (item) => {
+        this.index = item.i;
+        getAnimeByYear(this.state.date, season[this.index])
+            .then(response => response.json())    // convert respense sang json
+            .then(res => {
+                console.log(res)             //da convert xong, ket qua la responseJson
+                this.setState({
+                    items: res.anime,
+                    isLoading: false
+                })
+            })
+            .catch((error) => {                     // neu co loi thi chay o day
+                console.error(error);
+            });
+    }
 
     render() {
         return (
@@ -63,29 +90,33 @@ class OldSeason extends Component {
                         <Icon name='ios-arrow-down' color='black' size={20} />
                     </Text>
                 </TouchableOpacity>
-                <ScrollableTabView
-                    initialPage={0}
-                    tabBarInactiveTextColor={'gray'}
-                    tabBarActiveTextColor={'black'}
-                    tabBarUnderlineStyle={styles.scrollTab}
-                    style={styles.scrollTabStyle}
-                >
-                    {
-                        seasons.map(
-                            (item, index) => {
-                                return (
-                                    <ViewInScrollableTabView
-                                        tabLabel={item}
-                                        styleTxtCounter={styles.txtCounter}
-                                        styleFlatGrid={styles.itemContainer}
-                                        data={recentDataScreenMy}
-                                        key={index}
-                                    />
+                {
+                    (this.state.isLoading) ? this._renderLoading() :
+                        <ScrollableTabView
+                            initialPage={0}
+                            tabBarInactiveTextColor={'gray'}
+                            tabBarActiveTextColor={'black'}
+                            tabBarUnderlineStyle={styles.scrollTab}
+                            style={styles.scrollTabStyle}
+                            onChangeTab={this.onChangeTab}
+                        >
+                            {
+                                seasons.map(
+                                    (item, index) => {
+                                        return (
+                                            <ViewInScrollableTabView
+                                                tabLabel={item}
+                                                styleTxtCounter={styles.txtCounter}
+                                                styleFlatGrid={styles.itemContainer}
+                                                data={this.state.items}
+                                                key={index}
+                                            />
+                                        )
+                                    }
                                 )
                             }
-                        )
-                    }
-                </ScrollableTabView>
+                        </ScrollableTabView>
+                }
             </View>
         );
     }
@@ -93,8 +124,13 @@ class OldSeason extends Component {
 
 export default OldSeason;
 const styles = StyleSheet.create({
-    container: { 
-        flex: 1 
+    loadingAtStart: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    container: {
+        flex: 1
     },
     btnChooseTab: {
         height: 50,
@@ -134,10 +170,10 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10
     },
-    scrollTab: { 
-        height: 2 
+    scrollTab: {
+        height: 2
     },
-    scrollTabStyle:{ 
-        flex: 1 
+    scrollTabStyle: {
+        flex: 1
     }
 });
