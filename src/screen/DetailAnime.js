@@ -9,14 +9,14 @@ class DetailAnime extends Component {
         super(props);
         let item = this.props.navigation.getParam('item');
         this.state = {
+            item: item,
             isLoading: true,
             itemsRecom: []
         };
-        this.id = item.mal_id;
     }
 
     componentDidMount = () => {
-        getRecomAnime(this.id).then(
+        getRecomAnime(this.state.item.mal_id).then(
             response => response.json()
         ).then(
             res => this.setState({ itemsRecom: res.recommendations, isLoading: false })
@@ -26,19 +26,39 @@ class DetailAnime extends Component {
         });
     }
 
+    shouldComponentUpdate = (nextState) => {
+        if (nextState.item != this.state.item) return true;
+        return false;
+    }
+
     onPress = () => {
         this.props.navigation.goBack();
     }
 
+    onPress2 = (item) => {
+        getRecomAnime(item.mal_id).then(
+            response => response.json()
+        ).then(
+            res => this.setState({ item: item, itemsRecom: res.recommendations, isLoading: false })
+        ).catch((error) => {
+            console.error(error);
+            return error;
+        });
+    }
+
     renderRecomItem = ({ item, index }) => {
         return (
-            <View style={styles.containerRecom} key={index}>
+            <TouchableOpacity
+                style={styles.containerRecom}
+                onPress={() => this.onPress2(item)}
+                key={index}
+            >
                 <Image
                     source={{ uri: item.image_url }}
                     style={styles.imageRecom}
                 />
                 <Text style={styles.titleRecom}>{item.title}</Text>
-            </View>
+            </TouchableOpacity>
         )
     }
     renderLoading = () => {
@@ -49,7 +69,6 @@ class DetailAnime extends Component {
         )
     }
     render() {
-        let item = this.props.navigation.getParam('item');
         return (
             (this.state.isLoading) ? this.renderLoading() :
                 <View style={styles.container}>
@@ -66,14 +85,14 @@ class DetailAnime extends Component {
                     <ScrollView>
                         <Image
                             style={styles.image}
-                            source={{ uri: item.image_url }}
+                            source={{ uri: this.state.item.image_url }}
                         />
-                        <Text style={styles.title}>{item.title}</Text>
-                        <Text style={styles.type}>{item.type}</Text>
-                        <Text style={styles.members}>Member: {item.members}</Text>
-                        <Text style={styles.episodes}>Episodes: {item.episodes}</Text>
+                        <Text style={styles.title}>{this.state.item.title}</Text>
+                        <Text style={styles.type}>{this.state.item.type}</Text>
+                        <Text style={styles.members}>Member: {this.state.item.members}</Text>
+                        <Text style={styles.episodes}>Episodes: {this.state.item.episodes}</Text>
                         <Text style={styles.titleTxt}>Synopsis</Text>
-                        <Text style={styles.synopsis}>{item.synopsis}</Text>
+                        <Text style={styles.synopsis}>{this.state.item.synopsis}</Text>
                         <Text style={styles.titleTxt}>Recommendations</Text>
                         <Flat
                             itemDimension={130}
