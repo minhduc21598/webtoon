@@ -1,64 +1,61 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import Manga from './Manga';
-import Anime from './Anime';
+import DataRanking from '../component/DataRanking';
 import Header from '../component/Header';
+import { dataAnime, animeType, dataManga, mangaType } from '../const';
+import { getTypeAnime, getTypeManga } from '../services/GetAPI';
 
-class Canvas extends Component {
+class Ranking extends Component {
   constructor(props) {
     super(props);
     this.state = {
       anime: true,
-      isLoadmore: false,
     };
   }
 
-  componentDidMount = () => {
-    (this.state.anime) ? this.firstOnPress() : this.secondOnPress()
-  }
-
   firstOnPress = () => {
-    this.setState({anime: true});
-    this.Header.setState({colorFirstTxt: "black", colorSecondTxt: "gray"});
+    this.setState({ anime: true });
+    this.Header.setState({ colorFirstTxt: "black", colorSecondTxt: "gray" });
   }
 
   secondOnPress = () => {
-    this.setState({anime: false});
-    this.Header.setState({colorFirstTxt: "gray", colorSecondTxt: "black"})
+    this.setState({ anime: false });
+    this.Header.setState({ colorFirstTxt: "gray", colorSecondTxt: "black" })
   }
 
   gotoDetailAnime = (item) => {
-    this.props.navigation.navigate("DetailAnime", {item: item});
+    this.props.navigation.navigate("DetailAnime", { item: item });
   }
 
   gotoDetailManga = (item) => {
-    this.props.navigation.navigate("DetailManga", {item: item});
+    this.props.navigation.navigate("DetailManga", { item: item });
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Header
-          ref = {ref => this.Header = ref}
-          firstTxt = {'Anime'}
-          secondTxt = {'Manga'}
-          firstOnPress = {this.firstOnPress}
-          secondOnPress = {this.secondOnPress}
+          ref={ref => this.Header = ref}
+          firstTxt={'Anime'}
+          secondTxt={'Manga'}
+          firstOnPress={this.firstOnPress}
+          secondOnPress={this.secondOnPress}
         />
-        {
-          (this.state.anime)
-            ? <Anime onPress = {this.gotoDetailAnime}/>
-            : <Manga onPress ={this.gotoDetailManga}/>
-        }
+        <DataRanking
+          tabType={(this.state.anime) ? dataAnime : dataManga}
+          type={(this.state.anime) ? animeType : mangaType}
+          getType={(this.state.anime) ? getTypeAnime : getTypeManga}
+          onPress={this.gotoDetailAnime}
+        />
       </View>
     );
   }
 }
 
-export default Canvas;
+export default Ranking;
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1 
+  container: {
+    flex: 1
   }
 });
