@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
 
 class FlatGridItems extends Component {

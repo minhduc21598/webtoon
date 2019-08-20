@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import TabView from '../component/ViewInScrollableTabView';
-import { dataManga, mangaType } from '../const';
-import { getTypeManga } from '../services/GetAPI';
+import TabView from './ViewInScrollableTabView';
 
-class Manga extends Component {
+class DataRanking extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,8 +13,9 @@ class Manga extends Component {
   }
 
   getData = () => {
+    let { type, getType } = this.props;
     this.page = 1;
-    getTypeManga(this.page, mangaType[this.index]).then(
+    getType(this.page, type[this.index]).then(
       response => response.json()
     ).then(
       res => {
@@ -29,10 +28,11 @@ class Manga extends Component {
   }
 
   getMoreData = () => {
+    let { type, getType } = this.props;
     if (this.TabView.state.loadingMore) return;
     this.TabView.setState({ loadingMore: true });
     this.page = this.page + 1;
-    getTypeManga(this.page, mangaType[this.index]).then(
+    getType(this.page, type[this.index]).then(
       response => response.json()
     ).then(
       res => {
@@ -47,6 +47,17 @@ class Manga extends Component {
     });
   }
 
+  renderLoadingIconBelow = () => {
+    if (this.TabView.state.loadingMore) {
+      return (
+        <View style={styles.loadingMore}>
+          <ActivityIndicator color='black' size='large' />
+        </View>
+      )
+    }
+    return null;
+  }
+
   onChangeTab = (item) => {
     this.index = item.i;
     this.page = 1;
@@ -59,19 +70,8 @@ class Manga extends Component {
     />
   }
 
-  renderLoadingIconBelow = () => {
-    if (this.TabView.state.loadingMore) {
-      return (
-        <View style={styles.loadingMore}>
-          <ActivityIndicator color='black' size='large' />
-        </View>
-      )
-    }
-    return null;
-  }
-
   render() {
-    let { onPress } = this.props;
+    let { onPress, tabType } = this.props;
     return (
       (this.state.isLoading) ? this.renderLoading() :
         <ScrollableTabView
@@ -82,7 +82,7 @@ class Manga extends Component {
           onChangeTab={this.onChangeTab}
         >
           {
-            dataManga.map(
+            tabType.map(
               (item, index) => {
                 return (
                   <TabView
@@ -104,7 +104,7 @@ class Manga extends Component {
   }
 }
 
-export default Manga;
+export default DataRanking;
 
 const styles = StyleSheet.create({
   loading: {
