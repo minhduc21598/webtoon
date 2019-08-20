@@ -1,51 +1,30 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import Genres from './Genres';
 import OldSeason from './OldSeason';
 import Header from '../component/Header';
 
 class Previous extends Component {
   constructor(props) {
     super(props);
-    let oldSeason = (this.props.navigation.getParam('oldSeason') === undefined) ? true : this.props.navigation.getParam('oldSeason');
     this.state = {
-      oldSeason: oldSeason
     };
   }
 
-  componentDidMount = () => {
-    (this.state.oldSeason) ? this.firstOnPress() : this.secondOnPress()
-  }
-
-  firstOnPress = () => {
-    this.Header.setState({ colorFirstTxt: "black", colorSecondTxt: "gray" })
-    this.setState({ oldSeason: true})
-  }
-
-  secondOnPress = () => {
-    this.Header.setState({ colorFirstTxt: "gray", colorSecondTxt: "black" })
-    this.setState({ oldSeason: false})
-  }
-
-  componentWillReceiveProps = () => {
-    this.secondOnPress();
+  gotoDetailAnime = (item) => {
+    this.props.navigation.navigate("DetailAnime", { item: item });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Header 
-          ref = {ref => this.Header = ref}
-          firstTxt = {'Season'}
-          secondTxt = {'Genres'}
-          firstOnPress = {this.firstOnPress}
-          secondOnPress = {this.secondOnPress}
+        <Header
+          ref={ref => this.Header = ref}
+          firstTxt={'Season'}
+          secondTxt={''}
         />
-        {
-          (this.state.oldSeason)
-            ? <OldSeason />
-            : <Genres />
-        }
+        <OldSeason
+          onPress={this.gotoDetailAnime}
+        />
       </View>
     );
   }
@@ -53,7 +32,7 @@ class Previous extends Component {
 
 export default Previous;
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1 
+  container: {
+    flex: 1
   }
 });

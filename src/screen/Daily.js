@@ -4,7 +4,7 @@ import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { tabNameInDaily, days } from '../const';
 import Header from '../component/Header';
-import { getDaily } from '../services/HieuAPI';
+import { getDaily } from '../services/GetAPI';
 
 class Daily extends Component {
   constructor(props) {
