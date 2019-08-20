@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, ActivityIndicator} from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
-import { getAnimeByYear} from '../services/HieuAPI';
+import { getAnimeByYear } from '../services/GetAPI';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { season, seasons, dataYear } from '../const';
 import { PickerView } from '../component/PickerView';
@@ -11,50 +11,15 @@ class OldSeason extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,
-            items: [],
             date: "2019"
         };
         this.showPicker = false;
-    }
-
-    componentDidMount() {
-        getAnimeByYear(this.state.date, season[0])
-            .then(response => response.json())    // convert respense sang json
-            .then(res => {
-                console.log(res)             //da convert xong, ket qua la responseJson
-                this.setState({
-                    items: res.anime,
-                    isLoading: false
-                })
-            })
-            .catch((error) => {                     // neu co loi thi chay o day
-                console.error(error);
-            });
+        this.season = season[0];
     }
 
     dateChange = (date) => {
         this.setState({ date: date })
-        getAnimeByYear(this.state.date, season[0])
-            .then(response => response.json())    // convert respense sang json
-            .then(res => {
-                console.log(res)             //da convert xong, ket qua la responseJson
-                this.setState({
-                    items: res.anime,
-                    isLoading: false
-                })
-            })
-            .catch((error) => {                     // neu co loi thi chay o day
-                console.error(error);
-            });
-    }
-
-    _renderLoading = () => {
-        return (
-            <View style={styles.loadingAtStart}>
-                <ActivityIndicator size="large" color='black' />
-            </View>
-        )
+        this.getData();
     }
 
     openYear = () => {
@@ -63,61 +28,77 @@ class OldSeason extends Component {
 
     onChangeTab = (item) => {
         this.index = item.i;
-        getAnimeByYear(this.state.date, season[this.index])
-            .then(response => response.json())    // convert respense sang json
-            .then(res => {
-                console.log(res)             //da convert xong, ket qua la responseJson
-                this.setState({
-                    items: res.anime,
-                    isLoading: false
-                })
-            })
-            .catch((error) => {                     // neu co loi thi chay o day
+        this.season = season[this.index];
+        this.getData();
+    }
+
+    getData = () => {
+        getAnimeByYear(this.state.date, this.season)
+            .then(
+                response => response.json()
+            ).then(
+                res => {
+                    this.ViewInScrollableTabView.setState({ items: res.top, isLoading: false })
+                }
+            ).catch((error) => {
                 console.error(error);
+                return error;
             });
     }
 
+    renderLoadingIconBelow = () => {
+        if (this.ViewInScrollableTabView.state.loadingMore) {
+            return (
+                <View style={styles.loadingMore}>
+                    <ActivityIndicator color='black' size='large' />
+                </View>
+            )
+        }
+        return null;
+    }
+
     render() {
+        let { onPress } = this.props;
         return (
-            <View style={styles.container}>
-                <TouchableOpacity
-                    onPress={this.openYear}
-                    style={styles.btnChooseTab}
-                >
-                    <Text style={styles.txtChooseTab}>Choose a year</Text>
-                    <Text style={styles.txtChooseTab}>
-                        {this.state.date} {'  '}
-                        <Icon name='ios-arrow-down' color='black' size={20} />
-                    </Text>
-                </TouchableOpacity>
-                {
-                    (this.state.isLoading) ? this._renderLoading() :
-                        <ScrollableTabView
-                            initialPage={0}
-                            tabBarInactiveTextColor={'gray'}
-                            tabBarActiveTextColor={'black'}
-                            tabBarUnderlineStyle={styles.scrollTab}
-                            style={styles.scrollTabStyle}
-                            onChangeTab={this.onChangeTab}
-                        >
-                            {
-                                seasons.map(
-                                    (item, index) => {
-                                        return (
-                                            <ViewInScrollableTabView
-                                                tabLabel={item}
-                                                styleTxtCounter={styles.txtCounter}
-                                                styleFlatGrid={styles.itemContainer}
-                                                data={this.state.items}
-                                                key={index}
-                                            />
-                                        )
-                                    }
-                                )
-                            }
-                        </ScrollableTabView>
-                }
-            </View>
+            (this.state.isLoading) ? this._renderLoading() :
+                <View style={styles.container}>
+                    <TouchableOpacity
+                        onPress={this.openYear}
+                        style={styles.btnChooseTab}
+                    >
+                        <Text style={styles.txtChooseTab}>Choose a year</Text>
+                        <Text style={styles.txtChooseTab}>
+                            {this.state.date} {'  '}
+                            <Icon name='ios-arrow-down' color='black' size={20} />
+                        </Text>
+                    </TouchableOpacity>
+                    <ScrollableTabView
+                        initialPage={0}
+                        tabBarInactiveTextColor={'gray'}
+                        tabBarActiveTextColor={'black'}
+                        tabBarUnderlineStyle={styles.scrollTab}
+                        style={styles.scrollTabStyle}
+                        onChangeTab={this.onChangeTab}
+                    >
+                        {
+                            seasons.map(
+                                (item, index) => {
+                                    return (
+                                        <ViewInScrollableTabView
+                                            ref={ref => this.ViewInScrollableTabView = ref}
+                                            tabLabel={item}
+                                            getData={this.getData}
+                                            onEndReachedThreshold={0.5}
+                                            listFooterComponent={this.renderLoadingIconBelow}
+                                            onPress={(item) => onPress(item)}
+                                            key={index}
+                                        />
+                                    )
+                                }
+                            )
+                        }
+                    </ScrollableTabView>
+                </View>
         );
     }
 }
@@ -175,5 +156,11 @@ const styles = StyleSheet.create({
     },
     scrollTabStyle: {
         flex: 1
-    }
+    },
+    loadingMore: {
+        width: "100%",
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 10,
+    },
 });

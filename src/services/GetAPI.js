@@ -26,14 +26,14 @@ const getRecomAnime = async (id) => {
     const checked = await CheckConnection();
     if (checked) {
         return fetch(`${url}anime/${id}/recommendations/`,
-        {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
+            {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                }
             }
-        }
-    )
+        )
     } else {
         ToastAndroid.showWithGravity('Please check your network !', ToastAndroid.SHORT, ToastAndroid.CENTER);
     }
@@ -60,14 +60,14 @@ const getRecomManga = async (id) => {
     const checked = await CheckConnection();
     if (checked) {
         return fetch(`${url}manga/${id}/recommendations`,
-        {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
+            {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                }
             }
-        }
-    )
+        )
     } else {
         ToastAndroid.showWithGravity('Please check your network !', ToastAndroid.SHORT, ToastAndroid.CENTER);
     }
@@ -90,4 +90,48 @@ const getTypeManga = async (page, type) => {
     }
 }
 
-export { getCurrentSeason, getRecomAnime, getTypeAnime, getRecomManga, getTypeManga };
+const getDaily = async (day) => {
+    const checked = await CheckConnection();
+    if (checked) {
+        return fetch(
+            `${url}schedule/${day}`,
+            {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-type': 'application/json'
+                }
+            }
+        )
+    } else {
+        ToastAndroid.showWithGravity('Please check your network !', ToastAndroid.SHORT, ToastAndroid.CENTER);
+    }
+}
+
+const getAnimeByYear = async (year, season) => {
+    const checked = await CheckConnection();
+    if (checked) {
+        return fetch(
+            `${url}season/${year}/${season}`,
+            {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-type': 'application/json'
+                }
+            }
+        )
+    } else {
+        ToastAndroid.showWithGravity('Please check your network !', ToastAndroid.SHORT, ToastAndroid.CENTER);
+    }
+}
+
+export {
+    getCurrentSeason,
+    getRecomAnime,
+    getTypeAnime,
+    getRecomManga,
+    getTypeManga,
+    getDaily,
+    getAnimeByYear
+};
