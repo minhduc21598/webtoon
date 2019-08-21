@@ -126,6 +126,22 @@ const getAnimeByYear = async (year, season) => {
     }
 }
 
+const getMangaCharacters = async (id) =>{
+    const checked = await CheckConnection();
+    if (checked) {
+        return fetch(
+            `${url}manga/${id}/characters`,
+            {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-type': 'application/json'
+                }
+            }
+        )
+    }
+}
+
 export {
     getCurrentSeason,
     getRecomAnime,
@@ -133,5 +149,6 @@ export {
     getRecomManga,
     getTypeManga,
     getDaily,
-    getAnimeByYear
+    getAnimeByYear,
+    getMangaCharacters,
 };
