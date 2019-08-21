@@ -28,6 +28,7 @@ class Ranking extends Component {
   }
 
   gotoDetailManga = (item) => {
+    console.log(item)
     this.props.navigation.navigate("DetailManga", { item: item });
   }
 
@@ -45,7 +46,7 @@ class Ranking extends Component {
           tabType={(this.state.anime) ? dataAnime : dataManga}
           type={(this.state.anime) ? animeType : mangaType}
           getType={(this.state.anime) ? getTypeAnime : getTypeManga}
-          onPress={this.gotoDetailAnime}
+          onPress={(this.state.anime) ? this.gotoDetailAnime : this.gotoDetailManga}
         />
       </View>
     );

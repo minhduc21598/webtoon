@@ -138,6 +138,24 @@ const getResultSearch = async (type, name, page) => {
                 }
             }
         )
+    }
+    else {
+        ToastAndroid.showWithGravity('Please check your network !', ToastAndroid.SHORT, ToastAndroid.CENTER);
+    }
+}
+
+const getMangaCharacters = async (id) => {
+    const checked = await CheckConnection();
+    if (checked) {
+        return fetch(`${url}manga/${id}/characters`,
+            {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            }
+        )
     } else {
         ToastAndroid.showWithGravity('Please check your network !', ToastAndroid.SHORT, ToastAndroid.CENTER);
     }
@@ -151,5 +169,6 @@ export {
     getTypeManga,
     getDaily,
     getAnimeByYear,
-    getResultSearch
+    getResultSearch,
+    getMangaCharacters,
 };

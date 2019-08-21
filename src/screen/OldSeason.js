@@ -38,7 +38,7 @@ class OldSeason extends Component {
         this.season = season[this.index];
         this.getData();
     }
-
+    
     getData = () => {
         getAnimeByYear(this.state.date, this.season)
             .then(
