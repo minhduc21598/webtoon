@@ -1,5 +1,6 @@
 export const tabNameInDaily = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 export const seasons = ['Spring', 'Summer', 'Autumn', 'Winter'];
+export const typeSearch = ['anime', 'manga'];
 export const dataAnime = ['TV', 'Movie', 'Ova', 'Special'];
 export const dataManga = ['Manga', 'Novels', 'Oneshots', 'Doujin', 'Manhwa', 'Manhua'];
 export const typeManga = [
