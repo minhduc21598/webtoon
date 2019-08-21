@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator, ScrollView, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FlatGridItems from '../component/FlatGridItems';
-import { chars } from '../component/Data';
-import { recomExem } from '../const';
 import { getRecomManga, getMangaCharacters } from '../services/GetAPI';
 
 class DetailManga extends Component {

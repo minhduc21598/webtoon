@@ -73,33 +73,32 @@ class DataRanking extends Component {
   render() {
     let { onPress, tabType } = this.props;
     return (
-      (this.state.isLoading) ? this.renderLoading() :
-        <ScrollableTabView
-          renderTabBar={() => this.renderTabBar(styles.scrollTab)}
-          tabBarInactiveTextColor={'gray'}
-          tabBarActiveTextColor={'black'}
-          tabBarUnderlineStyle={styles.tabBar}
-          onChangeTab={this.onChangeTab}
-        >
-          {
-            tabType.map(
-              (item, index) => {
-                return (
-                  <TabView
-                    ref={ref => this.TabView = ref}
-                    tabLabel={item}
-                    getData={this.getData}
-                    onEndReachedThreshold={0.5}
-                    onEndReached={this.getMoreData}
-                    listFooterComponent={this.renderLoadingIconBelow}
-                    onPress={(item) => onPress(item)}
-                    key={index}
-                  />
-                )
-              }
-            )
-          }
-        </ScrollableTabView>
+      <ScrollableTabView
+        renderTabBar={() => this.renderTabBar(styles.scrollTab)}
+        tabBarInactiveTextColor={'gray'}
+        tabBarActiveTextColor={'black'}
+        tabBarUnderlineStyle={styles.tabBar}
+        onChangeTab={this.onChangeTab}
+      >
+        {
+          tabType.map(
+            (item, index) => {
+              return (
+                <TabView
+                  ref={ref => this.TabView = ref}
+                  tabLabel={item}
+                  getData={this.getData}
+                  onEndReachedThreshold={0.5}
+                  onEndReached={this.getMoreData}
+                  listFooterComponent={this.renderLoadingIconBelow}
+                  onPress={(item) => onPress(item)}
+                  key={index}
+                />
+              )
+            }
+          )
+        }
+      </ScrollableTabView>
     );
   }
 }

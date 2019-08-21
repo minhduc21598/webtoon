@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
     },
     itemContainer: {
-        borderRadius: 5,
         width: 100,
         height: 200,
         flex: 1

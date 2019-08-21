@@ -1,9 +1,9 @@
 import Picker from 'react-native-picker';
 
-const PickerView = (data, startValue, job) =>{
+const PickerView = (data, startValue, job, pickerTitleText) =>{
     Picker.init({
         pickerData: data,
-        pickerTitleText: 'Choose a year',
+        pickerTitleText: pickerTitleText,
         selectedValue: [startValue],
         onPickerConfirm: data => {
             job(data);
@@ -15,6 +15,10 @@ const PickerView = (data, startValue, job) =>{
     Picker.show();
 }
 
+const PickerViewHide = () => {
+    Picker.hide();
+}
+
 export {
-    PickerView
+    PickerView, PickerViewHide
 }

@@ -5,15 +5,15 @@ import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { getAnimeByYear } from '../services/GetAPI';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { season, seasons, dataYear } from '../const';
-import { PickerView } from '../component/PickerView';
+import { PickerView, PickerViewHide } from '../component/PickerView';
 
 class OldSeason extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: "2019"
+            date: "2019",
+            showPicker: false
         };
-        this.showPicker = false;
         this.season = season[0];
         this.index = 0;
     }
@@ -24,7 +24,13 @@ class OldSeason extends Component {
     }
 
     openYear = () => {
-        PickerView(dataYear, 2019, this.dateChange);
+        if(!this.state.showPicker){
+            this.setState({showPicker: true});
+            PickerView(dataYear, 2019, this.dateChange, 'Choose a year');
+        } else {
+            this.setState({showPicker: false});
+            PickerViewHide();
+        }
     }
 
     onChangeTab = (item) => {
@@ -67,6 +73,7 @@ class OldSeason extends Component {
                     <TouchableOpacity
                         onPress={this.openYear}
                         style={styles.btnChooseTab}
+                        activeOpacity = {1}
                     >
                         <Text style={styles.txtChooseTab}>Choose a year</Text>
                         <Text style={styles.txtChooseTab}>
