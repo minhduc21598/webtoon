@@ -19,11 +19,6 @@ class ViewInScrollableTabView extends Component {
         getData();
     }
 
-    shouldComponentUpdate = (nextState) => {
-        if(nextState.items != this.state.items) return true;
-        return false;
-    }
-
     renderItem = ({ item, index }) => {
         let { onPress } = this.props;
         return (
@@ -83,7 +78,6 @@ class ViewInScrollableTabView extends Component {
                     </ScrollView>
 
                 </View>
-
         );
     }
 }

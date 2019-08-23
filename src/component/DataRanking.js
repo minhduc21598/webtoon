@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import TabView from './ViewInScrollableTabView';
+import { connect } from 'react-redux';
+import { createUser, deleteUser } from '../actions/UserAction';
 
 class DataRanking extends Component {
   constructor(props) {
@@ -15,11 +17,13 @@ class DataRanking extends Component {
   getData = () => {
     let { type, getType } = this.props;
     this.page = 1;
+    this.props.delete();
     getType(this.page, type[this.index]).then(
       response => response.json()
     ).then(
       res => {
-        this.TabView.setState({ items: res.top, isLoading: false })
+        this.props.create(res.top);
+        this.TabView.setState({ items: this.props.data, isLoading: false });
       }
     ).catch((error) => {
       console.error(error);
@@ -36,10 +40,11 @@ class DataRanking extends Component {
       response => response.json()
     ).then(
       res => {
+        this.props.create(res.top);
         this.TabView.setState({
-          items: this.TabView.state.items.concat(res.top),
+          items: this.props.data,
           loadingMore: false
-        })
+        });
       }
     ).catch((error) => {
       console.error(error);
@@ -61,6 +66,7 @@ class DataRanking extends Component {
   onChangeTab = (item) => {
     this.index = item.i;
     this.page = 1;
+    this.props.delete();
     this.getData();
   }
 
@@ -74,6 +80,7 @@ class DataRanking extends Component {
     let { onPress, tabType } = this.props;
     return (
       <ScrollableTabView
+        initialPage = {0}
         renderTabBar={() => this.renderTabBar(styles.scrollTab)}
         tabBarInactiveTextColor={'gray'}
         tabBarActiveTextColor={'black'}
@@ -103,7 +110,20 @@ class DataRanking extends Component {
   }
 }
 
-export default DataRanking;
+const mapStateToProps = (state) => {
+  return {
+      data: state.UserReducer
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    create: (data) => dispatch(createUser(data)),
+    delete: () => dispatch(deleteUser())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DataRanking);
 
 const styles = StyleSheet.create({
   loading: {
