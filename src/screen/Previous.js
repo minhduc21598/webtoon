@@ -11,14 +11,13 @@ class Previous extends Component {
   }
 
   gotoDetailAnime = (item) => {
-    this.props.navigation.navigate("DetailAnime", { item: item });
+    this.props.navigation.navigate("DetailAnime", { id: item.mal_id });
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Header
-          ref={ref => this.Header = ref}
           firstTxt={'Season'}
           secondTxt={''}
         />

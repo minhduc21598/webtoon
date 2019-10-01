@@ -24,7 +24,7 @@ class Ranking extends Component {
   }
 
   gotoDetailAnime = (item) => {
-    this.props.navigation.navigate("DetailAnime", { item: item });
+    this.props.navigation.navigate("DetailAnime", { id: item.mal_id });
   }
 
   gotoDetailManga = (item) => {

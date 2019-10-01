@@ -7,6 +7,7 @@ import Daily from '../screen/Daily';
 import Ranking from '../screen/Ranking';
 import Previous from '../screen/Previous';
 import Search from '../screen/Search';
+import Liked from '../screen/Liked';
 
 const Footer = createBottomTabNavigator(
     {
@@ -47,6 +48,14 @@ const Footer = createBottomTabNavigator(
             navigationOptions:{
                 tabBarIcon: ({tintColor}) => (
                     <Icon name="ios-search" color={tintColor} size={24}/>
+                )
+            }
+        },
+        Liked:{
+            screen: Liked,
+            navigationOptions:{
+                tabBarIcon: ({tintColor}) => (
+                    <Icon name="ios-heart" color={tintColor} size={24}/>
                 )
             }
         }

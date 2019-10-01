@@ -3,15 +3,22 @@ import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import TabView from './ViewInScrollableTabView';
 import { connect } from 'react-redux';
-import { createUser, deleteUser } from '../actions/UserAction';
+import { createUser, deleteUser } from '../redux/actions/UserAction';
 
 class DataRanking extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
+      loadingMore: false,
+      refreshing: false,
     };
     this.index = 0;
     this.page = 1;
+  }
+
+  componentDidMount = () => {
+    this.getData();
   }
 
   getData = () => {
@@ -23,7 +30,7 @@ class DataRanking extends Component {
     ).then(
       res => {
         this.props.create(res.top);
-        this.TabView.setState({ items: this.props.data, isLoading: false });
+        this.setState({ isLoading: false });
       }
     ).catch((error) => {
       console.error(error);
@@ -33,16 +40,15 @@ class DataRanking extends Component {
 
   getMoreData = () => {
     let { type, getType } = this.props;
-    if (this.TabView.state.loadingMore) return;
-    this.TabView.setState({ loadingMore: true });
+    if (this.state.loadingMore == true) return;
+    this.setState({ loadingMore: true });
     this.page = this.page + 1;
     getType(this.page, type[this.index]).then(
       response => response.json()
     ).then(
       res => {
         this.props.create(res.top);
-        this.TabView.setState({
-          items: this.props.data,
+        this.setState({
           loadingMore: false
         });
       }
@@ -53,7 +59,7 @@ class DataRanking extends Component {
   }
 
   renderLoadingIconBelow = () => {
-    if (this.TabView.state.loadingMore) {
+    if (this.state.loadingMore) {
       return (
         <View style={styles.loadingMore}>
           <ActivityIndicator color='black' size='large' />
@@ -66,7 +72,6 @@ class DataRanking extends Component {
   onChangeTab = (item) => {
     this.index = item.i;
     this.page = 1;
-    this.props.delete();
     this.getData();
   }
 
@@ -76,43 +81,52 @@ class DataRanking extends Component {
     />
   }
 
+  onRefresh = () => {
+    this.setState({ refreshing: true });
+    this.getData();
+    this.setState({ refreshing: false });
+  }
+
+  renderLoading = () => {
+    return (
+      <View style={styles.loadingAtStart}>
+        <ActivityIndicator size="large" color='black' />
+      </View>
+    )
+  }
+
   render() {
     let { onPress, tabType } = this.props;
     return (
-      <ScrollableTabView
-        initialPage = {0}
-        renderTabBar={() => this.renderTabBar(styles.scrollTab)}
-        tabBarInactiveTextColor={'gray'}
-        tabBarActiveTextColor={'black'}
-        tabBarUnderlineStyle={styles.tabBar}
-        onChangeTab={this.onChangeTab}
-      >
-        {
-          tabType.map(
-            (item, index) => {
-              return (
-                <TabView
-                  ref={ref => this.TabView = ref}
-                  tabLabel={item}
-                  getData={this.getData}
-                  onEndReachedThreshold={0.5}
-                  onEndReached={this.getMoreData}
-                  listFooterComponent={this.renderLoadingIconBelow}
-                  onPress={(item) => onPress(item)}
-                  key={index}
-                />
-              )
-            }
-          )
-        }
-      </ScrollableTabView>
+      (this.state.isLoading) ? this.renderLoading() :
+        <ScrollableTabView
+          initialPage={0}
+          renderTabBar={() => this.renderTabBar(styles.scrollTab)}
+          tabBarInactiveTextColor={'gray'}
+          tabBarActiveTextColor={'black'}
+          tabBarUnderlineStyle={styles.tabBar}
+          onChangeTab={this.onChangeTab}
+        >
+          {
+            tabType.map(
+              (item, index) => {
+                return (
+                  <TabView
+                    tabLabel={item}
+                    refreshing={this.state.refreshing}
+                    onRefresh={this.onRefresh}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={this.getMoreData}
+                    listFooterComponent={this.renderLoadingIconBelow}
+                    onPress={(item) => onPress(item)}
+                    key={index}
+                  />
+                )
+              }
+            )
+          }
+        </ScrollableTabView>
     );
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-      data: state.UserReducer
   }
 }
 
@@ -123,7 +137,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DataRanking);
+export default connect(null, mapDispatchToProps)(DataRanking);
 
 const styles = StyleSheet.create({
   loading: {
@@ -144,5 +158,10 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     height: 2
+  },
+  loadingAtStart: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 });

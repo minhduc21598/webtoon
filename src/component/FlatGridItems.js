@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
 
 class FlatGridItems extends Component {
@@ -13,6 +14,7 @@ class FlatGridItems extends Component {
         return (
             <FlatGrid
                 itemDimension={itemDimension}
+                itemContainerStyle = {styles.itemContainer}
                 items={items}
                 spacing={spacing}
                 renderItem={renderItem}
@@ -25,3 +27,9 @@ class FlatGridItems extends Component {
 }
 
 export default FlatGridItems;
+
+const styles = StyleSheet.create({
+    itemContainer: {
+        alignItems: 'center'
+    }
+});

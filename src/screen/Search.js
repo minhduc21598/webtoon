@@ -47,7 +47,7 @@ class Search extends Component {
     }
 
     onPress2 = (item) => {
-        if (this.state.type == 'anime') this.props.navigation.navigate("DetailAnime", { item: item });
+        if (this.state.type == 'anime') this.props.navigation.navigate("DetailAnime", { id: item.mal_id });
         else this.props.navigation.navigate("DetailManga", { item: item });
     }
 
@@ -62,7 +62,7 @@ class Search extends Component {
                 >
                     <Image source={{ uri: item.image_url }} style={styles.image} />
                     <Text style={styles.txtGenre}>{item.type}</Text>
-                    <Text style={styles.txtTitle}>{item.title}</Text>
+                    <Text numberOfLines = {2} style={styles.txtTitle}>{item.title}</Text>
                     <Text style={styles.icon}>
                         <Icon name='ios-heart' color='green' /> {item.score}
                     </Text>
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     },
     itemContainer: {
         width: 100,
-        height: 200,
+        height: 160,
         flex: 1
     },
     image: {
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
         color: 'red'
     },
     txtTitle: {
-        fontSize: 10,
+        fontSize: 13,
         color: 'purple',
     },
     icon: {

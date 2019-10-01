@@ -56,6 +56,23 @@ const getTypeAnime = async (page, type) => {
     }
 }
 
+const getDetailAnime = async (id) => {
+    const checked = await CheckConnection();
+    if (checked) {
+        return fetch(`${url}/anime/${id}//`,
+            {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            }
+        )
+    } else {
+        ToastAndroid.showWithGravity('Please check your network !', ToastAndroid.SHORT, ToastAndroid.CENTER);
+    }
+}
+
 const getRecomManga = async (id) => {
     const checked = await CheckConnection();
     if (checked) {
@@ -165,6 +182,7 @@ export {
     getCurrentSeason,
     getRecomAnime,
     getTypeAnime,
+    getDetailAnime,
     getRecomManga,
     getTypeManga,
     getDaily,

@@ -6,16 +6,25 @@ import { getAnimeByYear } from '../services/GetAPI';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { season, seasons, dataYear } from '../const';
 import { PickerView, PickerViewHide } from '../component/PickerView';
+import { connect } from 'react-redux';
+import { createUser, deleteUser } from '../redux/actions/UserAction';
 
 class OldSeason extends Component {
     constructor(props) {
         super(props);
         this.state = {
             date: "2019",
-            showPicker: false
+            showPicker: false,
+            isLoading: true,
+            loadingMore: false,
+            refreshing: false,
         };
         this.season = season[0];
         this.index = 0;
+    }
+
+    componentDidMount = () => {
+        this.getData();
     }
 
     dateChange = (date) => {
@@ -24,11 +33,11 @@ class OldSeason extends Component {
     }
 
     openYear = () => {
-        if(!this.state.showPicker){
-            this.setState({showPicker: true});
+        if (!this.state.showPicker) {
+            this.setState({ showPicker: true });
             PickerView(dataYear, 2019, this.dateChange, 'Choose a year');
         } else {
-            this.setState({showPicker: false});
+            this.setState({ showPicker: false });
             PickerViewHide();
         }
     }
@@ -38,15 +47,16 @@ class OldSeason extends Component {
         this.season = season[this.index];
         this.getData();
     }
-    
+
     getData = () => {
+        this.props.delete();
         getAnimeByYear(this.state.date, this.season)
             .then(
                 response => response.json()
             ).then(
                 res => {
-                    console.log(res)
-                    this.ViewInScrollableTabView.setState({ items: res.anime, isLoading: false })
+                    this.props.create(res.anime);
+                    this.setState({ isLoading: false })
                 }
             ).catch((error) => {
                 console.error(error);
@@ -54,26 +64,29 @@ class OldSeason extends Component {
             });
     }
 
-    renderLoadingIconBelow = () => {
-        if (this.ViewInScrollableTabView.state.loadingMore) {
-            return (
-                <View style={styles.loadingMore}>
-                    <ActivityIndicator color='black' size='large' />
-                </View>
-            )
-        }
-        return null;
+    onRefresh = () => {
+        this.setState({ refreshing: true });
+        this.getData();
+        this.setState({ refreshing: false });
+    }
+
+    renderLoading = () => {
+        return (
+            <View style={styles.loadingAtStart}>
+                <ActivityIndicator size="large" color='black' />
+            </View>
+        )
     }
 
     render() {
         let { onPress } = this.props;
         return (
-            (this.state.isLoading) ? this._renderLoading() :
+            (this.state.isLoading) ? this.renderLoading() :
                 <View style={styles.container}>
                     <TouchableOpacity
                         onPress={this.openYear}
                         style={styles.btnChooseTab}
-                        activeOpacity = {1}
+                        activeOpacity={1}
                     >
                         <Text style={styles.txtChooseTab}>Choose a year</Text>
                         <Text style={styles.txtChooseTab}>
@@ -94,11 +107,9 @@ class OldSeason extends Component {
                                 (item, index) => {
                                     return (
                                         <ViewInScrollableTabView
-                                            ref={ref => this.ViewInScrollableTabView = ref}
                                             tabLabel={item}
-                                            getData={this.getData}
-                                            onEndReachedThreshold={0.5}
-                                            listFooterComponent={this.renderLoadingIconBelow}
+                                            refreshing={this.state.refreshing}
+                                            onRefresh={this.onRefresh}
                                             onPress={(item) => onPress(item)}
                                             key={index}
                                         />
@@ -112,7 +123,15 @@ class OldSeason extends Component {
     }
 }
 
-export default OldSeason;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        create: (data) => dispatch(createUser(data)),
+        delete: () => dispatch(deleteUser())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(OldSeason);
+
 const styles = StyleSheet.create({
     loadingAtStart: {
         flex: 1,

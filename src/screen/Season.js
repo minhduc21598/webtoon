@@ -6,13 +6,14 @@ import { imgSwiper, menuOption } from '../component/Data';
 import Label from '../component/Label';
 import Flat from '../component/FlatGridItems';
 import { getCurrentSeason } from '../services/GetAPI';
+import { connect } from 'react-redux';
+import { createUser, deleteUser } from '../redux/actions/UserAction';
 
 class Season extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
-      items: [],
     };
   }
   componentDidMount() {
@@ -21,7 +22,9 @@ class Season extends Component {
       response => response.json()
     ).then(
       res => {
-        this.setState({ items: res.anime, isLoading: false })
+        this.props.delete();
+        this.props.create(res.anime);
+        this.setState({ isLoading: false })
       }
     ).catch((error) => {
       console.error(error);
@@ -36,7 +39,7 @@ class Season extends Component {
     )
   }
   gotoDetail = (item) => {
-    this.props.navigation.navigate("DetailAnime", {item: item});
+    this.props.navigation.navigate("DetailAnime", {id: item.mal_id});
   }
   renderSeasonItem = ({ item, index }) => {
     return (
@@ -114,7 +117,7 @@ class Season extends Component {
         <Text style={styles.titleTxt}>What's new?</Text>
         <Flat
           itemDimension={130}
-          items={this.state.items}
+          items={this.props.data}
           spacing={5}
           renderItem={this.renderSeasonItem}
         />
@@ -136,7 +139,20 @@ class Season extends Component {
   }
 }
 
-export default Season;
+const mapStateToProps = (state) => {
+  return {
+    data: state.UserReducer
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    create: (data) => dispatch(createUser(data)),
+    delete: () => dispatch(deleteUser())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Season);
 
 const styles = StyleSheet.create({
   loading: {

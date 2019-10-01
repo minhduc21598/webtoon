@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ActivityIndicator, ToastAndroid } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Flat from '../component/FlatGridItems';
-import { getRecomAnime } from '../services/GetAPI';
+import { getRecomAnime, getDetailAnime } from '../services/GetAPI';
+import { searchComic, addComic, deleteComic } from '../schema/saveComics';
 
 class DetailAnime extends Component {
     constructor(props) {
         super(props);
-        let item = this.props.navigation.getParam('item');
         this.state = {
-            item: item,
+            detailItem: {},
             isLoading: true,
-            itemsRecom: []
+            color: 'gray',
         };
     }
 
-    componentDidMount = () => {
-        getRecomAnime(this.state.item.mal_id).then(
+    componentDidMount = async () => {
+        let id = this.props.navigation.getParam('id');
+        const data = await searchComic(id);
+        if (data !== undefined) this.setState({ color: 'red' });
+        getDetailAnime(id).then(
+            response => response.json()
+        ).then(
+            res => this.setState({detailItem: res})
+        ).catch((error) => {
+            console.error(error);
+            return error;
+        });
+        getRecomAnime(id).then(
             response => response.json()
         ).then(
             res => this.setState({ itemsRecom: res.recommendations, isLoading: false })
@@ -26,20 +37,26 @@ class DetailAnime extends Component {
         });
     }
 
-    shouldComponentUpdate = (nextState) => {
-        if (nextState.item != this.state.item) return true;
-        return false;
-    }
-
     onPress = () => {
         this.props.navigation.goBack();
     }
 
-    onPress2 = (item) => {
+    onPress2 = async (item) => {
+        this.setState({color: 'gray'});
+        const data = await searchComic(item);
+        if (data !== undefined) this.setState({ color: 'red' });
+        getDetailAnime(item.mal_id).then(
+            response => response.json()
+        ).then(
+            res => this.setState({detailItem: res})
+        ).catch((error) => {
+            console.error(error);
+            return error;
+        });
         getRecomAnime(item.mal_id).then(
             response => response.json()
         ).then(
-            res => this.setState({ item: item, itemsRecom: res.recommendations, isLoading: false })
+            res => this.setState({ itemsRecom: res.recommendations, isLoading: false })
         ).catch((error) => {
             console.error(error);
             return error;
@@ -50,6 +67,7 @@ class DetailAnime extends Component {
         return (
             <TouchableOpacity
                 style={styles.containerRecom}
+                activeOpacity={1}
                 onPress={() => this.onPress2(item)}
                 key={index}
             >
@@ -68,6 +86,18 @@ class DetailAnime extends Component {
             </View>
         )
     }
+    save = () => {
+        if (this.state.color == 'red') {
+            this.setState({ color: 'gray' });
+            deleteComic(this.state.detailItem);
+            ToastAndroid.showWithGravity('Deleted from your favorite list !', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        }
+        else {
+            this.setState({ color: 'red' });
+            addComic(this.state.detailItem);
+            ToastAndroid.showWithGravity('Added to your favorite list !', ToastAndroid.SHORT, ToastAndroid.CENTER);
+        }
+    }
     render() {
         return (
             (this.state.isLoading) ? this.renderLoading() :
@@ -81,18 +111,24 @@ class DetailAnime extends Component {
                             <Icon name='ios-arrow-round-back' size={40} color={'black'} />
                         </TouchableOpacity>
                         <Text style={styles.detail}>Detail</Text>
+                        <TouchableOpacity
+                            activeOpacity={1}
+                            onPress={this.save}
+                        >
+                            <Icon name='ios-heart' size={35} color={this.state.color} />
+                        </TouchableOpacity>
                     </View>
                     <ScrollView>
                         <Image
                             style={styles.image}
-                            source={{ uri: this.state.item.image_url }}
+                            source={{ uri: this.state.detailItem.image_url }}
                         />
-                        <Text style={styles.title}>{this.state.item.title}</Text>
-                        <Text style={styles.type}>{this.state.item.type}</Text>
-                        <Text style={styles.members}>Member: {this.state.item.members}</Text>
-                        <Text style={styles.episodes}>Episodes: {this.state.item.episodes}</Text>
+                        <Text style={styles.title}>{this.state.detailItem.title}</Text>
+                        <Text style={styles.type}>{this.state.detailItem.type}</Text>
+                        <Text style={styles.members}>Member: {this.state.detailItem.members}</Text>
+                        <Text style={styles.episodes}>Episodes: {this.state.detailItem.episodes}</Text>
                         <Text style={styles.titleTxt}>Synopsis</Text>
-                        <Text style={styles.synopsis}>{this.state.item.synopsis}</Text>
+                        <Text style={styles.synopsis}>{this.state.detailItem.synopsis}</Text>
                         <Text style={styles.titleTxt}>Recommendations</Text>
                         <Flat
                             itemDimension={130}
@@ -135,7 +171,8 @@ const styles = StyleSheet.create({
     detail: {
         fontSize: 25,
         color: 'black',
-        marginLeft: 30
+        marginLeft: 30,
+        marginRight: 180
     },
     title: {
         fontSize: 25,
