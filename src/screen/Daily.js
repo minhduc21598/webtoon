@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, ActivityIndicator, ToastAndroid } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import ViewInScrollableTabView from '../component/ViewInScrollableTabView';
 import { tabNameInDaily, days } from '../const';
@@ -7,6 +7,8 @@ import Header from '../component/Header';
 import { getDaily } from '../services/GetAPI';
 import { connect } from 'react-redux';
 import { createUser, deleteUser } from '../redux/actions/UserAction';
+import CheckConnection from '../services/CheckConnection';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Daily extends Component {
   constructor(props) {
@@ -28,17 +30,32 @@ class Daily extends Component {
     )
   }
 
-  getData = () => {
-    this.props.delete();
-    getDaily(days[this.index])
-      .then(response => response.json())
-      .then(res => {
-        this.props.create(res[days[this.index]]);
+  getData = async () => {
+    const checked = await CheckConnection();
+    if (checked) {
+      this.props.delete();
+      AsyncStorage.removeItem(`${days[this.index]}`);
+      getDaily(days[this.index])
+        .then(response => response.json())
+        .then(res => {
+          this.props.create(res[days[this.index]]);
+          AsyncStorage.setItem(`${days[this.index]}`, JSON.stringify(res[days[this.index]]));
+          this.setState({ isLoading: false });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      let day = await AsyncStorage.getItem(`${days[this.index]}`);
+      if (day == null) {
+        this.props.delete();
+        this.props.create([]);
+      } else {
+        this.props.delete();
+        this.props.create(JSON.parse(day));
         this.setState({ isLoading: false });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      }
+    }
   }
 
   onChangeTab = (item) => {
@@ -46,8 +63,14 @@ class Daily extends Component {
     this.getData();
   }
 
-  gotoDetail = (item) => {
-    this.props.navigation.navigate("DetailAnime", { id: item.mal_id });
+  gotoDetail = async (item) => {
+    const checked = await CheckConnection();
+    if (checked) {
+      this.props.navigation.navigate("DetailAnime", { id: item.mal_id });
+    } else {
+      ToastAndroid.showWithGravity('No network connection !', ToastAndroid.LONG, ToastAndroid.CENTER);
+      return;
+    }
   }
 
   renderLoading = () => {

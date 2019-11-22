@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, RefreshControl, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, RefreshControl, TouchableOpacity, ToastAndroid } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Grid from './FlatGridItems';
 import { connect } from 'react-redux';
@@ -33,6 +33,7 @@ class ViewInScrollableTabView extends Component {
     render() {
         const { refreshing, onRefresh, tabLabel, onEndReachedThreshold, onEndReached, listFooterComponent } = this.props;
         return (
+            (this.props.data == null) ? <View/> :
             <View tabLabel={tabLabel} style={styles.container}>
                 <ScrollView
                     refreshControl={

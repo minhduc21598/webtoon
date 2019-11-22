@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, ActivityIndicator, ToastAndroid } from 'react-native';
 import Swiper from 'react-native-swiper';
 import SplashScreen from 'react-native-splash-screen';
 import { imgSwiper, menuOption } from '../component/Data';
@@ -8,6 +8,8 @@ import Flat from '../component/FlatGridItems';
 import { getCurrentSeason } from '../services/GetAPI';
 import { connect } from 'react-redux';
 import { createUser, deleteUser } from '../redux/actions/UserAction';
+import CheckConnection from '../services/CheckConnection';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Season extends Component {
   constructor(props) {
@@ -16,20 +18,30 @@ class Season extends Component {
       isLoading: true,
     };
   }
-  componentDidMount() {
+  componentDidMount = async () => {
     SplashScreen.hide();
-    getCurrentSeason().then(
-      response => response.json()
-    ).then(
-      res => {
-        this.props.delete();
-        this.props.create(res.anime);
-        this.setState({ isLoading: false })
-      }
-    ).catch((error) => {
-      console.error(error);
-      return error;
-    });
+    const checked = await CheckConnection();
+    if (checked) {
+      getCurrentSeason().then(
+        response => response.json()
+      ).then(
+        res => {
+          this.props.delete();
+          this.props.create(res.anime);
+          AsyncStorage.setItem('season', JSON.stringify(res.anime));
+          this.setState({ isLoading: false })
+        }
+      ).catch((error) => {
+        console.error(error);
+        return error;
+      });
+    } else {
+      let season = await AsyncStorage.getItem('season');
+      this.props.delete();
+      this.props.create(JSON.parse(season));
+      this.setState({ isLoading: false });
+    }
+
   }
   renderLoading = () => {
     return (
@@ -38,15 +50,21 @@ class Season extends Component {
       </View>
     )
   }
-  gotoDetail = (item) => {
-    this.props.navigation.navigate("DetailAnime", {id: item.mal_id});
+  gotoDetail = async (item) => {
+    const checked = await CheckConnection();
+    if(checked){
+      this.props.navigation.navigate("DetailAnime", { id: item.mal_id });
+    } else {
+      ToastAndroid.showWithGravity('No network connection !', ToastAndroid.LONG, ToastAndroid.CENTER);
+      return;
+    }
   }
   renderSeasonItem = ({ item, index }) => {
     return (
-      <TouchableOpacity 
-        style={styles.containerSeason} 
-        onPress = {() => this.gotoDetail(item)} 
-        activeOpacity = {1} 
+      <TouchableOpacity
+        style={styles.containerSeason}
+        onPress={() => this.gotoDetail(item)}
+        activeOpacity={1}
         key={index}
       >
         <Image
@@ -81,60 +99,60 @@ class Season extends Component {
   render() {
     return (
       (this.state.isLoading) ? this.renderLoading() :
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-      >
-        <StatusBar
-          barStyle='dark-content'
-          backgroundColor='white'
-        />
-        <Text style={styles.titleTxt}>This season</Text>
-        <Text style={styles.welcome}>Welcome Back!</Text>
-        <View style={styles.viewSwiper}>
-          <Swiper
-            autoplay={true}
-          >
-            {
-              imgSwiper.map(
-                (item, index) => {
-                  return (
-                    <Image
-                      style={styles.imgSwiper}
-                      source={{ uri: item }}
-                      key={index}
-                    />
-                  )
-                }
-              )
-            }
-          </Swiper>
-        </View>
-        <TouchableOpacity
-          activeOpacity={0}
-          onPress={() => alert("Another screen")}
+        <ScrollView
+          showsVerticalScrollIndicator={false}
         >
-        </TouchableOpacity>
-        <Text style={styles.titleTxt}>What's new?</Text>
-        <Flat
-          itemDimension={130}
-          items={this.props.data}
-          spacing={5}
-          renderItem={this.renderSeasonItem}
-        />
-        {
-          menuOption.map(
-            (item, index) => {
-              return (
-                <Label
-                  title={item}
-                  onPress={() => this.onPressOption(index)}
-                  key={index}
-                />
-              )
-            }
-          )
-        }
-      </ScrollView>
+          <StatusBar
+            barStyle='dark-content'
+            backgroundColor='white'
+          />
+          <Text style={styles.titleTxt}>This season</Text>
+          <Text style={styles.welcome}>Welcome Back!</Text>
+          <View style={styles.viewSwiper}>
+            <Swiper
+              autoplay={true}
+            >
+              {
+                imgSwiper.map(
+                  (item, index) => {
+                    return (
+                      <Image
+                        style={styles.imgSwiper}
+                        source={{ uri: item }}
+                        key={index}
+                      />
+                    )
+                  }
+                )
+              }
+            </Swiper>
+          </View>
+          <TouchableOpacity
+            activeOpacity={0}
+            onPress={() => alert("Another screen")}
+          >
+          </TouchableOpacity>
+          <Text style={styles.titleTxt}>What's new?</Text>
+          <Flat
+            itemDimension={130}
+            items={this.props.data}
+            spacing={5}
+            renderItem={this.renderSeasonItem}
+          />
+          {
+            menuOption.map(
+              (item, index) => {
+                return (
+                  <Label
+                    title={item}
+                    onPress={() => this.onPressOption(index)}
+                    key={index}
+                  />
+                )
+              }
+            )
+          }
+        </ScrollView>
     );
   }
 }
